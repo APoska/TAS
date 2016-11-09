@@ -1,0 +1,205 @@
+$black: #212121;
+$lightgray: #818181;
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+q {
+  &:before, &:after {
+    content: '';
+    content: none; } }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+.loginWrapper {
+  width: 400px;
+  height: 100%;
+    position:relative; /*it can be fixed too*/
+  left:0; right:0;
+  top:0; bottom:0;
+  display:table;
+  overflow: hidden;
+  margin: 0 auto;
+
+    .loginBox{
+    padding: 0 50px;
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0 auto;
+    width: 400px;
+  }
+}
+
+.registerWrapper{
+  width: 400px;
+  height: 100%;
+    position:relative; /*it can be fixed too*/
+  left:0; right:0;
+  top:0; bottom:0;
+  display:table;
+  overflow: hidden;
+  margin: 0 auto;
+  .registerBox{
+    padding: 0 50px;
+    display: table-cell;
+    vertical-align: middle;
+    margin: 0 auto;
+    width: 400px;
+    }
+
+}
+
+.sideNav{
+  width: 250px;
+  height: 100%;
+  position: fixed;
+  transition: .5s;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  padding-top: 20px;
+  background-color: $black;
+  overflow-x: hidden;
+
+  a{
+  color: $lightgray;
+  display: block;
+  padding: 10px 10px 10px 30px;
+  text-decoration: none;
+  font-size: 25px;
+  transition: .3s;
+  }
+}
+
+.openbtn{
+  text-align: center;
+  font-size: 20px;
+  line-height: 25px;
+  cursor: pointer;
+  display: block;
+  width: 25px;height: 25px;
+  border-radius: 10px;
+  color: $lightgray;
+  background-color: $black;
+}
+
+.mainContentWrapper{
+  display: block;
+  transition: margin-left .5s;
+  margin-left: 250px;
+  padding: 5px;
+  background-color: #37474F;
+}
+
+.calendarWrapper{
+  height: 100%;
+  padding: 10px;
+
+  transition: 0.3s;
+}
+
+.monthCalendarWrapper{
+  display: block;
+  margin: 10px;
+  height: auto;
+
+
+    .monthWeekShort{
+      display: block;
+      text-transform: uppercase;
+      float: left;
+      width: 14.285%;
+      background-color: #8e352e;
+      color: $lightgray;
+      text-align: center;
+      font-size: 16px;
+      line-height: 40px;
+    }
+
+    .monthCalendarRow{
+      display: block;
+      height: 100%;
+    }
+
+    .monthCalendarDay{
+      display: block;
+      float: left;
+      height: 120px;
+      width: 14.285%;
+      padding: 2px 2px;
+      background-color: #EEEEEE;
+      border-left: 1px solid #bcf;
+      border-top: 1px solid #bcf;
+      text-align: right;
+    }
+    .otherMonth{
+      background-color: #9E9E9E;
+    }
+}
+
+.dayNumber{
+  display: block;
+  width: 25px;
+  height: 20px;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  background-color: #212121;
+  color: #EEEEEE;
+  border-radius: 10px;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .sideNav{
+      width: 0px;
+    }
+
+
+    .mainContentWrapper{
+      margin-left: 0px;
+    }
+
+
+    .monthWeekShort, .otherMonth{
+      display: none;
+    }
+
+
+    .monthCalendarDay{
+      float: none;
+      width: 98%;
+      height: auto;
+      padding: 10px 5px;
+      text-align: left;
+    }
+
+}
