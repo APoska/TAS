@@ -12,9 +12,11 @@ angular.module('app')
         // call login from service
         AuthService.login($scope.user)
         // handle success
-        .then(function (msg) {
+        .then(function () {
           $state.go('home');
-        }, function (msg) {
+        })
+          // handle error
+        .catch(function () {
           alert('Not Good');
         });
       }
@@ -39,8 +41,8 @@ angular.module('app')
             $state.go('login');
           })
           // handle error
-          .catch(function (response) {
-            console.error('Gists error', response.status, response.data);
+          .catch(function () {
+            alert('Not Good');
           });
       } else {
         alert('One of the fields is novalid!')

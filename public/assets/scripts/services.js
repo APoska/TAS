@@ -27,13 +27,10 @@ angular.module('app').factory('AuthService',
 	  var login = function(user) {
       return $q(function(resolve, reject) {
         $http.post('/api/auth', user).then(function(result) {
-          console.log('tu jestem');
           if (result.data.success) {
             storeUserCredentials(result.data.token);
             resolve(result.data.msg);
-            console.log('tu jestem');
           } else {
-            console.log('tu jestem');
             reject(result.data.msg);
           }
         });
@@ -60,7 +57,6 @@ angular.module('app').factory('AuthService',
     return ({
       login: login,
       register: register,
-      logout: logout,
-      isAuthenticated: function() {return isAuthenticated;},
+      logout: logout
     });
 });
