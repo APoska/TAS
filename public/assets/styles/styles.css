@@ -34,6 +34,11 @@ q:before, q:after {
   content: none;
 }
 
+[ui-view] {
+  width: 100vw;
+  height: 100vh;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -73,6 +78,7 @@ table {
   overflow: hidden;
   margin: 0 auto;
 }
+
 .registerWrapper .registerBox {
   padding: 0 50px;
   display: table-cell;

@@ -1,10 +1,10 @@
 angular.module('app').factory('AuthService',
-  function ($q, $timeout, $http) {
+  function ($q, $http) {
 
     // create user variable
     var LOCAL_TOKEN_KEY = 'yourTokenKey';
   	var isAuthenticated = false;
- 	var authToken;
+ 	  var authToken;
 
   	function storeUserCredentials(token) {
     	window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
@@ -18,35 +18,49 @@ angular.module('app').factory('AuthService',
     	$http.defaults.headers.common.Authorization = authToken;
   	}
 
-	var login = function(user) {
-    return $q(function(resolve, reject) {
-      $http.post('/api/auth', user).then(function(result) {
-        if (result.data.success) {
-          storeUserCredentials(result.data.token);
-          resolve(result.data.msg);
-        } else {
-          reject(result.data.msg);
-        }
-      });
-    });
+  	function destroyUserCredentials() {
+  		authToken = undefined;
+    	$http.defaults.headers.common.Authorization = undefined;
+    	window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   	}
 
-	var register = function(user) {
-    return $q(function(resolve, reject) {
-      $http.post('/api/users', user).then(function(result) {
-        if (result.data.success) {
-          resolve(result.data.msg);
-        } else {
-          reject(result.data.msg);
-        }
+	  var login = function(user) {
+      return $q(function(resolve, reject) {
+        $http.post('/api/auth', user).then(function(result) {
+          console.log('tu jestem');
+          if (result.data.success) {
+            storeUserCredentials(result.data.token);
+            resolve(result.data.msg);
+            console.log('tu jestem');
+          } else {
+            console.log('tu jestem');
+            reject(result.data.msg);
+          }
+        });
       });
-    });
-  	}
+    }
+
+	  var register = function(user) {
+      return $q(function(resolve, reject) {
+        $http.post('/api/users', user).then(function(result) {
+          if (result.data.success) {
+            resolve(result.data.msg);
+          } else {
+            reject(result.data.msg);
+          }
+        });
+      });
+    }
+
+    var logout = function() {
+      destroyUserCredentials();
+    };
 
     // return available functions for use in the controllers
     return ({
       login: login,
-      register: register
+      register: register,
+      logout: logout,
+      isAuthenticated: function() {return isAuthenticated;},
     });
-
 });

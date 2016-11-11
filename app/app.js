@@ -9,6 +9,7 @@ angular.module('app', ['ui.router'])
     .state('home', {
       url: "/home",
       templateUrl: 'public/partials/home.html',
+      controller: 'HomeCtrl',
     })
     .state('register', {
       url: "/register",
