@@ -2,6 +2,7 @@
 <div class="loginWrapper">
 	<div class="loginBox">
 		<h1>Login User</h1>
+		<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 		<form ng-submit="login(loginForm.$valid)" name="loginForm" novalidate>
 			<div class="form-group" ng-class="{ 'has-error' : loginForm.login.$invalid && !loginForm.login.$pristine }">
 				<label for="LoginInput2">Login</label>

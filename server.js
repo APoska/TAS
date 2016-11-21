@@ -48,7 +48,7 @@ router.route('/auth')
 	    if (err) throw err;
 	 
 	    if (!user) {
-			res.status(404);
+	    	res.status(404);
 			res.send({success: false, msg: 'Authentication failed. User not found.'});
 	    } else {
 	      // check if password matches
@@ -59,7 +59,7 @@ router.route('/auth')
 	          // return the information including token as JSON
 	          res.json({success: true, token: 'JWT ' + token});
 	        } else {
-				res.status(404);
+	        	res.status(404);
 				res.send({success: false, msg: 'Authentication failed. Wrong password.'});
 	        }
 	      });
@@ -196,8 +196,8 @@ router.route('/users')
 		    // save the user
 		    newUser.save(function(err) {
 		      if (err) {
-				  res.status(400);
 		        return res.json({success: false, msg: 'Username already exists.'});
+		        res.status(400);
 		      }
 		      res.json({success: true, msg: 'Successful created new user.'});
 		    });

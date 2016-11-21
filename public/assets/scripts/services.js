@@ -5,6 +5,14 @@ angular.module('app').factory('AuthService',
     var LOCAL_TOKEN_KEY = 'yourTokenKey';
   	var isAuthenticated = false;
  	  var authToken;
+    var user = false;
+
+    function loadUserCredentials() {
+    var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
+      if (token) {
+        useCredentials(token);
+      }
+    }
 
   	function storeUserCredentials(token) {
     	window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
@@ -24,37 +32,79 @@ angular.module('app').factory('AuthService',
     	window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   	}
 
+    function isLoggedIn() {
+      if(user) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
 	  var login = function(user) {
-      return $q(function(resolve, reject) {
-        $http.post('/api/auth', user).then(function(result) {
-          if (result.data.success) {
-            storeUserCredentials(result.data.token);
-            resolve(result.data.msg);
+      // create a new instance of deferred
+      var deferred = $q.defer();
+
+      $http.post('/api/auth', user)
+        // handle success
+        .success(function (response) {
+
+          if(response.success){
+            storeUserCredentials(response.token);
+            user = true;
+            deferred.resolve();
           } else {
-            reject(result.data.msg);
+            user = false;
+            deferred.reject();
           }
+        })
+        // handle error
+        .error(function (response) {
+            user = false;
+            console.log(response.msg);
+            deferred.reject();
         });
-      });
+      // return promise object
+      return deferred.promise;
     }
 
 	  var register = function(user) {
-      return $q(function(resolve, reject) {
-        $http.post('/api/users', user).then(function(result) {
-          if (result.data.success) {
-            resolve(result.data.msg);
+      // create a new instance of deferred
+      var deferred = $q.defer();
+
+      // send a post request to the server
+      $http.post('/api/users', user)
+        // handle success
+        .success(function (response) {
+          if(response.success){
+            user = true;
+            deferred.resolve();
           } else {
-            reject(result.data.msg);
+            user = false;
+            console.log(response.msg);
+            deferred.reject();
           }
+        })
+        // handle error
+        .error(function (response) {
+          user = false;
+          console.log(response.msg);
+          deferred.reject();
         });
-      });
+
+      // return promise object
+      return deferred.promise;
     }
 
     var logout = function() {
       destroyUserCredentials();
+      user = false;
     };
+
+    loadUserCredentials();
 
     // return available functions for use in the controllers
     return ({
+      isLoggedIn: isLoggedIn,
       login: login,
       register: register,
       logout: logout
