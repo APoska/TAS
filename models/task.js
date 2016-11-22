@@ -19,7 +19,9 @@ var TaskSchema = new Schema({
 		type: String,
 		required: true
 	},
-	watchersID : []
+	watchersID : [{
+		type: String
+	}]
 });
 
 module.exports = mongoose.model('Task',TaskSchema);
