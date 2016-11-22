@@ -112,13 +112,18 @@ router.route('/tasks')
 		});
 	})
 	.post(function(req,res){
-		var task = new Task();
-		task.title = req.body.title;
+		var task = new Task({
+			title: req.body.title,
+			startDate: req.body.startDate,
+			endDate: req.body.endDate,
+			description: req.body.description,
+			creatorID: req.body.user,
+			watchersID: req.body.guests
+		});
+		
 
 		task.save(function(err){
-			if(err)
-				res.send(err);
-			res.json({message:'Task created!'});
+			
 		});
 	});
 
