@@ -7,6 +7,9 @@ angular.module('app')
         login: '',
     };
 
+    // initial value
+    $scope.error = false;
+
     $scope.login = function (isValid) {
       if (isValid) {
         // call login from service
@@ -17,7 +20,8 @@ angular.module('app')
         })
           // handle error
         .catch(function () {
-          alert('Not Good');
+          $scope.error = true;
+          $scope.errorMessage = "Invalid username/password";
         });
       }
     };
@@ -32,6 +36,9 @@ angular.module('app')
         email: ''
     };
 
+    // initial value
+    $scope.error = false;
+
     $scope.register = function(isValid) {
       if (isValid) {
         // call register from service
@@ -42,7 +49,8 @@ angular.module('app')
           })
           // handle error
           .catch(function () {
-            alert('Not Good');
+            $scope.error = true;
+            $scope.errorMessage = "User already exist";
           });
       } else {
         alert('One of the fields is novalid!')

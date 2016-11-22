@@ -1,6 +1,7 @@
 <div class="registerWrapper">
 	<div class="registerBox">
 		<h1>Register User</h1>
+		<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
 		<form ng-submit="register(registerForm.$valid)" name="registerForm" novalidate>
 			<div class="form-group" ng-class="{ 'has-error' : registerForm.login.$invalid && !registerForm.login.$pristine }">
 				<label for="loginInput">Login</label>
