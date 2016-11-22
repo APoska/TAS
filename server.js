@@ -201,8 +201,8 @@ router.route('/users')
 		    // save the user
 		    newUser.save(function(err) {
 		      if (err) {
+				res.status(400);
 		        return res.json({success: false, msg: 'Username already exists.'});
-		        res.status(400);
 		      }
 		      res.json({success: true, msg: 'Successful created new user.'});
 		    });
