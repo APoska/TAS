@@ -6,17 +6,14 @@ var UserSchema = new Schema({
 	name : String,
 	login : {
 		type: String,
-		unique: true,
-		required: true
+		unique: true
 	},
 	password : {
-		type: String,
-		required: true
+		type: String
 	},
 	email : {
 		type: String,
-		unique: true,
-		required: true
+		unique: true
 	},
 });
 

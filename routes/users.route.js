@@ -7,10 +7,12 @@ var User = require('../models/user');
 
 router.route('/users')
 	.get(function(req,res){
-		User.find(function(err,tasks){
+		User.find(function(err,users){
 			if(err)
-				res.send(err);
-			res.json(tasks);
+				return res.send(err);
+
+			res.status(200);
+			res.json(users);
 		});
 	})
 	.post(function(req,res){
@@ -37,32 +39,57 @@ router.route('/users')
 
 router.route('/users/:user_id')
 	.get(function(req,res){
-		User.findById(req.params.user_id,function(err,task){
+		User.findById({ _id : req.params.user_id },function(err,user){
 			if(err)
-				res.send(err);
-			res.json(task);
+				return res.send(err);
+			res.status(200);
+			res.json(user);
 		});
 	})
 	.delete(function(req,res){
-		User.remove({
-			_id: req.params.user_id
-		}, function(err,task){
-			if(err)
-				res.send(err);
-			res.json({message: 'User succesfully deleted'});
+
+		User.findById({ _id : req.params.user_id }, function(err,user){
+			
+			if(!user){
+				res.status(409);
+				res.json({success: false, message: 'User not found'});
+			}else{
+
+			user.remove(function(err) {
+			    if (err) res.send(err);
+
+				res.status(200);
+				res.json({success: true, message: 'User succesfully deleted'});
+			});
+				}
 		});
 	})
 	.put(function(req,res){
-		User.findById(req.params.user_id,function(err,user){
+		User.findById({ _id : req.params.user_id }, function(err,user){
 			if(err)
-				res.send(err);
-			
-			user.save(function(err){
-				if(err)
-					res.send(err);
-				res.json({message: 'User updated!'});
-			});
+				return res.send(err);
+
+			if(!req.body.name){user.name = user.name;}else{user.name = req.body.name}
+			if(!req.body.login){user.login = user.login;}else{user.login = req.body.login}
+			if(!req.body.password){user.password = user.password;}else{user.password = req.body.password}
+			if(!req.body.email){user.email = user.email;}else{user.email = req.body.email}
+
+
+			if(req.body.name == user.name ||
+				req.body.login == user.login ||
+				req.body.password == user.password ||
+				req.body.email == req.body.email){
+
+				res.status(409);
+		        res.json({success: false, msg: 'You can change data to same values'});	
+			}else{
+				user.save(function(err){
+					if(err)
+						return res.send(err);
+				});
+				res.status(200);
+				res.json({success: true, message: 'User updated!'});
+			}
 		});
 	});
-
 module.exports = router;
