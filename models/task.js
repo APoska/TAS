@@ -3,21 +3,17 @@ var Schema = mongoose.Schema;
 
 var TaskSchema = new Schema({
 	title : {
-		type: String,
-		required : true
+		type: String
 	},
 	startDate : { 
-		type: Date,
-		required:true
+		type: Date
 	},
 	endDate : { 
-		type: Date,
-		required:true
+		type: Date
 	},
 	description : String,
 	creatorID : {
-		type: String,
-		required: true
+		type: String
 	},
 	watchersID : [{
 		type: String
