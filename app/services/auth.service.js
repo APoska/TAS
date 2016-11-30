@@ -5,7 +5,7 @@ angular.module('app').factory('AuthService',
     var LOCAL_TOKEN_KEY = 'yourTokenKey';
   	var isAuthenticated = false;
  	  var authToken;
-    var user = false;
+    //var user = false;
 
     function loadUserCredentials() {
     var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
@@ -28,17 +28,10 @@ angular.module('app').factory('AuthService',
 
   	function destroyUserCredentials() {
   		authToken = undefined;
+      isAuthenticated = false;
     	$http.defaults.headers.common.Authorization = undefined;
     	window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   	}
-
-    function isLoggedIn() {
-      if(user) {
-        return true;
-      } else {
-        return false;
-      }
-    }
 
 	  var login = function(user) {
       // create a new instance of deferred
@@ -50,16 +43,13 @@ angular.module('app').factory('AuthService',
 
           if(response.success){
             storeUserCredentials(response.token);
-            user = true;
             deferred.resolve();
           } else {
-            user = false;
             deferred.reject();
           }
         })
         // handle error
         .error(function (response) {
-            user = false;
             console.log(response.msg);
             deferred.reject();
         });
@@ -76,17 +66,14 @@ angular.module('app').factory('AuthService',
         // handle success
         .success(function (response) {
           if(response.success){
-            user = true;
             deferred.resolve();
           } else {
-            user = false;
             console.log(response.msg);
             deferred.reject();
           }
         })
         // handle error
         .error(function (response) {
-          user = false;
           console.log(response.msg);
           deferred.reject();
         });
@@ -97,16 +84,19 @@ angular.module('app').factory('AuthService',
 
     var logout = function() {
       destroyUserCredentials();
-      user = false;
     };
+
+    var isAuth = function() {
+      return isAuthenticated;
+    }
 
     loadUserCredentials();
 
     // return available functions for use in the controllers
     return ({
-      isLoggedIn: isLoggedIn,
       login: login,
       register: register,
-      logout: logout
+      logout: logout,
+      isAuth: isAuth,
     });
 });

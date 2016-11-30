@@ -1,5 +1,4 @@
 angular.module('app')
- 
 .controller('LoginCtrl',
   function ($scope, $state, AuthService) {
     $scope.user = {

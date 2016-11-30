@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('app', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -5,33 +7,35 @@ angular.module('app', ['ui.router'])
       url: "/login",
       templateUrl: 'public/views/login.html',
       controller: 'LoginCtrl',
-      access: {restricted: false}
     })
     .state('home', {
       url: "/home",
       templateUrl: 'public/views/home.html',
       controller: 'HomeCtrl',
-      access: {restricted: true}
     })
     .state('register', {
       url: "/register",
       templateUrl: 'public/views/register.html',
       controller: 'RegisterCtrl',
-      access: {restricted: false}
     })
     $urlRouterProvider.otherwise('/login');
 })
 
-/*
-.run(function ($rootScope, $state, AuthService) {
-  $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
-    if (!AuthService.isAuthenticated()) {
-      console.log(next.name);
+.run(['$rootScope', '$state', 'AuthService', function($rootScope, $state, AuthService){
+  $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
+    console.log(AuthService.isAuth());
+    if (!AuthService.isAuth()) {
       if (next.name !== 'login' && next.name !== 'register') {
         event.preventDefault();
         $state.go('login');
       }
     }
+    /*if(isLogged && toState.name === 'login'){
+      event.preventDefault();
+      // Redirect to the homepage if the page is the login and
+      // you are already logged in
+      $state.go('home');
+
+    }*/
   });
-});
-*/
+}]);
