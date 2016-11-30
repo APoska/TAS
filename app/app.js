@@ -18,6 +18,12 @@ angular.module('app', ['ui.router'])
       templateUrl: 'public/views/register.html',
       controller: 'RegisterCtrl',
     })
+    .state('tasks', {
+      url: "/tasks",
+      templateUrl: "public/views/tasks.html",
+      controller: 'TasksCtrl',
+      access: {restricted: true}
+    })
     $urlRouterProvider.otherwise('/login');
 })
 

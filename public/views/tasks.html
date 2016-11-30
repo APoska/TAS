@@ -1,0 +1,22 @@
+<div class="tasksWrapper">
+    <h1>List of Tasks</h1>
+    <ul class="tasksTitleList" >
+        <li ng-repeat="task in Tasks">
+            <div class="singleTask">    
+                <div class="singleTask__header" ng-click="showDetails = ! showDetails">
+                    <div class="singleTask__headerInner">
+                        <span class="taskTitle font500">{{$index+1}}.{{task.title}}</span> <span class="taskID font400">ID: {{task._id}}</span>
+                    </div>
+                </div>
+         
+                <div class="singleTask__moreWrapper"  ng-show="showDetails">
+                    <p><span class="font500">Start Date:</span> {{task.startDate}} </p>
+                    <p><span class="font500">End Date:</span> {{task.endDate}}</p>
+
+                    <p><span class="font500">Description:</span></p>
+                    <p class="desc">{{task.description}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

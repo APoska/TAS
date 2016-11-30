@@ -1,6 +1,17 @@
 $black: #212121;
 $lightgray: #818181;
 
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin-ext');
+
+// FONT WEIGHT
+
+.font500 {
+  font-weight: 500;
+}
+.font700 {
+  font-weight: 700;
+}
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
@@ -36,6 +47,13 @@ q {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+}
 
 .loginWrapper {
   width: 400px;
@@ -202,4 +220,72 @@ table {
       text-align: left;
     }
 
+}
+
+
+
+// TASKS
+
+.tasksWrapper{
+  display: block;
+  width: 100%;
+  padding: 15px;
+  h1{
+    font-size: 25px;
+    color: #000;
+    font-weight: 700;
+    padding-bottom: 25px;
+  }
+}
+
+.tasksTitleList{
+  display: table;
+  width: 100%;
+  li{
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #000;
+    color: #fff;
+    margin: 5px 0;
+    
+  }
+}
+.singleTask__header{
+      display: table;
+      width: 100%;
+      height: 50px;
+      background-color: #8e352e;
+      cursor: pointer;
+      padding-left: 15px;
+      transition: 0.4s ease-in;
+      &:hover{
+        background-color: #8c5d59;
+        transition: 0.2s ease-out;
+      }
+      .singleTask__headerInner{
+        display: table-cell;
+
+        vertical-align: middle;
+      }
+      span.taskTitle{
+        font-size: 18px;
+        text-transform: uppercase;        
+      }
+      span.taskID{
+        font-size: 10px;
+        color: #ccc       
+      }
+    }
+.singleTask__moreWrapper{
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 15px;
+  color: #212121;
+  p{
+    padding: 10px 0;
+    &.desc{
+      line-height: 23px;
+    }
+  }
 }
