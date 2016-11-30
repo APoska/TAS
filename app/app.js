@@ -1,5 +1,3 @@
-'use strict';
-
 angular.module('app', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -22,7 +20,6 @@ angular.module('app', ['ui.router'])
       url: "/tasks",
       templateUrl: "public/views/tasks.html",
       controller: 'TasksCtrl',
-      access: {restricted: true}
     })
     $urlRouterProvider.otherwise('/login');
 })
@@ -31,7 +28,7 @@ angular.module('app', ['ui.router'])
   $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
     console.log(AuthService.isAuth());
     if (!AuthService.isAuth()) {
-      if (next.name !== 'login' && next.name !== 'register') {
+      if (next.name !== 'login' && next.name !== 'register' && next.name !== 'tasks') {
         event.preventDefault();
         $state.go('login');
       }
