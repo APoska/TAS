@@ -1,7 +1,6 @@
-var express    = require('express');        
+var express = require('express');        
 var router = express.Router();
-var config      = require('../config/database'); // get db config file
-
+var config 	= require('../config/database'); 
 var Meeting = require('../models/meeting');
 
 

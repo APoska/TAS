@@ -3,19 +3,19 @@ angular.module('app', ['ui.router'])
   $stateProvider
     .state('login', {
       url: "/login",
-      templateUrl: 'public/partials/login.html',
+      templateUrl: 'public/views/login.html',
       controller: 'LoginCtrl',
       access: {restricted: false}
     })
     .state('home', {
       url: "/home",
-      templateUrl: 'public/partials/home.html',
+      templateUrl: 'public/views/home.html',
       controller: 'HomeCtrl',
       access: {restricted: true}
     })
     .state('register', {
       url: "/register",
-      templateUrl: 'public/partials/register.html',
+      templateUrl: 'public/views/register.html',
       controller: 'RegisterCtrl',
       access: {restricted: false}
     })
