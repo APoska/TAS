@@ -18,6 +18,7 @@ var authRoute = require('./routes/auth.route.js');
 var checkauthRoute = require('./routes/checkauth.route.js');
 var tasksRoute = require('./routes/tasks.route.js');
 var usersRoute = require('./routes/users.route.js');
+var meetingsRoute = require('./routes/meetings.route.js');
 
 //BODY PARSER
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -49,6 +50,7 @@ app.use('/api', authRoute);
 app.use('/api', checkauthRoute);
 app.use('/api', tasksRoute);
 app.use('/api', usersRoute);
+app.use('/api', meetingsRoute);
 
 app.listen(port);
 console.log('Server started on port ' + port);
