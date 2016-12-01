@@ -26,19 +26,17 @@ angular.module('app', ['ui.router'])
 
 .run(['$rootScope', '$state', 'AuthService', function($rootScope, $state, AuthService){
   $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
-    console.log(AuthService.isAuth());
+    var isLogged = localStorage.getItem('yourTokenKey');
     if (!AuthService.isAuth()) {
       if (next.name !== 'login' && next.name !== 'register' && next.name !== 'tasks') {
         event.preventDefault();
         $state.go('login');
       }
     }
-    /*if(isLogged && toState.name === 'login'){
+    if(isLogged && next.name === 'login'){
+      console.log('Nie mozesz cofnac');
       event.preventDefault();
-      // Redirect to the homepage if the page is the login and
-      // you are already logged in
       $state.go('home');
-
-    }*/
+    }
   });
 }]);
