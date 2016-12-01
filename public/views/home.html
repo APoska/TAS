@@ -7,7 +7,7 @@
 	<div id="mainContainer" class="mainContentWrapper">
  			<span id="sideToggle" class="openbtn sidebarToggle">&#9776;</span>
  			<div class="calendarWrapper">
- 				<div class="monthCalendarWrapper">
+ 				<div class="monthCalendarWrapper" ng-controller="monthCalCtrl">
  					<div class="monthCalendarHeader">
  						<div class="monthWeekShort">
  							MON
@@ -32,141 +32,141 @@
  						</div>
  					</div>
  					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
+ 						<div class="monthCalendarDay mon">
+ 							{{date1 | date:'d'}}
  						</div>
- 						<div class="monthCalendarDay">
- 							2
+ 						<div class="monthCalendarDay tue">
+ 							{{date2 | date:'d'}}
  						</div>
- 						<div class="monthCalendarDay">
- 							3
+ 						<div class="monthCalendarDay wed">
+ 							{{date3 | date:'d'}}
  						</div>
- 						<div class="monthCalendarDay">
- 							4
+ 						<div class="monthCalendarDay thu">
+ 							{{date4 | date:'d'}}
  						</div>
- 						<div class="monthCalendarDay">
- 							5
+ 						<div class="monthCalendarDay fri">
+ 							{{date5 | date:'d'}}
  						</div>
- 						<div class="monthCalendarDay">
- 							6
+ 						<div class="monthCalendarDay sat">
+ 							{{date6 | date:'d'}}
  						</div>
- 						<div class="monthCalendarDay">
- 							7
- 						</div>
- 					</div>
- 					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
+ 						<div class="monthCalendarDay sun">
+ 							{{date7 | date:'d'}}
  						</div>
  					</div>
  					<div class="monthCalendarRow">
  						<div class="monthCalendarDay">
- 							1
+ 							{{date8 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							2
+ 							{{date9 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							3
+ 							{{date10 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							4
+ 							{{date11 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							5
+ 							{{date12 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							6
+ 							{{date13 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							7
- 						</div>
- 					</div>
- 					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
+ 							{{date14 | date:'d'}}
  						</div>
  					</div>
  					<div class="monthCalendarRow">
  						<div class="monthCalendarDay">
- 							1
+ 							{{date15 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							2
+ 							{{date16 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							3
+ 							{{date17 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							4
+ 							{{date18 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							5
+ 							{{date19 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							6
+ 							{{date20 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							7
+ 							{{date21 | date:'d'}}
  						</div>
  					</div>
  					<div class="monthCalendarRow">
  						<div class="monthCalendarDay">
- 							1
+ 							{{date22 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							2
+ 							{{date23 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							3
+ 							{{date24 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							4
+ 							{{date25 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							5
+ 							{{date26 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							6
+ 							{{date27 | date:'d'}}
  						</div>
  						<div class="monthCalendarDay">
- 							7
+ 							{{date28 | date:'d'}}
+ 						</div>
+ 					</div>
+ 					<div class="monthCalendarRow">
+ 						<div class="monthCalendarDay">
+ 							{{date29 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date30 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date31 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date32 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date33 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date34 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date35 | date:'d'}}
+ 						</div>
+ 					</div>
+ 					<div class="monthCalendarRow">
+ 						<div class="monthCalendarDay">
+ 							{{date36 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date37 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date38 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date39 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date40 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date41 | date:'d'}}
+ 						</div>
+ 						<div class="monthCalendarDay">
+ 							{{date42 | date:'d'}}
  						</div>
  					</div>
  				</div>
