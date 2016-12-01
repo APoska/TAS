@@ -1,28 +1,30 @@
-<div class="registerWrapper">
-	<div class="registerBox">
-		<h1>Register User</h1>
-		<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-		<form ng-submit="register(registerForm.$valid)" name="registerForm" novalidate>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.login.$invalid && !registerForm.login.$pristine }">
-				<label for="loginInput">Login</label>
-				<input name="login" type="text" ng-model="user.login" class="form-control" id="loginInput" required>
-				<span ng-show="registerForm.login.$invalid && !registerForm.login.$pristine">Login is required</span>
-			</div>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
-				<label for="passwordInput">Password</label>
-				<input name="password" type="password" ng-model="user.password" class="form-control" id="passwordInput" required>
-				<span ng-show="registerForm.password.$invalid && !registerForm.password.$pristine">Password is required</span>
-			</div>
-			<div class="form-group">
-				<label for="displayInput">Name</label>
-				<input name="name" type="text" ng-model="user.name" class="form-control" id="displayInput">
-			</div>
-			<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
-				<label for="emailInput">Email</label>
-				<input name="email" type="email" ng-model="user.email" class="form-control" id="emailInput" required>
-				<span ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">Enter valid email</span>
-			</div>
-			<button type="submit">Sign Up</button>
-		</form>
+<div class="registerWrap">
+	<div class="registerWrapper">
+		<div class="registerBox">
+			<h1>Register User</h1>
+			<div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
+			<form ng-submit="register(registerForm.$valid)" name="registerForm" novalidate>
+				<div class="form-group" ng-class="{ 'has-error' : registerForm.login.$invalid && !registerForm.login.$pristine }">
+					<label for="loginInput">Login</label>
+					<input name="login" type="text" ng-model="user.login" class="form-control" id="loginInput" required>
+					<span ng-show="registerForm.login.$invalid && !registerForm.login.$pristine">Login is required</span>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }">
+					<label for="passwordInput">Password</label>
+					<input name="password" type="password" ng-model="user.password" class="form-control" id="passwordInput" required>
+					<span ng-show="registerForm.password.$invalid && !registerForm.password.$pristine">Password is required</span>
+				</div>
+				<div class="form-group">
+					<label for="displayInput">Name</label>
+					<input name="name" type="text" ng-model="user.name" class="form-control" id="displayInput">
+				</div>
+				<div class="form-group" ng-class="{ 'has-error' : registerForm.email.$invalid && !registerForm.email.$pristine }">
+					<label for="emailInput">Email</label>
+					<input name="email" type="email" ng-model="user.email" class="form-control" id="emailInput" required>
+					<span ng-show="registerForm.email.$invalid && !registerForm.email.$pristine">Enter valid email</span>
+				</div>
+				<button type="submit">Sign Up</button>
+			</form>
+		</div>
 	</div>
 </div>

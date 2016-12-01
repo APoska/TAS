@@ -1,5 +1,10 @@
 $black: #212121;
-$lightgray: #818181;
+$gray: #7D8193;
+$darkred: #8e352e;
+$yellow: #FFE570;
+$coffe: #C0AB96;
+$white: #f1f1f1;
+
 
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin-ext');
 
@@ -55,42 +60,103 @@ html, body {
   font-weight: 400;
 }
 
-.loginWrapper {
-  width: 400px;
-  height: 100%;
-    position:relative; /*it can be fixed too*/
-  left:0; right:0;
-  top:0; bottom:0;
-  display:table;
-  overflow: hidden;
-  margin: 0 auto;
-
-    .loginBox{
-    padding: 0 50px;
-    display: table-cell;
-    vertical-align: middle;
-    margin: 0 auto;
+.loginWrap{
+  width: 100vw;
+  height: 100vh;
+  background-color: $white;
+  .loginWrapper {
     width: 400px;
+    height: 100%;
+    position:relative; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    display:table;
+    overflow: hidden;
+    margin: 0 auto;
+
+      .loginBox{
+      padding: 0 50px;
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0 auto;
+      width: 400px;
+      text-align: left;
+
+      h1{ 
+        padding-bottom: 10px;
+      }
+
+      .form-control{
+        border: 1px solid $black;
+        color: $black;
+        border-radius: 10px;
+        background-color: #ffffff;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      button{
+        background-color: #ffffff;
+        border-radius: 10px;
+        outline: none;
+        line-height: 22px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid black;
+      }
+
+
+    }
   }
 }
 
-.registerWrapper{
-  width: 400px;
-  height: 100%;
-    position:relative; /*it can be fixed too*/
-  left:0; right:0;
-  top:0; bottom:0;
-  display:table;
-  overflow: hidden;
-  margin: 0 auto;
-  .registerBox{
-    padding: 0 50px;
-    display: table-cell;
-    vertical-align: middle;
-    margin: 0 auto;
-    width: 400px;
-    }
 
+.registerWrap{
+  width: 100vw; height: 100vh;
+  background-color: $white;  
+  .registerWrapper{
+    width: 400px;
+    height: 100%;
+    position:relative; /*it can be fixed too*/
+    left:0; right:0;
+    top:0; bottom:0;
+    display:table;
+    overflow: hidden;
+    margin: 0 auto;
+    .registerBox{
+      padding: 0 50px;
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0 auto;
+      width: 400px;
+      text-align: left;
+      h1{ 
+        padding-bottom: 10px;
+      }
+
+      .form-control{
+        border: 1px solid $black;
+        color: $black;
+        border-radius: 10px;
+        background-color: #ffffff;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+      }
+
+      button{
+        background-color: #fff;
+        border-radius: 10px;
+        outline: none;
+        line-height: 22px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid black;
+      }
+
+      }
+  }
 }
 
 .sideNav{
@@ -106,7 +172,7 @@ html, body {
   overflow-x: hidden;
 
   a{
-  color: $lightgray;
+  color: $gray;
   display: block;
   padding: 10px 10px 10px 30px;
   text-decoration: none;
@@ -123,7 +189,7 @@ html, body {
   display: block;
   width: 25px;height: 25px;
   border-radius: 10px;
-  color: $lightgray;
+  color: $gray;
   background-color: $black;
 }
 
@@ -138,7 +204,6 @@ html, body {
 .calendarWrapper{
   height: 100%;
   padding: 10px;
-
   transition: 0.3s;
 }
 
@@ -153,8 +218,8 @@ html, body {
       text-transform: uppercase;
       float: left;
       width: 14.285%;
-      background-color: #8e352e;
-      color: $lightgray;
+      background-color: $darkred;
+      color: $gray;
       text-align: center;
       font-size: 16px;
       line-height: 40px;
