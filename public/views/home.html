@@ -1,11 +1,28 @@
 <section id="mainContent">
 	<div id="sidebarWrapper" class="sideNav">
-		<a href="#">Lorem</a>
-		<a href="#">Lorem</a>
-		<a ng-click="logout()">Logout</a>
+		<div class="singleMenuGroup">
+			<span class="menuTitle">Tasks</span>
+			<ul class="menuList">
+				<li>Add new task</li>
+				<li ng-click="tasks()">Tasks list</li>
+			</ul>
+		</div>
+		<div class="singleMenuGroup">
+			<span class="menuTitle">Account</span>
+			<ul class="menuList">
+				<li>Add new meeting</li>
+				<li>Meetings list</li>
+			</ul>
+		</div>
+		<div class="singleMenuGroup">
+			<span class="menuTitle">Account</span>
+			<ul class="menuList">
+				<li ng-click="logout()">Logout</li>
+			</ul>
+		</div>
+
 	</div>
 	<div id="mainContainer" class="mainContentWrapper">
- 			<span id="sideToggle" class="openbtn sidebarToggle">&#9776;</span>
  			<div class="calendarWrapper">
  				<div class="monthCalendarWrapper">
  					<div class="monthCalendarHeader">

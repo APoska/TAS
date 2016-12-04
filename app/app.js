@@ -34,7 +34,6 @@ angular.module('app', ['ui.router'])
       }
     }
     if(isLogged && next.name === 'login'){
-      console.log('Nie mozesz cofnac');
       event.preventDefault();
       $state.go('home');
     }

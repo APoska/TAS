@@ -13,7 +13,7 @@ angular.module('app')
 			}).then(function(response){
 				return response.data;
 			}, function(response){
-				// $scope.errorMsg = "Oj, jeblo";
+				return response.err;
 			});
 		}
 

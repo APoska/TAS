@@ -5,7 +5,6 @@ angular.module('app')
         password: '',
         login: '',
     };
-
     // initial value
     $scope.error = false;
 

@@ -168,8 +168,35 @@ html, body {
   left: 0;
   z-index: 10;
   padding-top: 20px;
-  background-color: $black;
+  background-color: #333;
   overflow-x: hidden;
+
+  .singleMenuGroup{
+    display: block;
+    .menuTitle{
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      font-weight: 500;
+      font-size: 18px;
+    }
+    .menuList{
+      text-align: center;
+      padding: 15px 0;
+      color: #777;
+      li{
+        padding: 5px 0;
+        cursor: pointer;
+        transition: 0.4s ease-in;
+        &:hover{
+          transition: 0.2s ease-out;
+          color: #fff;
+        }
+      }
+    }
+  }
+
 
   a{
   color: $gray;

@@ -21,7 +21,8 @@ router.route('/checkauth')
         if (!user) {
           return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
         } else {
-          res.json({success: true, msg: 'Welcome in the member area ' + user.login + '!'});
+          res.status(200);
+          res.json(user);
         }
     });
   } else {
