@@ -7,15 +7,31 @@ var Task = require('../models/task');
 
 router.route('/tasks')
 	.get(function(req,res){
-		Task.find(function(err,tasks){
-			if(err){
-				res.status(400);
-				return res.send(err);
-			}else{
-				res.status(200);
-				res.json(tasks);
-			}
-		});
+		var creator = req.query.creatorID;
+		
+		if(typeof creator != "undefined"){
+			Task.find({creatorID : creator}, function(err,tasks){
+				if(err){
+					res.status(400);
+					return res.send(err);
+				}else{
+					res.status(200);
+					res.json(tasks);
+				}
+			});
+		}else{
+			Task.find(function(err,tasks){
+				if(err){
+					res.status(400);
+					return res.send(err);
+				}else{
+					res.status(200);
+					res.json(tasks);
+				}
+			});
+		}
+		
+		
 	})
 	.post(function(req,res){
 		var task = new Task({
@@ -23,9 +39,11 @@ router.route('/tasks')
 			startDate: req.body.startDate,
 			endDate: req.body.endDate,
 			description: req.body.description,
-			user: req.body.user,
+			creatorID: req.body.user,
 			watchersID: req.body.guests
 		});
+
+		console.log(req.body.user);
 		if(task.endDate < task.startDate){
 				res.status(400);
 				res.json({success: false, msg: "Start date cannot be later than end date."})
