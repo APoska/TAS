@@ -74,32 +74,23 @@ router.route('/users/:user_id')
 			}
 		});
 	})
-	.put(function(req,res){
+	.patch(function(req,res){
 		User.findById({ _id : req.params.user_id }, function(err,user){
-			if(err)
-				return res.send(err);
-
-			
-
-			if(req.body.name == user.name ||
-				req.body.login == user.login ||
-				req.body.password == user.password ||
-				req.body.email == user.email){
-
-				res.status(409);
-		        res.json({success: false, msg: 'You cant change data to same values'});	
+			if(!user){
+				res.status(404);
+				res.json({success: false, msg: 'User not found'});
 			}else{
-				if(!req.body.name){user.name = user.name;}else{user.name = req.body.name}
-				if(!req.body.login){user.login = user.login;}else{user.login = req.body.login}
-				if(!req.body.password){user.password = user.password;}else{user.password = req.body.password}
-				if(!req.body.email){user.email = user.email;}else{user.email = req.body.email}
 
-				user.save(function(err){
-					if(err)
+				User.update({ _id : req.params.user_id }, req.body, function(err){
+					if(err){
+						res.status(400);
 						return res.send(err);
+					}else{
+						res.status(200);
+						res.json({success: true, msg: 'User updated!'});
+					}
+				
 				});
-				res.status(200);
-				res.json({success: true, msg: 'User updated!'});
 			}
 		});
 	});

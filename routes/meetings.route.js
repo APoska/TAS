@@ -78,40 +78,25 @@ router.route('/meetings/:meeting_id')
 		}
 	});
 })
-.put(function(req,res){
-	Meeting.findById({ _id : req.params.meeting_id }, function(err,meeting){
-		if(err)
-			return res.send(err);
+.patch(function(req,res){
+		Meeting.findById({ _id : req.params.meeting_id }, function(err,meeting){
+			if(!user){
+				res.status(404);
+				res.json({success: false, msg: 'Meeting not found'});
+			}else{
 
-		if(req.body.title == meeting.title ||
-			req.body.startDate == meeting.startDate ||
-			req.body.endDate == meeting.endDate ||
-			req.body.description == meeting.description ||
-			req.body.place == meeting.place ||
-			req.body.creatorID == meeting.creatorID ||
-			req.body.watchersID == meeting.watchersID){
-
-			res.status(409);
-	        res.json({success: false, msg: 'You cant change data to same values'});	
-		}else{
-
-			if(!req.body.title){meeting.title = meeting.title;}else{meeting.title = req.body.title}
-			if(!req.body.startDate){meeting.startDate = meeting.startDate;}else{meeting.startDate = req.body.startDate}
-			if(!req.body.endDate){meeting.endDate = meeting.endDate;}else{meeting.endDate = req.body.endDate}
-			if(!req.body.description){meeting.description = meeting.description;}else{meeting.description = req.body.description}
-			if(!req.body.place){meeting.place = meeting.place;}else{meeting.place = req.body.place}
-			if(!req.body.creatorID){meeting.creatorID = meeting.creatorID;}else{meeting.creatorID = req.body.creatorID}
-			if(!req.body.watchersID){meeting.watchersID = meeting.watchersID;}else{meeting.watchersID = req.body.watchersID}
-
-
-			meeting.save(function(err){
-				if(err)
-					return res.send(err);
-			});
-			res.status(200);
-			res.json({success: true, msg: 'Meeting updated!'});
-		}
+				Meeting.update({ _id : req.params.meeting_id }, req.body, function(err){
+					if(err){
+						res.status(400);
+						return res.send(err);
+					}else{
+						res.status(200);
+						res.json({success: true, msg: 'Meeting updated!'});
+					}
+				
+				});
+			}
+		});
 	});
-});
 
 module.exports = router;
