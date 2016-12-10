@@ -234,10 +234,12 @@ html, body {
   transition: 0.3s;
 }
 
+
 .monthCalendarWrapper{
   display: block;
   margin: 10px;
   height: auto;
+  min-height: 760px;
 
 
     .monthWeekShort{

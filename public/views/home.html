@@ -24,166 +24,18 @@
 	</div>
 	<div id="mainContainer" class="mainContentWrapper">
  			<div class="calendarWrapper">
+ 			<div class="monthPick"></div>
  				<div class="monthCalendarWrapper">
  					<div class="monthCalendarHeader">
- 						<div class="monthWeekShort">
- 							MON
+ 						<div class="monthWeekShort" ng-repeat="days in weekdays">
+ 							{{days.shortName}}
  						</div>
- 						<div class="monthWeekShort">
- 							TUE
- 						</div>
- 						<div class="monthWeekShort">
- 							WED
- 						</div>
- 						<div class="monthWeekShort">
- 							THU
- 						</div>
- 						<div class="monthWeekShort">
- 							FRI
- 						</div>
- 						<div class="monthWeekShort">
- 							SAT
- 						</div>
- 						<div class="monthWeekShort">
- 							SUN
- 						</div>
+ 						
  					</div>
  					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
- 						</div>
- 					</div>
- 					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
- 						</div>
- 					</div>
- 					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
- 						</div>
- 					</div>
- 					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
- 						</div>
- 					</div>
- 					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
- 						</div>
- 					</div>
- 					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay">
- 							1
- 						</div>
- 						<div class="monthCalendarDay">
- 							2
- 						</div>
- 						<div class="monthCalendarDay">
- 							3
- 						</div>
- 						<div class="monthCalendarDay">
- 							4
- 						</div>
- 						<div class="monthCalendarDay">
- 							5
- 						</div>
- 						<div class="monthCalendarDay">
- 							6
- 						</div>
- 						<div class="monthCalendarDay">
- 							7
+ 						<div class="monthCalendarDay" ng-repeat="date in days" ng-click="tasks()">
+ 							{{ date.day | date:'d'}}
+ 							<br ng-if="($index+1)%7==0">
  						</div>
  					</div>
  				</div>
