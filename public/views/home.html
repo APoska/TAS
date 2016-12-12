@@ -1,4 +1,4 @@
-<section id="mainContent">
+<section id="mainContent" ng-init="generateCalendar()">
 	<div id="sidebarWrapper" class="sideNav">
 		<div class="singleMenuGroup">
 			<span class="menuTitle">Tasks</span>
@@ -24,7 +24,11 @@
 	</div>
 	<div id="mainContainer" class="mainContentWrapper">
  			<div class="calendarWrapper">
- 			<div class="monthPick"></div>
+ 			<div class="monthPick">
+ 				<button ng-click="prevMonth()">&lt;</button>
+
+ 				<button ng-click="nextMonth()">&gt;</button>
+ 			</div>
  				<div class="monthCalendarWrapper">
  					<div class="monthCalendarHeader">
  						<div class="monthWeekShort" ng-repeat="days in weekdays">
