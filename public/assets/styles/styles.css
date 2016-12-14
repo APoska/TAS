@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin-ext");
 .font500 {
-  font-weight: 500;
-}
+  font-weight: 500; }
 
 .font700 {
-  font-weight: 700;
-}
+  font-weight: 700; }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -13,188 +11,164 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline;
-}
+  vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block;
-}
+  display: block; }
 
 body {
-  line-height: 1;
-}
+  line-height: 1; }
 
 ol, ul {
-  list-style: none;
-}
+  list-style: none; }
 
 blockquote, q {
-  quotes: none;
-}
+  quotes: none; }
 
 blockquote:before, blockquote:after {
   content: '';
-  content: none;
-}
+  content: none; }
 
 q:before, q:after {
   content: '';
-  content: none;
-}
+  content: none; }
 
 table {
   border-collapse: collapse;
-  border-spacing: 0;
-}
+  border-spacing: 0; }
 
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  font-weight: 400;
-}
+  font-weight: 400; }
 
 .loginWrap {
   width: 100vw;
   height: 100vh;
-  background-color: #f1f1f1;
-}
-.loginWrap .loginWrapper {
-  width: 400px;
-  height: 100%;
-  position: relative;
-  /*it can be fixed too*/
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: table;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.loginWrap .loginWrapper .loginBox {
-  padding: 0 50px;
-  display: table-cell;
-  vertical-align: middle;
-  margin: 0 auto;
-  width: 400px;
-  text-align: left;
-}
-.loginWrap .loginWrapper .loginBox h1 {
-  padding-bottom: 10px;
-}
-.loginWrap .loginWrapper .loginBox .form-control {
-  border: 1px solid #212121;
-  color: #212121;
-  border-radius: 10px;
-  background-color: #ffffff;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-}
-.loginWrap .loginWrapper .loginBox button {
-  background-color: #ffffff;
-  border-radius: 10px;
-  outline: none;
-  line-height: 22px;
-  display: block;
-  margin: 10px auto;
-  border: 1px solid black;
-}
+  background-color: #f1f1f1; }
+  .loginWrap .loginWrapper {
+    width: 400px;
+    height: 100%;
+    position: relative;
+    /*it can be fixed too*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: table;
+    overflow: hidden;
+    margin: 0 auto; }
+    .loginWrap .loginWrapper .loginBox {
+      padding: 0 50px;
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0 auto;
+      width: 400px;
+      text-align: left; }
+      .loginWrap .loginWrapper .loginBox h1 {
+        padding-bottom: 10px; }
+      .loginWrap .loginWrapper .loginBox .form-control {
+        border: 1px solid #212121;
+        color: #212121;
+        border-radius: 10px;
+        background-color: #ffffff;
+        height: 40px;
+        line-height: 40px;
+        text-align: center; }
+      .loginWrap .loginWrapper .loginBox button {
+        background-color: #ffffff;
+        border-radius: 10px;
+        outline: none;
+        line-height: 22px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid black; }
 
 .registerWrap {
   width: 100vw;
   height: 100vh;
-  background-color: #f1f1f1;
-}
-.registerWrap .registerWrapper {
-  width: 400px;
-  height: 100%;
-  position: relative;
-  /*it can be fixed too*/
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  display: table;
-  overflow: hidden;
-  margin: 0 auto;
-}
-.registerWrap .registerWrapper .registerBox {
-  padding: 0 50px;
-  display: table-cell;
-  vertical-align: middle;
-  margin: 0 auto;
-  width: 400px;
-  text-align: left;
-}
-.registerWrap .registerWrapper .registerBox h1 {
-  padding-bottom: 10px;
-}
-.registerWrap .registerWrapper .registerBox .form-control {
-  border: 1px solid #212121;
-  color: #212121;
-  border-radius: 10px;
-  background-color: #ffffff;
-  height: 40px;
-  line-height: 40px;
-  text-align: center;
-}
-.registerWrap .registerWrapper .registerBox button {
-  background-color: #fff;
-  border-radius: 10px;
-  outline: none;
-  line-height: 22px;
-  display: block;
-  margin: 10px auto;
-  border: 1px solid black;
-}
+  background-color: #f1f1f1; }
+  .registerWrap .registerWrapper {
+    width: 400px;
+    height: 100%;
+    position: relative;
+    /*it can be fixed too*/
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: table;
+    overflow: hidden;
+    margin: 0 auto; }
+    .registerWrap .registerWrapper .registerBox {
+      padding: 0 50px;
+      display: table-cell;
+      vertical-align: middle;
+      margin: 0 auto;
+      width: 400px;
+      text-align: left; }
+      .registerWrap .registerWrapper .registerBox h1 {
+        padding-bottom: 10px; }
+      .registerWrap .registerWrapper .registerBox .form-control {
+        border: 1px solid #212121;
+        color: #212121;
+        border-radius: 10px;
+        background-color: #ffffff;
+        height: 40px;
+        line-height: 40px;
+        text-align: center; }
+      .registerWrap .registerWrapper .registerBox button {
+        background-color: #fff;
+        border-radius: 10px;
+        outline: none;
+        line-height: 22px;
+        display: block;
+        margin: 10px auto;
+        border: 1px solid black; }
 
 .sideNav {
   width: 250px;
   height: 100%;
   position: fixed;
-  transition: .5s;
+  -webkit-transition: .5s;
+          transition: .5s;
   top: 0;
   left: 0;
   z-index: 10;
   padding-top: 20px;
   background-color: #333;
-  overflow-x: hidden;
-}
-.sideNav .singleMenuGroup {
-  display: block;
-}
-.sideNav .singleMenuGroup .menuTitle {
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-  display: block;
-  font-weight: 500;
-  font-size: 18px;
-}
-.sideNav .singleMenuGroup .menuList {
-  text-align: center;
-  padding: 15px 0;
-  color: #777;
-}
-.sideNav .singleMenuGroup .menuList li {
-  padding: 5px 0;
-  cursor: pointer;
-  transition: 0.4s ease-in;
-}
-.sideNav .singleMenuGroup .menuList li:hover {
-  transition: 0.2s ease-out;
-  color: #fff;
-}
-.sideNav a {
-  color: #7D8193;
-  display: block;
-  padding: 10px 10px 10px 30px;
-  text-decoration: none;
-  font-size: 25px;
-  transition: .3s;
-}
+  overflow-x: hidden; }
+  .sideNav .singleMenuGroup {
+    display: block; }
+    .sideNav .singleMenuGroup .menuTitle {
+      color: #fff;
+      text-transform: uppercase;
+      text-align: center;
+      display: block;
+      font-weight: 500;
+      font-size: 18px; }
+    .sideNav .singleMenuGroup .menuList {
+      text-align: center;
+      padding: 15px 0;
+      color: #777; }
+      .sideNav .singleMenuGroup .menuList li {
+        padding: 5px 0;
+        cursor: pointer;
+        -webkit-transition: 0.4s ease-in;
+                transition: 0.4s ease-in; }
+        .sideNav .singleMenuGroup .menuList li:hover {
+          -webkit-transition: 0.2s ease-out;
+                  transition: 0.2s ease-out;
+          color: #fff; }
+  .sideNav a {
+    color: #7D8193;
+    display: block;
+    padding: 10px 10px 10px 30px;
+    text-decoration: none;
+    font-size: 25px;
+    -webkit-transition: .3s;
+            transition: .3s; }
 
 .openbtn {
   text-align: center;
@@ -206,58 +180,52 @@ html, body {
   height: 25px;
   border-radius: 10px;
   color: #7D8193;
-  background-color: #212121;
-}
+  background-color: #212121; }
 
 .mainContentWrapper {
   display: block;
-  transition: margin-left .5s;
+  -webkit-transition: margin-left .5s;
+          transition: margin-left .5s;
   margin-left: 250px;
   padding: 5px;
-  background-color: #37474F;
-}
+  background-color: #37474F; }
 
 .calendarWrapper {
   height: 100%;
   padding: 10px;
-  transition: 0.3s;
-}
+  -webkit-transition: 0.3s;
+          transition: 0.3s; }
 
 .monthCalendarWrapper {
   display: block;
   margin: 10px;
   height: auto;
-  min-height: 760px;
-}
-.monthCalendarWrapper .monthWeekShort {
-  display: block;
-  text-transform: uppercase;
-  float: left;
-  width: 14.285%;
-  background-color: #8e352e;
-  color: #7D8193;
-  text-align: center;
-  font-size: 16px;
-  line-height: 40px;
-}
-.monthCalendarWrapper .monthCalendarRow {
-  display: block;
-  height: 100%;
-}
-.monthCalendarWrapper .monthCalendarDay {
-  display: block;
-  float: left;
-  height: 120px;
-  width: 14.285%;
-  padding: 2px 2px;
-  background-color: #EEEEEE;
-  border-left: 1px solid #bcf;
-  border-top: 1px solid #bcf;
-  text-align: right;
-}
-.monthCalendarWrapper .otherMonth {
-  background-color: #9E9E9E;
-}
+  min-height: 760px; }
+  .monthCalendarWrapper .monthWeekShort {
+    display: block;
+    text-transform: uppercase;
+    float: left;
+    width: 14.285%;
+    background-color: #8e352e;
+    color: #7D8193;
+    text-align: center;
+    font-size: 16px;
+    line-height: 40px; }
+  .monthCalendarWrapper .monthCalendarRow {
+    display: block;
+    height: 100%; }
+  .monthCalendarWrapper .monthCalendarDay {
+    display: block;
+    float: left;
+    height: 120px;
+    width: 14.285%;
+    padding: 2px 2px;
+    background-color: #EEEEEE;
+    border-left: 1px solid #bcf;
+    border-top: 1px solid #bcf;
+    text-align: right; }
+  .monthCalendarWrapper .otherMonth {
+    background-color: #9E9E9E; }
 
 .dayNumber {
   display: block;
@@ -268,53 +236,55 @@ html, body {
   text-align: center;
   background-color: #212121;
   color: #EEEEEE;
-  border-radius: 10px;
-}
+  border-radius: 10px; }
 
 @media screen and (max-width: 768px) {
   .sideNav {
-    width: 0px;
-  }
+    width: 0px; }
 
   .mainContentWrapper {
-    margin-left: 0px;
-  }
+    margin-left: 0px; }
 
   .monthWeekShort, .otherMonth {
-    display: none;
-  }
+    display: none; }
 
   .monthCalendarDay {
     float: none;
     width: 98%;
     height: auto;
     padding: 10px 5px;
-    text-align: left;
-  }
-}
+    text-align: left; } }
 .tasksWrapper {
   display: block;
   width: 100%;
-  padding: 15px;
-}
-.tasksWrapper h1 {
-  font-size: 25px;
-  color: #000;
-  font-weight: 700;
-  padding-bottom: 25px;
-}
+  padding: 15px; }
+  .tasksWrapper h1 {
+    font-size: 25px;
+    color: #000;
+    font-weight: 700;
+    padding-bottom: 25px; }
+  .tasksWrapper .tasksControls .singleControl {
+    background: #000;
+    color: #fff;
+    padding: 10px 15px;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-transition: 0.4s ease-in;
+            transition: 0.4s ease-in; }
+    .tasksWrapper .tasksControls .singleControl:hover {
+      -webkit-transition: 0.2s ease-out;
+              transition: 0.2s ease-out;
+      background: #333; }
 
 .tasksTitleList {
   display: table;
-  width: 100%;
-}
-.tasksTitleList li {
-  display: inline-block;
-  width: 100%;
-  border: 1px solid #000;
-  color: #fff;
-  margin: 5px 0;
-}
+  width: 100%; }
+  .tasksTitleList li {
+    display: inline-block;
+    width: 100%;
+    border: 1px solid #000;
+    color: #fff;
+    margin: 5px 0; }
 
 .singleTask__header {
   display: table;
@@ -323,37 +293,82 @@ html, body {
   background-color: #8e352e;
   cursor: pointer;
   padding-left: 15px;
-  transition: 0.4s ease-in;
-}
-.singleTask__header:hover {
-  background-color: #8c5d59;
-  transition: 0.2s ease-out;
-}
-.singleTask__header .singleTask__headerInner {
-  display: table-cell;
-  vertical-align: middle;
-}
-.singleTask__header span.taskTitle {
-  font-size: 18px;
-  text-transform: uppercase;
-}
-.singleTask__header span.taskID {
-  font-size: 10px;
-  color: #ccc;
-}
+  -webkit-transition: 0.4s ease-in;
+          transition: 0.4s ease-in; }
+  .singleTask__header:hover {
+    background-color: #8c5d59;
+    -webkit-transition: 0.2s ease-out;
+            transition: 0.2s ease-out; }
+  .singleTask__header .singleTask__headerInner {
+    display: table-cell;
+    vertical-align: middle; }
+  .singleTask__header span.taskTitle {
+    font-size: 18px;
+    text-transform: uppercase; }
+  .singleTask__header span.taskID {
+    font-size: 10px;
+    color: #ccc; }
+  .singleTask__header span.taskControls {
+    float: right; }
+    .singleTask__header span.taskControls span.singleTaskControl {
+      padding: 0 15px;
+      display: inline-block;
+      vertical-align: middle; }
+      .singleTask__header span.taskControls span.singleTaskControl.edit {
+        background: url("../svg/edit.svg") no-repeat;
+        fill: #fff;
+        width: 30px;
+        height: 18px; }
+      .singleTask__header span.taskControls span.singleTaskControl.delete {
+        background: url("../svg/delete.svg") no-repeat;
+        fill: #fff;
+        width: 30px;
+        height: 19px; }
 
 .singleTask__moreWrapper {
   width: 100%;
   height: auto;
   display: block;
   padding: 15px;
-  color: #212121;
-}
-.singleTask__moreWrapper p {
-  padding: 10px 0;
-}
-.singleTask__moreWrapper p.desc {
-  line-height: 23px;
-}
+  color: #212121; }
+  .singleTask__moreWrapper p {
+    padding: 10px 0; }
+    .singleTask__moreWrapper p.desc {
+      line-height: 23px; }
 
-/*# sourceMappingURL=styles.css.map */
+.modalBox {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff; }
+  .modalBox .modalWrapper {
+    display: table;
+    width: 100%;
+    height: 100%; }
+    .modalBox .modalWrapper .modalInner {
+      display: table-cell;
+      vertical-align: middle; }
+    .modalBox .modalWrapper .singleInput {
+      display: block;
+      padding: 15px 0;
+      margin: 0 auto;
+      max-width: 400px;
+      width: 100%; }
+      .modalBox .modalWrapper .singleInput label {
+        display: block;
+        color: #000;
+        font-weight: 700;
+        font-size: 16px;
+        padding-bottom: 10px; }
+      .modalBox .modalWrapper .singleInput input {
+        width: 400px;
+        height: 35px; }
+      .modalBox .modalWrapper .singleInput textarea {
+        width: 400px;
+        height: 200px; }

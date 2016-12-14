@@ -1,17 +1,19 @@
 <div class="tasksWrapper">
     <h1>List of Tasks</h1>
+    <ul class="tasksControls">
+        <li class="singleControl" ng-click="showModal = true">Add task</li>
+    </ul>
     <ul class="tasksTitleList" >
         <li ng-repeat="task in Tasks">
             <div class="singleTask">    
-                <div class="singleTask__header" ng-click="showDetails = ! showDetails">
-                    <div class="singleTask__headerInner">
-                        <span class="taskTitle font500">{{$index+1}}.{{task.title}}</span> <span class="taskID font400">ID: {{task._id}}</span>
+                <div class="singleTask__header" ng-click="showDetails = ! showDetails" ng-mouseover="controls = true" ng-mouseleave="controls = false" >
+                    <div  class="singleTask__headerInner">
+                        <span  class="taskTitle font500">{{$index+1}}.{{task.title}}</span> <span class="taskID font400">ID: {{task._id}}</span><span class="taskControls" ng-show="controls"><span class="singleTaskControl edit"></span><span class="singleTaskControl delete" data="{{task._id}}" ng-click="removeThis($event)"></span></span>
                     </div>
                 </div>
          
                 <div class="singleTask__moreWrapper"  ng-show="showDetails">
                     <p><span class="font500">Start Date:</span> {{task.startDate}} </p>
-                    <p><span class="font500">End Date:</span> {{task.endDate}}</p>
 
                     <p><span class="font500">Description:</span></p>
                     <p class="desc">{{task.description}}</p>
@@ -19,4 +21,36 @@
             </div>
         </li>
     </ul>
+
+
+    
+</div>
+
+
+<div class="modalBox" ng-show="showModal">
+    <div class="modalWrapper">
+        <div class="modalInner">
+            <div class="singleInput">
+                <label for="taskName">Task name</label>
+                <input id="taskName" ng-model="taskName" name="taskName"/>
+            </div>
+            <div class="singleInput">
+                <label for="startDate">Start date</label>
+                <input type="datetime-local" ng-model="startDate" id="startDate" name="startDate"/>
+            </div>
+            <div class="singleInput">
+                <label for="description">Description</label>
+                <textarea id="description" ng-model="description" name="description"></textarea>
+            </div>
+            <div class="singleInput">
+                <label for="guestsList">Guests</label>
+                <input id="guestsList" ng-model="guestsList" name="guestsList"/>
+            </div>
+            
+
+            <div class="singleInput">
+                <button type="submit" ng-click=" saveTask(); showModal=false; clearInputFromAddTask();">Add</button>
+            </div>
+        </div>
+    </div>
 </div>

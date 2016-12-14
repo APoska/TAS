@@ -37,28 +37,23 @@ router.route('/tasks')
 		var task = new Task({
 			title: req.body.title,
 			startDate: req.body.startDate,
-			endDate: req.body.endDate,
 			description: req.body.description,
 			creatorID: req.body.user,
 			watchersID: req.body.guests
 		});
 
-		console.log(req.body.user);
-		if(task.endDate < task.startDate){
+		
+		task.save(function(err){
+			if(err){
 				res.status(400);
-				res.json({success: false, msg: "Start date cannot be later than end date."})
-		}else{
-			task.save(function(err){
-				if(err){
-					res.status(400);
-					return res.send(err);
-				} else{
-					res.status(201);
-					return res.json({success: true, msg: 'Task created'});				
-				}
+				return res.send(err);
+			} else{
+				res.status(201);
+				return res.json({success: true, msg: 'Task created'});				
+			}
 
-			});
-		}
+		});
+		
 	});
 
 router.route('/tasks/:task_id')

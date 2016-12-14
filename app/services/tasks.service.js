@@ -16,6 +16,36 @@ angular.module('app')
 				return response.err;
 			});
 		}
+		
+
+		this.addTask = function(task, taskCreator){
+			$http({
+				method: "POST",
+				url: "/api/tasks",
+   				headers: {'Content-Type': 'application/json'},
+				data: JSON.stringify({
+					title: task.name,
+					startDate:  task.startDate,
+					description: task.description,
+					user: taskCreator._id,
+					guests: task.guestList })
+				
+			}).then(function(res){
+				return res;
+			}), function(res){
+				return res.err;
+			}
+		}
+		this.removeTask = function(id){
+			return $http({
+				method: "DELETE",
+				url: "/api/tasks/"+id,				
+			}).then(function(res){
+				return res;
+			}), function(res){
+				return res.err;
+			}
+		}
 
 			
 

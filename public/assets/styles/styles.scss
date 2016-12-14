@@ -330,6 +330,20 @@ html, body {
     font-weight: 700;
     padding-bottom: 25px;
   }
+  .tasksControls{
+      .singleControl{
+        background: #000;
+        color: #fff;
+        padding: 10px 15px;
+        display: inline-block;
+        cursor: pointer;
+        transition: 0.4s ease-in;
+        &:hover{
+          transition: 0.2s ease-out;
+          background: #333
+        }
+      }
+    }
 }
 
 .tasksTitleList{
@@ -369,6 +383,27 @@ html, body {
         font-size: 10px;
         color: #ccc       
       }
+      span.taskControls{
+        float: right;
+        span.singleTaskControl{
+          padding: 0 15px;
+          display: inline-block;
+          
+          vertical-align: middle;
+          &.edit{
+            background: url('../svg/edit.svg') no-repeat;
+            fill: #fff;
+            width: 30px;
+            height: 18px;
+          }
+          &.delete{
+            background: url('../svg/delete.svg') no-repeat;
+            fill: #fff;
+            width: 30px;
+            height: 19px;
+          }
+        }        
+      }
     }
 .singleTask__moreWrapper{
   width: 100%;
@@ -382,4 +417,52 @@ html, body {
       line-height: 23px;
     }
   }
+}
+
+// MODAL
+
+.modalBox{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 9999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  .modalWrapper{
+    display: table;
+    width: 100%;
+    height: 100%;
+    .modalInner{
+      display: table-cell;
+      vertical-align: middle;
+    }
+    
+    .singleInput{
+      display: block;;
+      padding: 15px 0;
+      margin: 0 auto;
+      max-width: 400px;
+      width: 100%;
+      label{
+        display: block;
+        color: #000;
+        font-weight: 700;
+        font-size: 16px;
+        padding-bottom: 10px;
+      }
+      input{
+        width: 400px;
+        height: 35px;
+      }
+      textarea{
+        width: 400px;
+        height: 200px;
+      }
+    }
+  }
+  
 }
