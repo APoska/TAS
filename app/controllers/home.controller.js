@@ -11,22 +11,9 @@ angular.module('app')
 	};
 
 	var date = new Date();
-	var yy = date.getFullYear();var mm = date.getMonth();var dd = date.getDate();
+	var yy = date.getFullYear(); var mm = date.getMonth(); var dd = date.getDate();
 
-	var months = [];
-	months[0] = "Styczeń";
-	months[1] = "Luty";
-	months[2] = "Marzec";
-	months[3] = "Kwiecień";
-	months[4] = "Maj";
-	months[5] = "Czerwiec";
-	months[6] = "Lipiec";
-	months[7] = "Sierpień";
-	months[8] = "Wrzesień";
-	months[9] = "Październik";
-	months[10] = "Listopad";
-	months[11] = "Grudzień";
-
+	var months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
 
 	var firstDay = new Date(yy, mm, 1);
 	var daynumb = firstDay.getDay();
@@ -47,12 +34,6 @@ angular.module('app')
 		for(i=1; i<=daycount; i++){
 			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth(), i);	days.push({day: foo});
 		}
-		var num = 43-daynumb-daycount;
-		if(num >= 7) num = num - 7;
-		
-		for(i=1; i<=num; i++){
-			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth(), i);	days.push({day: foo});
-		}
 		$scope.days=days;
 	};
 
@@ -63,7 +44,7 @@ angular.module('app')
 		}
 		days=[];
 		generateCalendar();
-		currentDate = months[mm] + '\n' + yy;$scope.month = currentDate;
+		currentDate = months[mm] + '\n' + yy; $scope.month = currentDate;
 	};
 
 	$scope.prevMonth = function() {
@@ -73,7 +54,7 @@ angular.module('app')
 		}
 		days = [];
 		generateCalendar();
-		currentDate = months[mm] + '\n' + yy;$scope.month = currentDate;
+		currentDate = months[mm] + '\n' + yy; $scope.month = currentDate;
 	};
 	generateCalendar();
 	
@@ -81,12 +62,8 @@ angular.module('app')
 	$scope.month = currentDate;
 
 	$scope.weekdays=[
-  		{"name": "Monday", "shortName":"MON"},
-  		{"name": "Tuesday", "shortName":"TUE"},
-  		{"name": "Wednesday", "shortName":"WED"},
-  		{"name": "Thursday", "shortName":"THU"},
-  		{"name": "Friday", "shortName":"FRI"},
-  		{"name": "Saturday", "shortName":"SAT"},
+  		{"name": "Monday", "shortName":"MON"}, {"name": "Tuesday", "shortName":"TUE"}, {"name": "Wednesday", "shortName":"WED"},
+  		{"name": "Thursday", "shortName":"THU"}, {"name": "Friday", "shortName":"FRI"}, {"name": "Saturday", "shortName":"SAT"},
   		{"name": "Sunday", "shortName":"SUN"}
   	]
 })

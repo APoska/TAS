@@ -60,6 +60,39 @@ html, body {
   font-weight: 400;
 }
 
+.monthPick{
+  margin-left: 10px;
+  padding-top: 5px;
+  width: 180px;
+  height: 30px;
+
+  button{
+    display: block;
+    width: 30px;
+    height: 20px;
+    background-color: $white;
+    border: 1px solid $black;
+    border-radius: 5px;
+    float: left;
+  }
+  p{
+    display: block;
+    color: $white;
+    font-weight: 300;
+    float: left;
+    line-height: 20px; 
+    padding: 0 10px;
+    @media screen and (max-width: 768px){
+      padding: 0;
+      margin: 0;
+    }
+  }
+  @media screen and (max-width: 768px){
+    margin: 0 auto;
+  }
+}
+
+
 .loginWrap{
   width: 100vw;
   height: 100vh;
@@ -171,6 +204,10 @@ html, body {
   background-color: #333;
   overflow-x: hidden;
 
+  @media screen and (max-width: 768px){
+    width: 120px;
+  }
+
   .singleMenuGroup{
     display: block;
     .menuTitle{
@@ -207,30 +244,19 @@ html, body {
   transition: .3s;
   }
 }
-
-.openbtn{
-  text-align: center;
-  font-size: 20px;
-  line-height: 25px;
-  cursor: pointer;
-  display: block;
-  width: 25px;height: 25px;
-  border-radius: 10px;
-  color: $gray;
-  background-color: $black;
-}
-
 .mainContentWrapper{
   display: block;
   transition: margin-left .5s;
   margin-left: 250px;
-  padding: 5px;
   background-color: #37474F;
+  @media screen and (max-width: 768px) {
+    margin-left: 120px;
+  }
 }
 
 .calendarWrapper{
   height: 100%;
-  padding: 10px;
+  padding-top: 10px;
   transition: 0.3s;
 }
 
@@ -270,6 +296,20 @@ html, body {
       border-top: 1px solid #bcf;
       text-align: right;
     }
+
+    @media screen and (max-width: 768px) {
+      .monthCalendarDay{
+        clear: both;
+        height: 100%;
+        width: 100%;
+
+      }
+
+      .monthWeekShort{
+        display: none;
+      }
+    }
+
     .otherMonth{
       background-color: #9E9E9E;
     }
@@ -286,36 +326,6 @@ html, body {
   color: #EEEEEE;
   border-radius: 10px;
 }
-
-
-
-
-@media screen and (max-width: 768px) {
-    .sideNav{
-      width: 0px;
-    }
-
-
-    .mainContentWrapper{
-      margin-left: 0px;
-    }
-
-
-    .monthWeekShort, .otherMonth{
-      display: none;
-    }
-
-
-    .monthCalendarDay{
-      float: none;
-      width: 98%;
-      height: auto;
-      padding: 10px 5px;
-      text-align: left;
-    }
-
-}
-
 
 
 // TASKS
@@ -357,6 +367,10 @@ html, body {
     margin: 5px 0;
     
   }
+
+  @media screen and (max-width: 768px){
+
+  } 
 }
 .singleTask__header{
       display: table;
