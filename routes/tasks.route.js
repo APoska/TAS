@@ -7,10 +7,10 @@ var Task = require('../models/task');
 
 router.route('/tasks')
 	.get(function(req,res){
-		var creator = req.query.creatorID;
+		var creator = req.query.user;
 		
 		if(typeof creator != "undefined"){
-			Task.find({creatorID : creator}, function(err,tasks){
+			Task.find({user : creator}, function(err,tasks){
 				if(err){
 					res.status(400);
 					return res.send(err);
@@ -38,8 +38,8 @@ router.route('/tasks')
 			title: req.body.title,
 			startDate: req.body.startDate,
 			description: req.body.description,
-			creatorID: req.body.user,
-			watchersID: req.body.guests
+			user: req.body.user,
+			guests: req.body.guests
 		});
 
 		

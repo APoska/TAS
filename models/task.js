@@ -9,10 +9,10 @@ var TaskSchema = new Schema({
 		type: Date
 	},
 	description : String,
-	creatorID : {
+	user : {
 		type: String
 	},
-	watchersID : [{
+	guests : [{
 		type: String
 	}]
 });
