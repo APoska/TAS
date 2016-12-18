@@ -33,6 +33,36 @@
 						$scope.Tasks = tasks;
 					});
 				}
+				$scope.saveEditedTask = function(){
+					var date = new Date(($scope.startDate.getTime()-$scope.startDate.getTimezoneOffset()*60000));
+
+					var Task = {
+						name: $scope.taskName,
+						startDate: $scope.startDate.toISOString(),
+						description: $scope.description,
+						guestList: $scope.guestsList
+					}
+					TasksService.editTask($scope.taskID, Task);
+					
+					TasksService.getTaskDetails(user).then(function(tasks){
+						$scope.Tasks = tasks;
+					});
+				}
+
+				$scope.editTask = function(obj){
+					var taskID = obj.target.attributes.data.value
+					$scope.taskID = taskID;
+					var Task = TasksService.getTask(taskID).then(function(task){
+						$scope.showModal = true;
+						$scope.editButton = true;
+
+						$scope.taskName = task.title;
+						$scope.startDate = new Date(task.startDate);
+						$scope.description = task.description;
+						$scope.guestList = task.guests;
+
+					});
+				}
 
 				$scope.removeThis = function(obj){
 					TasksService.removeTask(obj.target.attributes.data.value);

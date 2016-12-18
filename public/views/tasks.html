@@ -1,14 +1,14 @@
 <div class="tasksWrapper">
     <h1>List of Tasks</h1>
     <ul class="tasksControls">
-        <li class="singleControl" ng-click="showModal = true">Add task</li>
+        <li class="singleControl" ng-click="showModal = true; addButton = true">Add task</li>
     </ul>
     <ul class="tasksTitleList" >
         <li ng-repeat="task in Tasks">
             <div class="singleTask">    
                 <div class="singleTask__header" ng-click="showDetails = ! showDetails" ng-mouseover="controls = true" ng-mouseleave="controls = false" >
                     <div  class="singleTask__headerInner">
-                        <span  class="taskTitle font500">{{$index+1}}.{{task.title}}</span> <span class="taskID font400">ID: {{task._id}}</span><span class="taskControls" ng-show="controls"><span class="singleTaskControl edit"></span><span class="singleTaskControl delete" data="{{task._id}}" ng-click="removeThis($event)"></span></span>
+                        <span  class="taskTitle font500">{{$index+1}}.{{task.title}}</span> <span class="taskID font400">ID: {{task._id}}</span><span class="taskControls" ng-show="controls"><span class="singleTaskControl edit" data="{{task._id}}" ng-click="editTask($event);"></span><span class="singleTaskControl delete" data="{{task._id}}" ng-click="removeThis($event)"></span></span>
                     </div>
                 </div>
          
@@ -27,7 +27,7 @@
 </div>
 
 
-<div class="modalBox" ng-show="showModal">
+<div class="modalBox" ng-model="modalBox" ng-show="showModal">
     <div class="modalWrapper">
         <div class="modalInner">
             <div class="singleInput">
@@ -49,7 +49,9 @@
             
 
             <div class="singleInput">
-                <button type="submit" ng-click=" saveTask(); showModal=false; clearInputFromAddTask();">Add</button>
+                <button  ng-show="editButton" ng-click=" saveEditedTask(); showModal=false; editButton = false; clearInputFromAddTask(); ">Edit</button>
+                <button ng-show="addButton" ng-click=" saveTask(); showModal=false; addButton = false; clearInputFromAddTask();">Add</button>
+
             </div>
         </div>
     </div>
