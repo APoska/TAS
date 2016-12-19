@@ -10,6 +10,10 @@ angular.module('app')
 		$state.go('tasks');
 	};
 
+	$scope.meetings = function() {
+		$state.go('meetings');
+	};
+
 	var date = new Date();
 	var yy = date.getFullYear(); var mm = date.getMonth(); var dd = date.getDate();
 

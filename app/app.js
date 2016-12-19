@@ -21,6 +21,11 @@ angular.module('app', ['ui.router'])
       templateUrl: "public/views/tasks.html",
       controller: 'TasksCtrl',
     })
+    .state('meetings', {
+      url: "/meetings",
+      templateUrl: "public/views/meetings.html",
+      controller: 'MeetingCtrl',
+    })
     $urlRouterProvider.otherwise('/login');
 })
 

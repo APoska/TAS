@@ -32,19 +32,19 @@ angular.module('app')
 			this.addMeeting = function(meeting, meetCreator) {
 				return $http({
 					method: "POST",
-					url : "/api/meetings/",
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+					url : "/api/meetings",
+					headers: {'Content-Type': 'application/json'},
 					data: JSON.stringify({
 						title: meeting.title,
 						startDate: meeting.startDate,
 						place: meeting.place,
 						description: meeting.description,
 						user: meetCreator._id,
-						guests: meeting.guestsList,
+						guests: meeting.guestList
 					})
 				})
 				.then(function(response){
-					return response.data;
+					return response;
 				}, function(response){
 					return response.err;
 				});
@@ -54,13 +54,13 @@ angular.module('app')
 				return $http({
 					method: "PATCH",
 					url : "/api/meetings/" + meetID,
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+					headers: {'Content-Type': 'application/json'},
 					data: JSON.stringify({
 						title: meeting.title,
 						startDate: meeting.startDate, 
 						place: meeting.place,
 						description: meeting.description,
-						guests: meeting.guestsList,
+						guests: meeting.guestList
 					})
 				})
 				.then(function(response){
@@ -74,7 +74,7 @@ angular.module('app')
 				return $http({
 					method: "DELETE",
 					url : "/api/meetings/" + meetID,
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+					headers: {'Content-Type': 'application/json'}
 				})
 				.then(function(response){
 					return response.data;

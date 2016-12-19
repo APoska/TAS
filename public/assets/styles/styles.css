@@ -159,8 +159,7 @@ html, body {
   width: 250px;
   height: 100%;
   position: fixed;
-  -webkit-transition: .5s;
-          transition: .5s;
+  transition: .5s;
   top: 0;
   left: 0;
   z-index: 10;
@@ -186,11 +185,9 @@ html, body {
       .sideNav .singleMenuGroup .menuList li {
         padding: 5px 0;
         cursor: pointer;
-        -webkit-transition: 0.4s ease-in;
-                transition: 0.4s ease-in; }
+        transition: 0.4s ease-in; }
         .sideNav .singleMenuGroup .menuList li:hover {
-          -webkit-transition: 0.2s ease-out;
-                  transition: 0.2s ease-out;
+          transition: 0.2s ease-out;
           color: #fff; }
   .sideNav a {
     color: #7D8193;
@@ -198,13 +195,11 @@ html, body {
     padding: 10px 10px 10px 30px;
     text-decoration: none;
     font-size: 25px;
-    -webkit-transition: .3s;
-            transition: .3s; }
+    transition: .3s; }
 
 .mainContentWrapper {
   display: block;
-  -webkit-transition: margin-left .5s;
-          transition: margin-left .5s;
+  transition: margin-left .5s;
   margin-left: 250px;
   background-color: #37474F; }
   @media screen and (max-width: 768px) {
@@ -214,8 +209,7 @@ html, body {
 .calendarWrapper {
   height: 100%;
   padding-top: 10px;
-  -webkit-transition: 0.3s;
-          transition: 0.3s; }
+  transition: 0.3s; }
 
 .monthCalendarWrapper {
   display: block;
@@ -281,17 +275,15 @@ html, body {
     padding: 10px 15px;
     display: inline-block;
     cursor: pointer;
-    -webkit-transition: 0.4s ease-in;
-            transition: 0.4s ease-in; }
+    transition: 0.4s ease-in; }
     .tasksWrapper .tasksControls .singleControl:hover {
-      -webkit-transition: 0.2s ease-out;
-              transition: 0.2s ease-out;
+      transition: 0.2s ease-out;
       background: #333; }
 
-.tasksTitleList {
+.tasksTitleList, .meetingsTitleList {
   display: table;
   width: 100%; }
-  .tasksTitleList li {
+  .tasksTitleList li, .meetingsTitleList li {
     display: inline-block;
     width: 100%;
     border: 1px solid #000;
@@ -305,12 +297,10 @@ html, body {
   background-color: #8e352e;
   cursor: pointer;
   padding-left: 15px;
-  -webkit-transition: 0.4s ease-in;
-          transition: 0.4s ease-in; }
+  transition: 0.4s ease-in; }
   .singleTask__header:hover {
     background-color: #8c5d59;
-    -webkit-transition: 0.2s ease-out;
-            transition: 0.2s ease-out; }
+    transition: 0.2s ease-out; }
   .singleTask__header .singleTask__headerInner {
     display: table-cell;
     vertical-align: middle; }
@@ -337,16 +327,73 @@ html, body {
         width: 30px;
         height: 19px; }
 
-.singleTask__moreWrapper {
+.singleTask__moreWrapper, .singleMeeting__moreWrapper {
   width: 100%;
   height: auto;
   display: block;
   padding: 15px;
   color: #212121; }
-  .singleTask__moreWrapper p {
+  .singleTask__moreWrapper p, .singleMeeting__moreWrapper p {
     padding: 10px 0; }
-    .singleTask__moreWrapper p.desc {
+    .singleTask__moreWrapper p.desc, .singleMeeting__moreWrapper p.desc {
       line-height: 23px; }
+
+.meetingsWrapper {
+  display: block;
+  width: 100%;
+  padding: 15px; }
+  .meetingsWrapper h1 {
+    font-size: 25px;
+    color: #000;
+    font-weight: 700;
+    padding-bottom: 25px; }
+  .meetingsWrapper .meetingsControls .singleControl {
+    background: #000;
+    color: #fff;
+    padding: 10px 15px;
+    display: inline-block;
+    cursor: pointer;
+    transition: 0.4s ease-in; }
+    .meetingsWrapper .meetingsControls .singleControl:hover {
+      transition: 0.2s ease-out;
+      background: #333; }
+
+.singleMeeting__header {
+  display: table;
+  width: 100%;
+  height: 50px;
+  background-color: #8e352e;
+  cursor: pointer;
+  padding-left: 15px;
+  transition: 0.4s ease-in; }
+  .singleMeeting__header:hover {
+    background-color: #8c5d59;
+    transition: 0.2s ease-out; }
+  .singleMeeting__header .singleMeeting__headerInner {
+    display: table-cell;
+    vertical-align: middle; }
+  .singleMeeting__header span.meetingTitle {
+    font-size: 18px;
+    text-transform: uppercase; }
+  .singleMeeting__header span.meetingID {
+    font-size: 10px;
+    color: #ccc; }
+  .singleMeeting__header span.meetingControls {
+    float: right; }
+    .singleMeeting__header span.meetingControls span.singleMeetingControl {
+      padding: 0 15px;
+      display: inline-block;
+      vertical-align: middle; }
+      .singleMeeting__header span.meetingControls span.singleMeetingControl.edit {
+        background: url("../svg/edit.svg") no-repeat;
+        fill: #fff;
+        width: 30px;
+        height: 18px; }
+      .singleMeeting__header span.meetingControls span.singleMeetingControl.delete {
+        background: url("../svg/delete.svg") no-repeat;
+        fill: #fff;
+        width: 30px;
+        height: 19px; }
 
 .modalBox {
   position: fixed;
@@ -384,3 +431,5 @@ html, body {
       .modalBox .modalWrapper .singleInput textarea {
         width: 400px;
         height: 200px; }
+
+/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,59 @@
+<div class="meetingsWrapper">
+    <h1>List of Meetings</h1>
+    <ul class="meetingsControls">
+        <li class="singleControl" ng-click="showModal = true; addButton = true">Add meeting</li>
+    </ul>
+    <ul class="meetingsTitleList">
+        <li ng-repeat="meet in Meetings">
+            <div class="singleMeeting">    
+                <div class="singleMeeting__header" ng-click="showDetails = ! showDetails" ng-mouseover="controls = true" ng-mouseleave="controls = false" >
+                    <div  class="singleMeeting__headerInner">
+                        <span  class="meetingTitle font500">{{$index+1}}.{{meet.title}}</span> 
+                        <span class="meetingID font400">ID: {{meet._id}}</span>
+                        <span class="meetingControls" ng-show="controls">
+                        	<span class="meetingControl edit" data="{{meet._id}}" ng-click="editMeeting($event);"></span>
+                        	<span class="meetingControl delete" data="{{meet._id}}" ng-click="removeMeeting($event)"></span>
+                        </span>
+                    </div>
+                </div>
+         
+                <div class="singleMeeting__moreWrapper"  ng-show="showDetails">
+                    <p><span class="font500">Start Date:</span> {{meet.startDate}} </p>
+                    <p><span class="font500">Place:</span> {{meet.place}} </p>
+                    <p><span class="font500">Description:</span></p>
+                    <p class="desc">{{meet.description}}</p>
+                </div>
+            </div>
+        </li>
+    </ul> 
+</div>
+<div class="modalBox" ng-model="modalBox" ng-show="showModal">
+    <div class="modalWrapper">
+        <div class="modalInner">
+            <div class="singleInput">
+                <label for="meetingTitle">Meeting name</label>
+                <input id="meetingTitle" ng-model="meetingTitle" name="meetingTitle"/>
+            </div>
+            <div class="singleInput">
+                <label for="startDate">Start date</label>
+                <input type="datetime-local" ng-model="startDate" id="startDate" name="startDate"/>
+            </div>
+            <div class="singleInput">
+                <label for="place">Place</label>
+                <input id="place" ng-model="place" name="place"></input>
+            </div>
+            <div class="singleInput">
+                <label for="description">Description</label>
+                <textarea id="description" ng-model="description" name="description"></textarea>
+            </div>
+            <div class="singleInput">
+                <label for="guestsList">Guests</label>
+                <input id="guestsList" ng-model="guestsList" name="guestsList"/>
+            </div>
+            <div class="singleInput">
+                <button  ng-show="editButton" ng-click=" saveEditedMeeting(); showModal=false; editButton = false; clearInputMeeting(); ">Edit</button>
+                <button ng-show="addButton" ng-click=" saveMeeting(); showModal=false; addButton = false; clearInputMeeting();">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
