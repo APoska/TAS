@@ -15,17 +15,14 @@ angular.module('app')
       if (isValid) {
         // call register from service
         AuthService.register($scope.user)
-          // handle success
           .then(function () {
             $state.go('login');
-          })
-          // handle error
-          .catch(function () {
+          }, function () {
             $scope.error = true;
             $scope.errorMessage = "User already exist";
           });
       } else {
-        alert('One of the fields is novalid!')
+        alert('One of the fields is novalid!');
       }
     };
 })

@@ -28,7 +28,7 @@ angular.module('app', ['ui.router'])
   $rootScope.$on('$stateChangeStart', function(event, next, nextParams, fromState) {
     var isLogged = localStorage.getItem('yourTokenKey');
     if (!AuthService.isAuth()) {
-      if (next.name !== 'login' && next.name !== 'register' && next.name !== 'tasks') {
+      if (next.name !== 'login' && next.name !== 'register') {
         event.preventDefault();
         $state.go('login');
       }

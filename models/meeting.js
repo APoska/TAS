@@ -8,19 +8,16 @@ var MeetingSchema = new Schema({
 	startDate : { 
 		type: Date
 	},
-	endDate : { 
-		type: Date
-	},
 	place : {
 		type : String
 	},
 	description : {
 		type : String
 	},
-	creatorID : {
+	user : {
 		type: String
 	},
-	watchersID : [{
+	quests : [{
 		type: String
 	}],
 

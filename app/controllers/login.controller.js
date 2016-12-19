@@ -7,20 +7,15 @@ angular.module('app')
     };
     // initial value
     $scope.error = false;
-
     $scope.login = function (isValid) {
       if (isValid) {
         // call login from service
         AuthService.login($scope.user)
-        // handle success
-        .then(function () {
+        .then(function successCallback(response) {
           $state.go('home');
-        })
-          // handle error
-        .catch(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Invalid username/password";
-        });
+        }, function errorCallback(response) {
+          console.log(response.data.msg);
+      });
       }
     };
 })

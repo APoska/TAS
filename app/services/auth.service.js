@@ -5,7 +5,6 @@ angular.module('app').factory('AuthService',
     var LOCAL_TOKEN_KEY = 'yourTokenKey';
   	var isAuthenticated = false;
  	  var authToken;
-    //var user = false;
 
     function loadUserCredentials() {
     var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
@@ -34,53 +33,26 @@ angular.module('app').factory('AuthService',
   	}
 
 	  var login = function(user) {
-      // create a new instance of deferred
-      var deferred = $q.defer();
-
-      $http.post('/api/auth', user)
-        // handle success
-        .success(function (response) {
-
-          if(response.success){
-            storeUserCredentials(response.token);
-            deferred.resolve();
-          } else {
-            deferred.reject();
-          }
-        })
-        // handle error
-        .error(function (response) {
-            console.log(response.msg);
-            deferred.reject();
-        });
-      // return promise object
-      return deferred.promise;
-    }
+      // send a post request to the serve
+      return $http.post('/api/auth', user)
+        // handle success or error
+        .then(function successCallback(response) {
+          storeUserCredentials(response.data.token);
+      }, function errorCallback(response) {
+          console.log(response.data.msg);
+      });    
+    };
 
 	  var register = function(user) {
-      // create a new instance of deferred
-      var deferred = $q.defer();
-
       // send a post request to the server
-      $http.post('/api/users', user)
-        // handle success
-        .success(function (response) {
-          if(response.success){
-            deferred.resolve();
-          } else {
-            console.log(response.msg);
-            deferred.reject();
-          }
-        })
-        // handle error
-        .error(function (response) {
-          console.log(response.msg);
-          deferred.reject();
-        });
-
-      // return promise object
-      return deferred.promise;
-    }
+      return $http.post('/api/users', user)
+        // handle success or error
+        .then(function successCallback(response) {
+          console.log(response.data.msg);
+      }, function errorCallback(response) {
+          console.log(response.data.msg);
+      }); 
+    };
 
     var logout = function() {
       destroyUserCredentials();
