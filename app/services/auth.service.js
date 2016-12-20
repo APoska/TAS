@@ -32,32 +32,6 @@ angular.module('app').factory('AuthService',
     	window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   	}
 
-	  var login = function(user) {
-      // send a post request to the serve
-      return $http.post('/api/auth', user)
-        // handle success or error
-        .then(function successCallback(response) {
-          storeUserCredentials(response.data.token);
-      }, function errorCallback(response) {
-          console.log(response.data.msg);
-      });    
-    };
-
-	  var register = function(user) {
-      // send a post request to the server
-      return $http.post('/api/users', user)
-        // handle success or error
-        .then(function successCallback(response) {
-          console.log(response.data.msg);
-      }, function errorCallback(response) {
-          console.log(response.data.msg);
-      }); 
-    };
-
-    var logout = function() {
-      destroyUserCredentials();
-    };
-
     var isAuth = function() {
       return isAuthenticated;
     }
@@ -66,9 +40,8 @@ angular.module('app').factory('AuthService',
 
     // return available functions for use in the controllers
     return ({
-      login: login,
-      register: register,
-      logout: logout,
+      destroyUserCredentials: destroyUserCredentials,
       isAuth: isAuth,
+      storeUserCredentials: storeUserCredentials,
     });
 });

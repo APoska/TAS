@@ -1,6 +1,6 @@
 angular.module('app')
 .controller('RegisterCtrl',
-  function ($scope, $state, AuthService) {
+  function ($scope, $state, UserService) {
     $scope.user = {
         name: '',
         password: '',
@@ -14,7 +14,7 @@ angular.module('app')
     $scope.register = function(isValid) {
       if (isValid) {
         // call register from service
-        AuthService.register($scope.user)
+        UserService.register($scope.user)
           .then(function () {
             $state.go('login');
           }, function () {

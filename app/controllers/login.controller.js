@@ -1,6 +1,6 @@
 angular.module('app')
 .controller('LoginCtrl',
-  function ($scope, $state, AuthService) {
+  function ($scope, $state, UserService) {
     $scope.user = {
         password: '',
         login: '',
@@ -10,12 +10,14 @@ angular.module('app')
     $scope.login = function (isValid) {
       if (isValid) {
         // call login from service
-        AuthService.login($scope.user)
-        .then(function successCallback(response) {
+        UserService.login($scope.user)
+        .then(function success(response) {
           $state.go('home');
-        }, function errorCallback(response) {
-          console.log(response.data.msg);
-      });
+        })
+
+        .catch(function error(response) {
+          console.log('3');
+        });
       }
     };
 })

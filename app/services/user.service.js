@@ -2,7 +2,7 @@
 
 angular.module('app')
 	.service('UserService', 
-		function($q, $http){
+		function($q, $http, AuthService){
 
 		this.getUserDetails = function(authToken){
 			return $http({
@@ -17,7 +17,29 @@ angular.module('app')
 			});
 		}
 
-			
+		this.login = function(user) {
+      		// send a post request to the serve
+      		return $http.post('/api/auth', user)
+        	// handle success or error
+        	.then(function successCallback(response) {
+          		AuthService.storeUserCredentials(response.data.token);
+      		}, function errorCallback(response) {
+          		console.log(response.data.msg);
+      		});    
+    	};
+		
+		this.register = function(user) {
+      		// send a post request to the server
+      		return $http.post('/api/users', user)
+        	.then(function successCallback(response) {
+          		console.log(response.data.msg);
+      		}, function errorCallback(response) {
+          		console.log(response.data.msg);
+      		}); 
+    	};
 
-		});
+    	this.logout = function() {
+      		AuthService.destroyUserCredentials();
+    	};	
+	});
 })();

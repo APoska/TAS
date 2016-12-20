@@ -21,6 +21,9 @@ var MeetingSchema = new Schema({
 		type: String
 	}],
 
+},
+{
+	versionKey: false
 });
 
 module.exports = mongoose.model('Meeting', MeetingSchema);

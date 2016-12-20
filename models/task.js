@@ -15,6 +15,9 @@ var TaskSchema = new Schema({
 	guests : [{
 		type: String
 	}]
+},
+{
+	versionKey: false
 });
 
 module.exports = mongoose.model('Task',TaskSchema);

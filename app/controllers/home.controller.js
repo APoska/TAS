@@ -1,8 +1,8 @@
 angular.module('app')
-.controller('HomeCtrl', function($scope, AuthService, $state) {
+.controller('HomeCtrl', function($scope, UserService, $state) {
 
 	$scope.logout = function() {
-		AuthService.logout();
+		UserService.logout();
 		$state.go('login');
 	};
 

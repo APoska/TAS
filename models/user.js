@@ -15,6 +15,9 @@ var UserSchema = new Schema({
 		type: String,
 		unique: true
 	},
+},
+{
+    versionKey: false
 });
 
 UserSchema.pre('save', function (next) {
