@@ -14,16 +14,20 @@
 				// Add task
 				$scope.clearInputFromAddTask = function() {
 					$scope.taskName = null;
-					$scope.startDate = null;
+					$scope.date = null;
+					$scope.time = null;
 					$scope.description = null;
 					$scope.guestsList = null;
 				}
 				$scope.saveTask = function(){
-					var date = new Date(($scope.startDate.getTime()-$scope.startDate.getTimezoneOffset()*60000));
-
+					
+					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
+					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);
+					
 					var Task = {
 						name: $scope.taskName,
-						startDate: $scope.startDate.toISOString(),
+						startDate: date,
+						startTime: time,
 						description: $scope.description,
 						guestList: $scope.guestsList
 					}
@@ -32,13 +36,16 @@
 					TasksService.getTaskDetails(user).then(function(tasks){
 						$scope.Tasks = tasks;
 					});
+				
 				}
 				$scope.saveEditedTask = function(){
-					var date = new Date(($scope.startDate.getTime()-$scope.startDate.getTimezoneOffset()*60000));
-
+					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
+					var time = ('0' + ($scope.date.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.date.getMinutes().toString())).slice(-2);
+					
 					var Task = {
 						name: $scope.taskName,
-						startDate: $scope.startDate.toISOString(),
+						startDate: date,
+						startTime: time,
 						description: $scope.description,
 						guestList: $scope.guestsList
 					}
@@ -56,8 +63,22 @@
 						$scope.showModal = true;
 						$scope.editButton = true;
 
+						var newDate = new Date(task.startDate);
+						var hours = task.startTime.substring(0,2);
+						var minutes = task.startTime.slice(-2);
+						console.log(hours);
+						console.log(minutes);
+
+						var newTime = new Date();
+
+						newTime.setHours(hours);
+						newTime.setMinutes(minutes);
+
+						console.log(newTime);
+
 						$scope.taskName = task.title;
-						$scope.startDate = new Date(task.startDate);
+						$scope.date = newDate;
+						$scope.time = newTime;
 						$scope.description = task.description;
 						$scope.guestList = task.guests;
 

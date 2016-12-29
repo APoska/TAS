@@ -38,6 +38,7 @@ angular.module('app')
 				data: JSON.stringify({
 					title: task.name,
 					startDate:  task.startDate,
+					startTime: task.startTime,
 					description: task.description,
 					user: taskCreator._id,
 					guests: task.guestList })
@@ -56,6 +57,7 @@ angular.module('app')
 				data: JSON.stringify({
 					title: task.name,
 					startDate:  task.startDate,
+					startTime: task.startTime,
 					description: task.description,
 					guests: task.guestList })
 				
