@@ -6,7 +6,10 @@ var TaskSchema = new Schema({
 		type: String
 	},
 	startDate : { 
-		type: Date
+		type: String
+	},
+	startTime : {
+		type: String
 	},
 	description : String,
 	user : {

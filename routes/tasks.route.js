@@ -37,6 +37,7 @@ router.route('/tasks')
 		var task = new Task({
 			title: req.body.title,
 			startDate: req.body.startDate,
+			startTime: req.body.startTime,
 			description: req.body.description,
 			user: req.body.user,
 			guests: req.body.guests
