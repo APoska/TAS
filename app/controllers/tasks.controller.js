@@ -10,6 +10,15 @@
 				TasksService.getTaskDetails(user).then(function(tasks){
 						$scope.Tasks = tasks;
 				});
+
+				UserService.getUsers().then(function(users){
+					$scope.Users = users;
+					for(var i = 0; i < $scope.Users.length; i++){
+						$scope.Users[i].ticked = false;
+					}
+				});
+
+				$scope.guestsList = [];
 				
 				// Add task
 				$scope.clearInputFromAddTask = function() {

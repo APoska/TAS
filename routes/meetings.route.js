@@ -34,6 +34,7 @@ router.route('/meetings')
 		var meeting = new Meeting({
 			title: req.body.title,
 			startDate: req.body.startDate,
+			startTime: req.body.startTime,
 			place: req.body.place,
 			description: req.body.description,
 			user: req.body.user,
@@ -87,7 +88,7 @@ router.route('/meetings/:meeting_id')
 })
 .patch(function(req,res){
 		Meeting.findById({ _id : req.params.meeting_id }, function(err,meeting){
-			if(!user){
+			if(!meeting){
 				res.status(404);
 				res.json({success: false, msg: 'Meeting not found'});
 			}else{

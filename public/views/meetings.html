@@ -11,8 +11,8 @@
                         <span  class="meetingTitle font500">{{$index+1}}.{{meet.title}}</span> 
                         <span class="meetingID font400">ID: {{meet._id}}</span>
                         <span class="meetingControls" ng-show="controls">
-                        	<span class="meetingControl edit" data="{{meet._id}}" ng-click="editMeeting($event);"></span>
-                        	<span class="meetingControl delete" data="{{meet._id}}" ng-click="removeMeeting($event)"></span>
+                        	<span class="singleMeetingControl edit" data="{{meet._id}}" ng-click="editMeeting($event);"></span>
+                        	<span class="singleMeetingControl delete" data="{{meet._id}}" ng-click="removeMeeting($event)"></span>
                         </span>
                     </div>
                 </div>
@@ -25,8 +25,9 @@
                 </div>
             </div>
         </li>
-    </ul> 
+    </ul>
 </div>
+
 <div class="modalBox" ng-model="modalBox" ng-show="showModal">
     <div class="modalWrapper">
         <div class="modalInner">
@@ -36,19 +37,30 @@
             </div>
             <div class="singleInput">
                 <label for="startDate">Start date</label>
-                <input type="datetime-local" ng-model="startDate" id="startDate" name="startDate"/>
+                <input type="date" ng-model="date" id="date" name="date"/>
             </div>
             <div class="singleInput">
-                <label for="place">Place</label>
-                <input id="place" ng-model="place" name="place"></input>
+                <label for="startTime">Start date</label>
+                <input type="time" ng-model="time" id="time" name="time"/>
+            </div>
+            <div class="singleInput">
+                <label for="guestsList">Guests</label>
+                <div isteven-multi-select
+                    input-model="Users"
+                    output-model="guestsList"
+                    button-label="login"
+                    item-label="login"
+                    tick-property="ticked"
+                    output-properties="_id">
+                </div>
             </div>
             <div class="singleInput">
                 <label for="description">Description</label>
                 <textarea id="description" ng-model="description" name="description"></textarea>
             </div>
             <div class="singleInput">
-                <label for="guestsList">Guests</label>
-                <input id="guestsList" ng-model="guestsList" name="guestsList"/>
+                <label for="place">Place</label>
+                <input id="place" ng-model="place" name="place"></input>
             </div>
             <div class="singleInput">
                 <button  ng-show="editButton" ng-click=" saveEditedMeeting(); showModal=false; editButton = false; clearInputMeeting(); ">Edit</button>

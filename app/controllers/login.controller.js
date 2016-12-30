@@ -11,11 +11,9 @@ angular.module('app')
       if (isValid) {
         // call login from service
         UserService.login($scope.user)
-        .then(function success(response) {
+        .then(function(response) {
           $state.go('home');
-        })
-
-        .catch(function error(response) {
+        }, function(error) {
           console.log('3');
         });
       }

@@ -43,15 +43,20 @@
                 <input type="time" ng-model="time" id="time" name="time"/>
             </div>
             <div class="singleInput">
+                <label for="guestsList">Guests</label>
+                <div isteven-multi-select
+                    input-model="Users"
+                    output-model="guestsList"
+                    button-label="login"
+                    item-label="login"
+                    tick-property="ticked"
+                    output-properties="_id">
+                </div>
+            </div>
+            <div class="singleInput">
                 <label for="description">Description</label>
                 <textarea id="description" ng-model="description" name="description"></textarea>
             </div>
-            <div class="singleInput">
-                <label for="guestsList">Guests</label>
-                <input id="guestsList" ng-model="guestsList" name="guestsList"/>
-            </div>
-            
-
             <div class="singleInput">
                 <button  ng-show="editButton" ng-click=" saveEditedTask(); showModal=false; editButton = false; clearInputFromAddTask(); ">Edit</button>
                 <button ng-show="addButton" ng-click=" saveTask(); showModal=false; addButton = false; clearInputFromAddTask();">Add</button>

@@ -9,21 +9,33 @@ angular.module('app')
 				MeetingsService.getMeetingDetails(user).then(function(meetings){
 					$scope.Meetings = meetings;
 				});
+				
+				UserService.getUsers().then(function(users){
+					$scope.Users = users;
+					for(var i = 0; i < $scope.Users.length; i++){
+						$scope.Users[i].ticked = false;
+					}
+				});
+
+				$scope.guestsList = [];
 
 				$scope.clearInputMeeting = function() {
 					$scope.meetingTitle = null;
-					$scope.startDate = null;
+					$scope.date = null;
+					$scope.time = null;
 					$scope.place = null;
 					$scope.description = null;
 					$scope.guestsList = null;
 				}
 
 				$scope.saveMeeting = function(){
-					var date = new Date(($scope.startDate.getTime()-$scope.startDate.getTimezoneOffset()*60000));
+					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
+					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);
 
 					var Meeting = {
 						title: $scope.meetingTitle,
-						startDate: $scope.startDate.toISOString(),
+						startDate: date,
+						startTime: time,
 						place: $scope.place,
 						description: $scope.description,
 						guestList: $scope.guestsList
@@ -36,12 +48,14 @@ angular.module('app')
 				}
 
 				$scope.saveEditedMeeting = function(){
-					var date = new Date(($scope.startDate.getTime()-$scope.startDate.getTimezoneOffset()*60000));
+					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
+					var time = ('0' + ($scope.date.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.date.getMinutes().toString())).slice(-2);
 
 					var Meeting = {
 						title: $scope.meetingTitle,
-						startDate: $scope.startDate.toISOString(),
-						description: $scope.place,
+						startDate: date,
+						startTime: time,
+						place: $scope.place,
 						description: $scope.description,
 						guestList: $scope.guestsList
 					}
@@ -59,8 +73,19 @@ angular.module('app')
 						$scope.showModal = true;
 						$scope.editButton = true;
 
+						var newDate = new Date(task.startDate);
+						var hours = task.startTime.substring(0,2);
+						var minutes = task.startTime.slice(-2);
+
+						var newTime = new Date();
+
+						newTime.setHours(hours);
+						newTime.setMinutes(minutes);
+
 						$scope.meetingTitle = meeting.title;
-						$scope.startDate = new Date(meeting.startDate);
+						$scope.date = newDate;
+						$scope.time = newTime;
+						$scope.place = meeting.place;
 						$scope.description = meeting.description;
 						$scope.guestList = meeting.guests;
 

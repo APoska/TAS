@@ -6,7 +6,7 @@ angular.module('app')
 			this.getMeetingDetails = function(user) {
 				return $http({
 					method: "GET",
-					url : "/api/meetings?user=" + user._id,
+					url : "/api/meetings?user="+user._id,
 					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 				})
 				.then(function(response){
@@ -36,7 +36,8 @@ angular.module('app')
 					headers: {'Content-Type': 'application/json'},
 					data: JSON.stringify({
 						title: meeting.title,
-						startDate: meeting.startDate,
+						startDate:  meeting.startDate,
+						startTime: meeting.startTime,
 						place: meeting.place,
 						description: meeting.description,
 						user: meetCreator._id,
@@ -57,14 +58,15 @@ angular.module('app')
 					headers: {'Content-Type': 'application/json'},
 					data: JSON.stringify({
 						title: meeting.title,
-						startDate: meeting.startDate, 
+						startDate:  meeting.startDate,
+						startTime: meeting.startTime, 
 						place: meeting.place,
 						description: meeting.description,
 						guests: meeting.guestList
 					})
 				})
 				.then(function(response){
-					return response.data;
+					return response;
 				}, function(response){
 					return response.err;
 				});

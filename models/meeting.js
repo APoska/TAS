@@ -6,7 +6,10 @@ var MeetingSchema = new Schema({
 		type: String
 	},
 	startDate : { 
-		type: Date
+		type: String
+	},
+	startTime : {
+		type: String
 	},
 	place : {
 		type : String
@@ -17,7 +20,7 @@ var MeetingSchema = new Schema({
 	user : {
 		type: String
 	},
-	quests : [{
+	guests : [{
 		type: String
 	}],
 
