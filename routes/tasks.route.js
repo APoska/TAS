@@ -10,7 +10,7 @@ router.route('/tasks')
 		var creator = req.query.user;
 		
 		if(typeof creator != "undefined"){
-			Task.find({user : creator}, function(err,tasks){
+			Task.find({$or:[{user : creator},{guests:creator}]}, function(err,tasks){
 				if(err){
 					res.status(400);
 					return res.send(err);
