@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700&subset=latin-ext");
 .font500 {
-  font-weight: 500; }
+  font-weight: 500;
+}
 
 .font700 {
-  font-weight: 700; }
+  font-weight: 700;
+}
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -11,149 +13,178 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block; }
+  display: block;
+}
 
 body {
-  line-height: 1; }
+  line-height: 1;
+}
 
 ol, ul {
-  list-style: none; }
+  list-style: none;
+}
 
 blockquote, q {
-  quotes: none; }
+  quotes: none;
+}
 
 blockquote:before, blockquote:after {
   content: '';
-  content: none; }
+  content: none;
+}
 
 q:before, q:after {
   content: '';
-  content: none; }
+  content: none;
+}
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0;
+}
 
 html, body {
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
-  font-weight: 400; }
+  font-weight: 400;
+}
 
 .monthPick {
   margin-left: 10px;
   padding-top: 5px;
-  width: 180px;
-  height: 30px; }
-  .monthPick button {
-    display: block;
-    width: 30px;
-    height: 20px;
-    background-color: #f1f1f1;
-    border: 1px solid #212121;
-    border-radius: 5px;
-    float: left; }
+  height: 30px;
+}
+.monthPick button {
+  display: block;
+  width: 30px;
+  height: 20px;
+  background-color: #f1f1f1;
+  border: 1px solid #212121;
+  border-radius: 5px;
+  float: left;
+}
+.monthPick p {
+  display: block;
+  color: #f1f1f1;
+  font-weight: 300;
+  min-width: 130px;
+  text-align: center;
+  float: left;
+  line-height: 20px;
+  padding: 0 10px;
+}
+@media screen and (max-width: 768px) {
   .monthPick p {
-    display: block;
-    color: #f1f1f1;
-    font-weight: 300;
-    float: left;
-    line-height: 20px;
-    padding: 0 10px; }
-    @media screen and (max-width: 768px) {
-      .monthPick p {
-        padding: 0;
-        margin: 0; } }
-  @media screen and (max-width: 768px) {
-    .monthPick {
-      margin: 0 auto; } }
+    padding: 0;
+    margin: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .monthPick {
+    margin: 0 auto;
+  }
+}
 
 .loginWrap {
   width: 100vw;
   height: 100vh;
-  background-color: #f1f1f1; }
-  .loginWrap .loginWrapper {
-    width: 400px;
-    height: 100%;
-    position: relative;
-    /*it can be fixed too*/
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: table;
-    overflow: hidden;
-    margin: 0 auto; }
-    .loginWrap .loginWrapper .loginBox {
-      padding: 0 50px;
-      display: table-cell;
-      vertical-align: middle;
-      margin: 0 auto;
-      width: 400px;
-      text-align: left; }
-      .loginWrap .loginWrapper .loginBox h1 {
-        padding-bottom: 10px; }
-      .loginWrap .loginWrapper .loginBox .form-control {
-        border: 1px solid #212121;
-        color: #212121;
-        border-radius: 10px;
-        background-color: #ffffff;
-        height: 40px;
-        line-height: 40px;
-        text-align: center; }
-      .loginWrap .loginWrapper .loginBox button {
-        background-color: #ffffff;
-        border-radius: 10px;
-        outline: none;
-        line-height: 22px;
-        display: block;
-        margin: 10px auto;
-        border: 1px solid black; }
+  background-color: #f1f1f1;
+}
+.loginWrap .loginWrapper {
+  width: 400px;
+  height: 100%;
+  position: relative;
+  /*it can be fixed too*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: table;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.loginWrap .loginWrapper .loginBox {
+  padding: 0 50px;
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0 auto;
+  width: 400px;
+  text-align: left;
+}
+.loginWrap .loginWrapper .loginBox h1 {
+  padding-bottom: 10px;
+}
+.loginWrap .loginWrapper .loginBox .form-control {
+  border: 1px solid #212121;
+  color: #212121;
+  border-radius: 10px;
+  background-color: #ffffff;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.loginWrap .loginWrapper .loginBox button {
+  background-color: #ffffff;
+  border-radius: 10px;
+  outline: none;
+  line-height: 22px;
+  display: block;
+  margin: 10px auto;
+  border: 1px solid black;
+}
 
 .registerWrap {
   width: 100vw;
   height: 100vh;
-  background-color: #f1f1f1; }
-  .registerWrap .registerWrapper {
-    width: 400px;
-    height: 100%;
-    position: relative;
-    /*it can be fixed too*/
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    display: table;
-    overflow: hidden;
-    margin: 0 auto; }
-    .registerWrap .registerWrapper .registerBox {
-      padding: 0 50px;
-      display: table-cell;
-      vertical-align: middle;
-      margin: 0 auto;
-      width: 400px;
-      text-align: left; }
-      .registerWrap .registerWrapper .registerBox h1 {
-        padding-bottom: 10px; }
-      .registerWrap .registerWrapper .registerBox .form-control {
-        border: 1px solid #212121;
-        color: #212121;
-        border-radius: 10px;
-        background-color: #ffffff;
-        height: 40px;
-        line-height: 40px;
-        text-align: center; }
-      .registerWrap .registerWrapper .registerBox button {
-        background-color: #fff;
-        border-radius: 10px;
-        outline: none;
-        line-height: 22px;
-        display: block;
-        margin: 10px auto;
-        border: 1px solid black; }
+  background-color: #f1f1f1;
+}
+.registerWrap .registerWrapper {
+  width: 400px;
+  height: 100%;
+  position: relative;
+  /*it can be fixed too*/
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: table;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.registerWrap .registerWrapper .registerBox {
+  padding: 0 50px;
+  display: table-cell;
+  vertical-align: middle;
+  margin: 0 auto;
+  width: 400px;
+  text-align: left;
+}
+.registerWrap .registerWrapper .registerBox h1 {
+  padding-bottom: 10px;
+}
+.registerWrap .registerWrapper .registerBox .form-control {
+  border: 1px solid #212121;
+  color: #212121;
+  border-radius: 10px;
+  background-color: #ffffff;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+}
+.registerWrap .registerWrapper .registerBox button {
+  background-color: #fff;
+  border-radius: 10px;
+  outline: none;
+  line-height: 22px;
+  display: block;
+  margin: 10px auto;
+  border: 1px solid black;
+}
 
 .sideNav {
   width: 250px;
@@ -165,89 +196,111 @@ html, body {
   z-index: 10;
   padding-top: 20px;
   background-color: #333;
-  overflow-x: hidden; }
-  @media screen and (max-width: 768px) {
-    .sideNav {
-      width: 120px; } }
-  .sideNav .singleMenuGroup {
-    display: block; }
-    .sideNav .singleMenuGroup .menuTitle {
-      color: #fff;
-      text-transform: uppercase;
-      text-align: center;
-      display: block;
-      font-weight: 500;
-      font-size: 18px; }
-    .sideNav .singleMenuGroup .menuList {
-      text-align: center;
-      padding: 15px 0;
-      color: #777; }
-      .sideNav .singleMenuGroup .menuList li {
-        padding: 5px 0;
-        cursor: pointer;
-        transition: 0.4s ease-in; }
-        .sideNav .singleMenuGroup .menuList li:hover {
-          transition: 0.2s ease-out;
-          color: #fff; }
-  .sideNav a {
-    color: #7D8193;
-    display: block;
-    padding: 10px 10px 10px 30px;
-    text-decoration: none;
-    font-size: 25px;
-    transition: .3s; }
+  overflow-x: hidden;
+}
+@media screen and (max-width: 768px) {
+  .sideNav {
+    width: 120px;
+  }
+}
+.sideNav .singleMenuGroup {
+  display: block;
+}
+.sideNav .singleMenuGroup .menuTitle {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  font-weight: 500;
+  font-size: 18px;
+}
+.sideNav .singleMenuGroup .menuList {
+  text-align: center;
+  padding: 15px 0;
+  color: #777;
+}
+.sideNav .singleMenuGroup .menuList li {
+  padding: 5px 0;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+}
+.sideNav .singleMenuGroup .menuList li:hover {
+  transition: 0.2s ease-out;
+  color: #fff;
+}
+.sideNav a {
+  color: #7D8193;
+  display: block;
+  padding: 10px 10px 10px 30px;
+  text-decoration: none;
+  font-size: 25px;
+  transition: .3s;
+}
 
 .mainContentWrapper {
   display: block;
   transition: margin-left .5s;
   margin-left: 250px;
-  background-color: #37474F; }
-  @media screen and (max-width: 768px) {
-    .mainContentWrapper {
-      margin-left: 120px; } }
+  background-color: #37474F;
+}
+@media screen and (max-width: 768px) {
+  .mainContentWrapper {
+    margin-left: 120px;
+  }
+}
 
 .calendarWrapper {
   height: 100%;
   padding-top: 10px;
-  transition: 0.3s; }
+  transition: 0.3s;
+}
 
 .monthCalendarWrapper {
   display: block;
   margin: 10px;
   height: auto;
-  min-height: 760px; }
-  .monthCalendarWrapper .monthWeekShort {
-    display: block;
-    text-transform: uppercase;
-    float: left;
-    width: 14.285%;
-    background-color: #8e352e;
-    color: #7D8193;
-    text-align: center;
-    font-size: 16px;
-    line-height: 40px; }
-  .monthCalendarWrapper .monthCalendarRow {
-    display: block;
-    height: 100%; }
+  min-height: 760px;
+}
+.monthCalendarWrapper .monthWeekShort {
+  display: block;
+  text-transform: uppercase;
+  float: left;
+  width: 14.285%;
+  background-color: #8e352e;
+  color: #7D8193;
+  text-align: center;
+  font-size: 16px;
+  line-height: 40px;
+}
+.monthCalendarWrapper .monthCalendarRow {
+  display: block;
+  height: 100%;
+}
+.monthCalendarWrapper .monthCalendarDay {
+  display: block;
+  float: left;
+  height: 120px;
+  width: 14.285%;
+  padding: 2px 2px;
+  background-color: #EEEEEE;
+  border-left: 1px solid #bcf;
+  border-top: 1px solid #bcf;
+  text-align: right;
+}
+@media screen and (max-width: 768px) {
   .monthCalendarWrapper .monthCalendarDay {
-    display: block;
-    float: left;
-    height: 120px;
-    width: 14.285%;
-    padding: 2px 2px;
-    background-color: #EEEEEE;
-    border-left: 1px solid #bcf;
-    border-top: 1px solid #bcf;
-    text-align: right; }
-  @media screen and (max-width: 768px) {
-    .monthCalendarWrapper .monthCalendarDay {
-      clear: both;
-      height: 100%;
-      width: 100%; }
-    .monthCalendarWrapper .monthWeekShort {
-      display: none; } }
-  .monthCalendarWrapper .otherMonth {
-    background-color: #9E9E9E; }
+    clear: both;
+    height: 100%;
+    width: 100%;
+  }
+  .monthCalendarWrapper .monthWeekShort {
+    display: none;
+  }
+}
+.monthCalendarWrapper .otherMonth {
+  background-color: #9E9E9E;
+  visibility: hidden;
+}
 
 .dayNumber {
   display: block;
@@ -258,37 +311,44 @@ html, body {
   text-align: center;
   background-color: #212121;
   color: #EEEEEE;
-  border-radius: 10px; }
+  border-radius: 10px;
+}
 
 .tasksWrapper {
   display: block;
   width: 100%;
-  padding: 15px; }
-  .tasksWrapper h1 {
-    font-size: 25px;
-    color: #000;
-    font-weight: 700;
-    padding-bottom: 25px; }
-  .tasksWrapper .tasksControls .singleControl {
-    background: #000;
-    color: #fff;
-    padding: 10px 15px;
-    display: inline-block;
-    cursor: pointer;
-    transition: 0.4s ease-in; }
-    .tasksWrapper .tasksControls .singleControl:hover {
-      transition: 0.2s ease-out;
-      background: #333; }
+  padding: 15px;
+}
+.tasksWrapper h1 {
+  font-size: 25px;
+  color: #000;
+  font-weight: 700;
+  padding-bottom: 25px;
+}
+.tasksWrapper .tasksControls .singleControl {
+  background: #000;
+  color: #fff;
+  padding: 10px 15px;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+}
+.tasksWrapper .tasksControls .singleControl:hover {
+  transition: 0.2s ease-out;
+  background: #333;
+}
 
 .tasksTitleList, .meetingsTitleList {
   display: table;
-  width: 100%; }
-  .tasksTitleList li, .meetingsTitleList li {
-    display: inline-block;
-    width: 100%;
-    border: 1px solid #000;
-    color: #fff;
-    margin: 5px 0; }
+  width: 100%;
+}
+.tasksTitleList li, .meetingsTitleList li {
+  display: inline-block;
+  width: 100%;
+  border: 1px solid #000;
+  color: #fff;
+  margin: 5px 0;
+}
 
 .singleTask__header {
   display: table;
@@ -297,66 +357,82 @@ html, body {
   background-color: #8e352e;
   cursor: pointer;
   padding-left: 15px;
-  transition: 0.4s ease-in; }
-  .singleTask__header:hover {
-    background-color: #8c5d59;
-    transition: 0.2s ease-out; }
-  .singleTask__header .singleTask__headerInner {
-    display: table-cell;
-    vertical-align: middle; }
-  .singleTask__header span.taskTitle {
-    font-size: 18px;
-    text-transform: uppercase; }
-  .singleTask__header span.taskID {
-    font-size: 10px;
-    color: #ccc; }
-  .singleTask__header span.taskControls {
-    float: right; }
-    .singleTask__header span.taskControls span.singleTaskControl {
-      padding: 0 15px;
-      display: inline-block;
-      vertical-align: middle; }
-      .singleTask__header span.taskControls span.singleTaskControl.edit {
-        background: url("../svg/edit.svg") no-repeat;
-        fill: #fff;
-        width: 30px;
-        height: 18px; }
-      .singleTask__header span.taskControls span.singleTaskControl.delete {
-        background: url("../svg/delete.svg") no-repeat;
-        fill: #fff;
-        width: 30px;
-        height: 19px; }
+  transition: 0.4s ease-in;
+}
+.singleTask__header:hover {
+  background-color: #8c5d59;
+  transition: 0.2s ease-out;
+}
+.singleTask__header .singleTask__headerInner {
+  display: table-cell;
+  vertical-align: middle;
+}
+.singleTask__header span.taskTitle {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.singleTask__header span.taskID {
+  font-size: 10px;
+  color: #ccc;
+}
+.singleTask__header span.taskControls {
+  float: right;
+}
+.singleTask__header span.taskControls span.singleTaskControl {
+  padding: 0 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.singleTask__header span.taskControls span.singleTaskControl.edit {
+  background: url("../svg/edit.svg") no-repeat;
+  fill: #fff;
+  width: 30px;
+  height: 18px;
+}
+.singleTask__header span.taskControls span.singleTaskControl.delete {
+  background: url("../svg/delete.svg") no-repeat;
+  fill: #fff;
+  width: 30px;
+  height: 19px;
+}
 
 .singleTask__moreWrapper, .singleMeeting__moreWrapper {
   width: 100%;
   height: auto;
   display: block;
   padding: 15px;
-  color: #212121; }
-  .singleTask__moreWrapper p, .singleMeeting__moreWrapper p {
-    padding: 10px 0; }
-    .singleTask__moreWrapper p.desc, .singleMeeting__moreWrapper p.desc {
-      line-height: 23px; }
+  color: #212121;
+}
+.singleTask__moreWrapper p, .singleMeeting__moreWrapper p {
+  padding: 10px 0;
+}
+.singleTask__moreWrapper p.desc, .singleMeeting__moreWrapper p.desc {
+  line-height: 23px;
+}
 
 .meetingsWrapper {
   display: block;
   width: 100%;
-  padding: 15px; }
-  .meetingsWrapper h1 {
-    font-size: 25px;
-    color: #000;
-    font-weight: 700;
-    padding-bottom: 25px; }
-  .meetingsWrapper .meetingsControls .singleControl {
-    background: #000;
-    color: #fff;
-    padding: 10px 15px;
-    display: inline-block;
-    cursor: pointer;
-    transition: 0.4s ease-in; }
-    .meetingsWrapper .meetingsControls .singleControl:hover {
-      transition: 0.2s ease-out;
-      background: #333; }
+  padding: 15px;
+}
+.meetingsWrapper h1 {
+  font-size: 25px;
+  color: #000;
+  font-weight: 700;
+  padding-bottom: 25px;
+}
+.meetingsWrapper .meetingsControls .singleControl {
+  background: #000;
+  color: #fff;
+  padding: 10px 15px;
+  display: inline-block;
+  cursor: pointer;
+  transition: 0.4s ease-in;
+}
+.meetingsWrapper .meetingsControls .singleControl:hover {
+  transition: 0.2s ease-out;
+  background: #333;
+}
 
 .singleMeeting__header {
   display: table;
@@ -365,35 +441,44 @@ html, body {
   background-color: #8e352e;
   cursor: pointer;
   padding-left: 15px;
-  transition: 0.4s ease-in; }
-  .singleMeeting__header:hover {
-    background-color: #8c5d59;
-    transition: 0.2s ease-out; }
-  .singleMeeting__header .singleMeeting__headerInner {
-    display: table-cell;
-    vertical-align: middle; }
-  .singleMeeting__header span.meetingTitle {
-    font-size: 18px;
-    text-transform: uppercase; }
-  .singleMeeting__header span.meetingID {
-    font-size: 10px;
-    color: #ccc; }
-  .singleMeeting__header span.meetingControls {
-    float: right; }
-    .singleMeeting__header span.meetingControls span.singleMeetingControl {
-      padding: 0 15px;
-      display: inline-block;
-      vertical-align: middle; }
-      .singleMeeting__header span.meetingControls span.singleMeetingControl.edit {
-        background: url("../svg/edit.svg") no-repeat;
-        fill: #fff;
-        width: 30px;
-        height: 18px; }
-      .singleMeeting__header span.meetingControls span.singleMeetingControl.delete {
-        background: url("../svg/delete.svg") no-repeat;
-        fill: #fff;
-        width: 30px;
-        height: 19px; }
+  transition: 0.4s ease-in;
+}
+.singleMeeting__header:hover {
+  background-color: #8c5d59;
+  transition: 0.2s ease-out;
+}
+.singleMeeting__header .singleMeeting__headerInner {
+  display: table-cell;
+  vertical-align: middle;
+}
+.singleMeeting__header span.meetingTitle {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.singleMeeting__header span.meetingID {
+  font-size: 10px;
+  color: #ccc;
+}
+.singleMeeting__header span.meetingControls {
+  float: right;
+}
+.singleMeeting__header span.meetingControls span.singleMeetingControl {
+  padding: 0 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.singleMeeting__header span.meetingControls span.singleMeetingControl.edit {
+  background: url("../svg/edit.svg") no-repeat;
+  fill: #fff;
+  width: 30px;
+  height: 18px;
+}
+.singleMeeting__header span.meetingControls span.singleMeetingControl.delete {
+  background: url("../svg/delete.svg") no-repeat;
+  fill: #fff;
+  width: 30px;
+  height: 19px;
+}
 
 .modalBox {
   position: fixed;
@@ -405,31 +490,38 @@ html, body {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #fff; }
-  .modalBox .modalWrapper {
-    display: table;
-    width: 100%;
-    height: 100%; }
-    .modalBox .modalWrapper .modalInner {
-      display: table-cell;
-      vertical-align: middle; }
-    .modalBox .modalWrapper .singleInput {
-      display: block;
-      padding: 15px 0;
-      margin: 0 auto;
-      max-width: 400px;
-      width: 100%; }
-      .modalBox .modalWrapper .singleInput label {
-        display: block;
-        color: #000;
-        font-weight: 700;
-        font-size: 16px;
-        padding-bottom: 10px; }
-      .modalBox .modalWrapper .singleInput input {
-        width: 400px;
-        height: 35px; }
-      .modalBox .modalWrapper .singleInput textarea {
-        width: 400px;
-        height: 70px; }
+  background-color: #fff;
+}
+.modalBox .modalWrapper {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+.modalBox .modalWrapper .modalInner {
+  display: table-cell;
+  vertical-align: middle;
+}
+.modalBox .modalWrapper .singleInput {
+  display: block;
+  padding: 15px 0;
+  margin: 0 auto;
+  max-width: 400px;
+  width: 100%;
+}
+.modalBox .modalWrapper .singleInput label {
+  display: block;
+  color: #000;
+  font-weight: 700;
+  font-size: 16px;
+  padding-bottom: 10px;
+}
+.modalBox .modalWrapper .singleInput input {
+  width: 400px;
+  height: 35px;
+}
+.modalBox .modalWrapper .singleInput textarea {
+  width: 400px;
+  height: 70px;
+}
 
 /*# sourceMappingURL=styles.css.map */

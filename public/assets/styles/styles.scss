@@ -63,7 +63,6 @@ html, body {
 .monthPick{
   margin-left: 10px;
   padding-top: 5px;
-  width: 180px;
   height: 30px;
 
   button{
@@ -75,10 +74,13 @@ html, body {
     border-radius: 5px;
     float: left;
   }
+
   p{
     display: block;
     color: $white;
     font-weight: 300;
+    min-width: 130px;
+    text-align: center;
     float: left;
     line-height: 20px; 
     padding: 0 10px;
@@ -312,6 +314,7 @@ html, body {
 
     .otherMonth{
       background-color: #9E9E9E;
+      visibility: hidden;
     }
 }
 

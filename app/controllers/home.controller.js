@@ -24,6 +24,7 @@ angular.module('app')
 	var lastDay = new Date(yy, mm+1, 0);
 	var daycount = lastDay.getDate();
 	var days = [];
+	var prevMonthDays = [];
 
 	function generateCalendar(){
 		var firstDay = new Date(yy, mm, 1);
@@ -33,11 +34,12 @@ angular.module('app')
 		if(daynumb===0)
 			daynumb=7;
 		for(i=1; i<daynumb; i++){
-			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth()-1, 8); days.push({day: foo});
+			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth()-1, 8); prevMonthDays.push({day: foo});
 		}
 		for(i=1; i<=daycount; i++){
 			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth(), i);	days.push({day: foo});
 		}
+		$scope.prevMonthDays = prevMonthDays;
 		$scope.days=days;
 	};
 
@@ -46,8 +48,8 @@ angular.module('app')
 		if(mm===12){
 			mm=0; yy++;
 		}
-		days=[];
-		generateCalendar();
+		days=[];prevMonthDays=[];
+				generateCalendar();
 		currentDate = months[mm] + '\n' + yy; $scope.month = currentDate;
 	};
 
@@ -56,7 +58,7 @@ angular.module('app')
 		if(mm===-1){
 			mm=11; yy--;
 		}
-		days = [];
+		days = [];prevMonthDays=[];
 		generateCalendar();
 		currentDate = months[mm] + '\n' + yy; $scope.month = currentDate;
 	};

@@ -36,10 +36,16 @@
  						</div>
  						
  					</div>
+ 					
+
  					<div class="monthCalendarRow">
- 						<div class="monthCalendarDay" ng-repeat="date in days" ng-click="tasks()">
+ 						<div class="monthCalendarDay otherMonth" ng-repeat="date in prevMonthDays">
+ 							{{date.day | date:'d'}}
+
+ 						</div>
+ 						<div class="monthCalendarDay" ng-class="{today: date.today}" ng-repeat="date in days" ng-click="tasks()">
  							{{ date.day | date:'d'}}
- 							<br ng-if="($index+1)%7==0">
+ 							<br>
  						</div>
  					</div>
  				</div>
