@@ -44,14 +44,8 @@
             </div>
             <div class="singleInput">
                 <label for="guestsList">Guests</label>
-                <div isteven-multi-select
-                    input-model="Users"
-                    output-model="guestsList"
-                    button-label="login"
-                    item-label="login"
-                    tick-property="ticked"
-                    output-properties="_id">
-                </div>
+                <input ng-model="guestsList" id="guestsList" name="guestsList"/>
+
             </div>
             <div class="singleInput">
                 <label for="description">Description</label>

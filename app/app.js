@@ -1,4 +1,4 @@
-angular.module('app', ['ui.router', 'isteven-multi-select'])
+angular.module('app', ['ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
   $stateProvider
     .state('login', {
