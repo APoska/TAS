@@ -7,15 +7,53 @@ var User = require('../models/user');
 
 router.route('/users')
 	.get(function(req,res){
-		User.find(function(err,users){
-			if(err){
+		let queryObj = {};
+		if (req.query.login){
+			queryObj.login = {"$in": req.query.login}
+		} 
+
+		User.find(queryObj, function(err,users){
+			if(err)
+			{
 				res.status(400);
 				return res.send(err);
-			}else{
-				res.status(200);
-				res.json(users);
 			}
+			if(users.length < 1)
+			{
+				res.status(404);
+				res.json("User not found");	
+			}
+
+			res.status(200);
+			return res.json(users);
+			
 		});
+		// if(typeof userLogin != "undefined"){
+		// 	User.find(queryObj, function(err,users){
+		// 		if(err){
+		// 			res.status(400);
+		// 			return res.send(err);
+		// 		}else{
+		// 			if(users == null){
+		// 				res.status(404);
+		// 				res.json("User not found");	
+		// 			}else{
+		// 				res.status(200);
+		// 				return res.json(users);
+		// 			}
+		// 		}
+		// 	});
+		// }else{
+		// 	User.find(function(err,users){
+		// 		if(err){
+		// 			res.status(400);
+		// 			return res.send(err);
+		// 		}else{
+		// 			res.status(200);
+		// 			res.json(users);
+		// 		}
+		// 	});
+		// }
 	})
 	.post(function(req,res){
 		if (!req.body.login || !req.body.password) {

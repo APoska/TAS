@@ -27,6 +27,17 @@ angular.module('app')
         return response.err;
       });
     }
+    this.getUsersID = function(login){
+      return $http({
+        method: "GET",
+        url: "/api/users?login="+login,
+        headers: {'Content-Type': 'application/json'}
+      }).then(function(response){
+        return response.data;
+      }, function(response){
+        return response.err;
+      });
+    }
 
 		this.login = function(user) {
       		// send a post request to the serve

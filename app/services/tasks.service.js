@@ -41,7 +41,8 @@ angular.module('app')
 					startTime: task.startTime,
 					description: task.description,
 					user: taskCreator._id,
-					guests: task.guestList })
+					guests:	task.guestList
+				})
 				
 			}).then(function(res){
 				return res;

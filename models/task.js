@@ -2,22 +2,13 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var TaskSchema = new Schema({
-	title : {
-		type: String
-	},
-	startDate : { 
-		type: String
-	},
-	startTime : {
-		type: String
-	},
+	title : String,
+	startDate :	String,
+	startTime : String,
 	description : String,
-	user : {
-		type: String
-	},
-	guests : [{
-		type: String
-	}]
+	user :  String,
+	guests : [{}]
+    
 },
 {
 	versionKey: false
