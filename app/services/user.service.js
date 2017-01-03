@@ -27,10 +27,11 @@ angular.module('app')
         return response.err;
       });
     }
-    this.getUsersID = function(login){
+    this.getUsersID = function(loginObj){
       return $http({
         method: "GET",
-        url: "/api/users?login="+login,
+        url: "/api/users",
+        params: loginObj,
         headers: {'Content-Type': 'application/json'}
       }).then(function(response){
         return response.data;

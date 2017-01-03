@@ -34,19 +34,22 @@
 					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);
 					
 					var people = $scope.guestsList.replace(/ /g,'').split(',');
-					$scope.validIDs = [];
-
-					for(var i=0; i<people.length; i++){
-						UserService.getUserID(people[i]).then(function(user){
-							$scope.validIDs.push(user[0]._id.toString());
-							
-							console.log($scope.validIDs);
-
-						});
+					
+					var loginObj = {
+						login : []
 					}
 
+					for(var i=0; i<people.length; i++){
+						loginObj.login.push(people[i]);
+					}
 
+					$scope.userID = null;
 
+					UserService.getUsersID(loginObj).success(function(data) {
+					  $scope.userID = data;
+					})
+
+					console.log($scope.userID);
 		
 					var Task = {
 						name: $scope.taskName,
