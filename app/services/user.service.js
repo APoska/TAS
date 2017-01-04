@@ -4,6 +4,17 @@ angular.module('app')
 	.service('UserService', 
 		function($q, $http, AuthService){
 
+    this.getUsersID = function(loginObj){
+       return $http({
+          method: "GET",
+          url: "/api/users",
+          params: loginObj,
+          headers: {'Content-Type' : 'application/json'}
+        }).then(function(response){
+          return response.data;
+        })                
+    } 
+
 		this.getUserDetails = function(authToken){
 			return $http({
 				method: "GET",
@@ -26,20 +37,7 @@ angular.module('app')
       }, function(response){
         return response.err;
       });
-    }
-    this.getUsersID = function(loginObj){
-      return $http({
-        method: "GET",
-        url: "/api/users",
-        params: loginObj,
-        headers: {'Content-Type': 'application/json'}
-      }).then(function(response){
-        return response.data;
-      }, function(response){
-        return response.err;
-      });
-    }
-
+    }    
 		this.login = function(user) {
       		// send a post request to the serve
       		return $http.post('/api/auth', user)

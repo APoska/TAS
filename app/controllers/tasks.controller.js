@@ -1,7 +1,7 @@
 (function(){
   angular.module('app')
   .controller('TasksCtrl',
-    function($scope, $timeout, TasksService, UserService){
+    function($scope, $q, $timeout, TasksService, UserService){
     var authToken = window.localStorage.getItem("yourTokenKey");
 	var taskToAdd;
 
@@ -28,43 +28,49 @@
 					$scope.description = null;
 					$scope.guestsList = null;
 				}
+
 				$scope.saveTask = function(){
 					
 					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
-					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);
-					
+					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);		
 					var people = $scope.guestsList.replace(/ /g,'').split(',');
-					
-					var loginObj = {
-						login : []
-					}
-
+					var loginObj = {login : []}
 					for(var i=0; i<people.length; i++){
 						loginObj.login.push(people[i]);
 					}
 
-					$scope.userID = null;
-
-					UserService.getUsersID(loginObj).success(function(data) {
-					  $scope.userID = data;
-					})
-
-					console.log($scope.userID);
-		
 					var Task = {
 						name: $scope.taskName,
 						startDate: date,
 						startTime: time,
 						description: $scope.description,
-						guestList:  $scope.guestsList,
+						guestList: {}
 					}
 
+					var promise = UserService.getUsersID(loginObj)		
 
-					// TasksService.addTask(Task, user);
-					
-					// TasksService.getTaskDetails(user).then(function(tasks){
-					// 	$scope.Tasks = tasks;
-					// });
+
+					promise.then(function(res){
+						var personObj = [];
+
+						for(var i=0; i<res.length; i++){
+							personObj.push({
+								id : res[i]._id,
+								login : res[i].login, 
+								flag: "pending"
+							});
+						}
+
+						Task.guestList = personObj
+
+						TasksService.addTask(Task, user);
+
+						TasksService.getTaskDetails(user).then(function(tasks){
+							$scope.Tasks = tasks;
+						});
+
+					})
+
 				
 				}
 				$scope.saveEditedTask = function(){
@@ -100,8 +106,6 @@
 
 						newTime.setHours(hours);
 						newTime.setMinutes(minutes);
-
-						console.log(newTime);
 
 						$scope.taskName = task.title;
 						$scope.date = newDate;
