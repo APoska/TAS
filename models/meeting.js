@@ -20,9 +20,7 @@ var MeetingSchema = new Schema({
 	user : {
 		type: String
 	},
-	guests : [{
-		type: String
-	}],
+	guests : [{}],
 
 },
 {

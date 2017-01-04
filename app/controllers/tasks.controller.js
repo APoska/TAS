@@ -12,13 +12,6 @@
 					$scope.Guests = tasks[0].guests;
 				});
 
-				UserService.getUsers().then(function(users){
-					$scope.Users = users;
-					for(var i = 0; i < $scope.Users.length; i++){
-						$scope.Users[i].ticked = false;
-					}
-				});
-
 				// Add task
 				$scope.clearInputFromAddTask = function() {
 					$scope.taskName = null;

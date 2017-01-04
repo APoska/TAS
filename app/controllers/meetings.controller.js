@@ -8,16 +8,8 @@ angular.module('app')
 			UserService.getUserDetails(authToken).then(function(user) {
 				MeetingsService.getMeetingDetails(user).then(function(meetings){
 					$scope.Meetings = meetings;
+					$scope.Guests = meetings[0].guests;
 				});
-				
-				UserService.getUsers().then(function(users){
-					$scope.Users = users;
-					for(var i = 0; i < $scope.Users.length; i++){
-						$scope.Users[i].ticked = false;
-					}
-				});
-
-				$scope.guestsList = [];
 
 				$scope.clearInputMeeting = function() {
 					$scope.meetingTitle = null;
@@ -31,20 +23,45 @@ angular.module('app')
 				$scope.saveMeeting = function(){
 					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
 					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);
+					var people = $scope.guestsList.replace(/ /g,'').split(',');
+					var loginObj = {login : []};
 
+					for(var i=0; i<people.length; i++){
+						loginObj.login.push(people[i]);
+					}
+					
 					var Meeting = {
 						title: $scope.meetingTitle,
 						startDate: date,
 						startTime: time,
 						place: $scope.place,
 						description: $scope.description,
-						guestList: $scope.guestsList
+						guestList: {}
 					}
-					MeetingsService.addMeeting(Meeting, user);
-					
-					MeetingsService.getMeetingDetails(user).then(function(meetings){
-						$scope.Meetings = meetings;
-					});
+
+					var promise = UserService.getUsersID(loginObj)		
+
+					promise.then(function(res){
+						var personObj = [];
+
+						for(var i=0; i<res.length; i++){
+							if(res[i]._id != user._id)
+							personObj.push({
+								id : res[i]._id,
+								login : res[i].login, 
+								flag: "pending"
+							});
+						}
+
+						Meeting.guestList = personObj
+
+						MeetingsService.addMeeting(Meeting, user);
+				
+						MeetingsService.getMeetingDetails(user).then(function(meetings){
+							$scope.Meetings = meetings;
+							$scope.Guests = meetings[0].guests;
+						});
+					})
 				}
 
 				$scope.saveEditedMeeting = function(){
