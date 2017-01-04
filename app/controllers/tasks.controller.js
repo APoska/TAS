@@ -8,7 +8,8 @@
    	UserService.getUserDetails(authToken).then(function(user){				
 				// Get my tasks list
 				TasksService.getTaskDetails(user).then(function(tasks){
-						$scope.Tasks = tasks;
+					$scope.Tasks = tasks;
+					$scope.Guests = tasks[0].guests;
 				});
 
 				UserService.getUsers().then(function(users){
@@ -18,8 +19,6 @@
 					}
 				});
 
-				$scope.guestsList = [];
-				
 				// Add task
 				$scope.clearInputFromAddTask = function() {
 					$scope.taskName = null;
@@ -49,11 +48,11 @@
 
 					var promise = UserService.getUsersID(loginObj)		
 
-
 					promise.then(function(res){
 						var personObj = [];
 
 						for(var i=0; i<res.length; i++){
+							if(res[i]._id != user._id)
 							personObj.push({
 								id : res[i]._id,
 								login : res[i].login, 
@@ -67,6 +66,7 @@
 
 						TasksService.getTaskDetails(user).then(function(tasks){
 							$scope.Tasks = tasks;
+							$scope.Guests = tasks[0].guests;
 						});
 
 					})
