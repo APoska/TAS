@@ -29,28 +29,18 @@ angular.module('app')
     }
 
 		this.login = function(user) {
-      		// send a post request to the serve
-      		return $http.post('/api/auth', user)
-        	// handle success or error
-        	.then(function successCallback(response) {
-          		AuthService.storeUserCredentials(response.data.token);
-      		}, function errorCallback(response) {
-          		console.log(response.data.msg);
-      		});    
-    	};
+      	// send a post request to the serve
+      	return $http.post('/api/auth', user);
+    }
 		
 		this.register = function(user) {
-      		// send a post request to the server
-      		return $http.post('/api/users', user)
-        	.then(function successCallback(response) {
-          		console.log(response.data.msg);
-      		}, function errorCallback(response) {
-          		console.log(response.data.msg);
-      		}); 
-    	};
+      	// send a post request to the server
+      	return $http.post('/api/users', user);
+    }
 
-    	this.logout = function() {
-      		AuthService.destroyUserCredentials();
-    	};	
+    this.logout = function() {
+      	AuthService.destroyUserCredentials();
+    }
+
 	});
 })();
