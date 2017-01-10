@@ -20,6 +20,7 @@
                 <div class="singleMeeting__moreWrapper"  ng-show="showDetails">
                     <p><span class="font500">Start Date:</span> {{meet.startDate}} </p>
                     <p><span class="font500">Place:</span> {{meet.place}} </p>
+                    <p><span class="font500">Guests:</span><span ng-repeat="guest in Guests"> {{ guest.login }} ({{ guest.flag }}) </span></p>
                     <p><span class="font500">Description:</span></p>
                     <p class="desc">{{meet.description}}</p>
                 </div>
@@ -45,14 +46,7 @@
             </div>
             <div class="singleInput">
                 <label for="guestsList">Guests</label>
-                <div isteven-multi-select
-                    input-model="Users"
-                    output-model="guestsList"
-                    button-label="login"
-                    item-label="login"
-                    tick-property="ticked"
-                    output-properties="_id">
-                </div>
+                 <input ng-model="guestsList" id="guestsList" name="guestsList"/>
             </div>
             <div class="singleInput">
                 <label for="description">Description</label>

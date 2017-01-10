@@ -7,7 +7,7 @@ var User = require('../models/user');
 
 router.route('/users')
 	.get(function(req,res){
-		let queryObj = {};
+		var queryObj = {};
 		if (req.query.login){
 			queryObj.login = {"$in": req.query.login}
 		} 
