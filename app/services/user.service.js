@@ -7,7 +7,7 @@ angular.module('app')
 		this.getUserDetails = function(authToken){
 			return $http({
 				method: "GET",
-				url : "/api/checkauth",
+				url : "/api/check-user-authorization",
 				headers: {'Content-Type': 'application/x-www-form-urlencoded', 'Authorization' : authToken}  // set the headers so angular passing info as form data (not request payload)
 
 			}).then(function(response){
@@ -42,7 +42,7 @@ angular.module('app')
 
 		this.login = function(user) {
       		// send a post request to the serve
-      		return $http.post('/api/auth', user)
+      		return $http.post('/api/authorize-user', user)
         	// handle success or error
         	.then(function successCallback(response) {
           		AuthService.storeUserCredentials(response.data.token);

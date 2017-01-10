@@ -13,7 +13,7 @@ router.route('/tasks')
 			Task.find({$or:[{user : creator},{guests:creator}]}, function(err,tasks){
 				if(err){
 					res.status(400);
-					return res.send(err);
+					res.send(err);
 				}else{
 					res.status(200);
 					res.json(tasks);
@@ -23,15 +23,13 @@ router.route('/tasks')
 			Task.find(function(err,tasks){
 				if(err){
 					res.status(400);
-					return res.send(err);
+					res.send(err);
 				}else{
 					res.status(200);
 					res.json(tasks);
 				}
 			});
 		}
-		
-		
 	})
 	.post(function(req,res){
 		var task = new Task({
@@ -43,26 +41,23 @@ router.route('/tasks')
 			guests: req.body.guests
 		});
 
-		
 		task.save(function(err){
 			if(err){
 				res.status(400);
-				return res.send(err);
+				res.send(err);
 			} else{
 				res.status(201);
-				return res.json({success: true, msg: 'Task created'});				
+				res.location('http://localhost:8080/api/tasks');
+	            res.json(req.task);
 			}
-
 		});
-		
 	});
 
 router.route('/tasks/:task_id')
 	.get(function(req,res){
-		Task.findById(req.params.task_id,function(err,task){
+		Task.findById(req.params.task_id, function(err,task){
 			if(!task){
 				res.status(404);
-				res.json({success: false, msg: 'Task not found'});
 			}else{
 				if(err){
 					res.status(400);
@@ -79,15 +74,14 @@ router.route('/tasks/:task_id')
 		Task.findById({ _id : req.params.task_id }, function(err,task){
 			
 			if(!task){
-				res.status(409);
-				res.json({success: false, msg: 'Task not found'});
+				res.status(404);
 			}else{
-
 				task.remove(function(err) {
-				    if (err) return res.send(err);
-
-					res.status(200);
-					res.json({success: true, msg: 'Task succesfully deleted'});
+				    if (err) {
+				    	res.status(400);
+			    		res.send(err);
+				    }
+					res.status(204);
 				});
 			}
 		});
@@ -96,16 +90,14 @@ router.route('/tasks/:task_id')
 		Task.findById({ _id : req.params.task_id }, function(err,task){
 			if(!task){
 				res.status(404);
-				res.json({success: false, msg: 'Task not found'});
 			}else{
-
 				Task.update({ _id : req.params.task_id }, req.body, function(err){
 					if(err){
 						res.status(400);
-						return res.send(err);
+						res.send(err);
 					}else{
 						res.status(200);
-						res.json({success: true, msg: 'Task updated!'});
+						res.json(task);
 					}
 				
 				});

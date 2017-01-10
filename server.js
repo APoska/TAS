@@ -14,8 +14,8 @@ var Task = require('./models/task');
 var User = require('./models/user');
 
 // ROUTES
-var authRoute = require('./routes/auth.route.js');
-var checkauthRoute = require('./routes/checkauth.route.js');
+var authRoute = require('./routes/authorize-user.route.js');
+var checkauthRoute = require('./routes/check-user-authorization.route.js');
 var tasksRoute = require('./routes/tasks.route.js');
 var usersRoute = require('./routes/users.route.js');
 var meetingsRoute = require('./routes/meetings.route.js');
