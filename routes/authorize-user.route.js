@@ -11,11 +11,13 @@ router.route('/authorize-user')
 	  User.findOne({
 		login: req.body.login
 	  }, function(err, user) {
-		if (err) throw err;
-	 
+		if (err){
+			res.status(400);
+			return res.send(err);
+		}
 		if (!user) {
 			res.status(404);
-			res.send({success: false, msg: 'Authentication failed. User not found.'});
+			res.end();
 		} else {
 		  // check if password matches
 		  user.comparePassword(req.body.password, function (err, isMatch) {
@@ -23,10 +25,11 @@ router.route('/authorize-user')
 			  // if user is found and password is right create a token
 			  var token = jwt.encode(user, config.secret);
 			  // return the information including token as JSON
-			  res.json({success: true, token: 'JWT ' + token});
+			  res.status(200);
+			  return res.json({token: 'JWT ' + token});
 			} else {
-				res.status(404);
-				res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+				res.status(401);
+				res.end();
 			}
 		  });
 		}

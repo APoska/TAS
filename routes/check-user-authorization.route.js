@@ -16,17 +16,22 @@ router.route('/check-user-authorization')
     User.findOne({
       login: decoded.login
     }, function(err, user) {
-        if (err) throw err;
+        if (err) {
+          res.status(400);
+          return res.send(err);
+        }
  
         if (!user) {
-          return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
+          res.status(404);
+          res.end(); 
         } else {
           res.status(200);
-          res.json(user);
+          return res.json(user);
         }
     });
   } else {
-    return res.status(403).send({success: false, msg: 'No token provided.'});
+    res.status(403);
+    res.end();
   }
 });
  

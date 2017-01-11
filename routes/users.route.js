@@ -7,12 +7,12 @@ var User = require('../models/user');
 
 router.route('/users')
 	.get(function(req,res){
-		let queryObj = {};
+		var queryObj = {};
 		if (req.query.login){
 			queryObj.login = {"$in": req.query.login}
 		} 
 
-		User.find(queryObj, function(err,users){
+		User.find(queryObj, {password : 0}, function(err,users){
 			if(err)
 			{
 				res.status(400);
@@ -21,17 +21,17 @@ router.route('/users')
 			if(users.length < 1)
 			{
 				res.status(404);
-				res.json("User not found");	
+				res.end();
 			}
 
 			res.status(200);
 			return res.json(users);
-			
 		});
 	})
 	.post(function(req,res){
 		if (!req.body.login || !req.body.password) {
-		    res.json({success: false, msg: 'Please pass name and password.'});
+		    res.status(400);
+		 	res.end();
 		  } else {
 		    var newUser = new User({
   		      name: req.body.name,
@@ -43,9 +43,11 @@ router.route('/users')
 		    newUser.save(function(err) {
 		      if (err) {
 				res.status(409);
-		        return res.json({success: false, msg: 'Username already exists.'});
+		        return res.send(err);
 		      }
-		      res.json({success: true, msg: 'Successful created new user.'});
+		      res.status(201);
+		      res.location('http://localhost:8080/api/users/');
+		      return res.json({User:newUser});
 		    });
 		  }
 		});
@@ -53,17 +55,17 @@ router.route('/users')
 
 router.route('/users/:user_id')
 	.get(function(req,res){
-		User.findById({ _id : req.params.user_id },function(err,user){
+		User.findById({ _id : req.params.user_id }, {password : 0} ,function(err,user){
 			if(!user){
 				res.status(404);
-				res.json({success: false, msg: 'User not found'});
+				res.end();
 			}else{
 				if(err){
 					res.status(400);
-					res.send(err);
+					return res.send(err);
 				}else{
 					res.status(200);
-					res.json(user);				
+					return res.json(user);				
 				}
 			}
 		});
@@ -73,33 +75,34 @@ router.route('/users/:user_id')
 		User.findById({ _id : req.params.user_id }, function(err,user){
 			
 			if(!user){
-				res.status(409);
-				res.json({success: false, msg: 'User not found'});
+				res.status(404);
+				res.end();
 			}else{
-
 				user.remove(function(err) {
-				    if (err) return res.send(err);
-
-					res.status(200);
-					res.json({success: true, msg: 'User succesfully deleted'});
+				    if (err){
+				    	res.status(400);
+						return res.send(err);	
+				    } 
+					res.status(204);
+					res.end();
 				});
 			}
 		});
 	})
 	.patch(function(req,res){
-		User.findById({ _id : req.params.user_id }, function(err,user){
+		User.findById({ _id : req.params.user_id }, {password : 0}, function(err,user){
 			if(!user){
 				res.status(404);
-				res.json({success: false, msg: 'User not found'});
+				res.end();
 			}else{
-
 				User.update({ _id : req.params.user_id }, req.body, function(err){
 					if(err){
 						res.status(400);
 						return res.send(err);
 					}else{
 						res.status(200);
-						res.json({success: true, msg: 'User updated!'});
+						res.location('http://localhost:8080/users/')
+						return res.json(user);
 					}
 				
 				});

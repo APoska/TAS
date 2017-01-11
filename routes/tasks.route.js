@@ -16,7 +16,7 @@ router.route('/tasks')
 					return res.send(err);
 				}else{
 					res.status(200);
-					res.json(tasks);
+					return res.json(tasks);
 				}
 			});
 		}else{
@@ -26,7 +26,7 @@ router.route('/tasks')
 					return res.send(err);
 				}else{
 					res.status(200);
-					res.json(tasks);
+					return res.json(tasks);
 				}
 			});
 		}
@@ -50,7 +50,8 @@ router.route('/tasks')
 				return res.send(err);
 			} else{
 				res.status(201);
-				return res.json({success: true, msg: 'Task created'});				
+				res.location("http://localhost:8080/api/tasks");
+				return res.json({Task : task});
 			}
 
 		});
@@ -62,14 +63,14 @@ router.route('/tasks/:task_id')
 		Task.findById(req.params.task_id,function(err,task){
 			if(!task){
 				res.status(404);
-				res.json({success: false, msg: 'Task not found'});
+				res.end()
 			}else{
 				if(err){
 					res.status(400);
-					res.send(err);
+					return res.send(err);
 				}else{
 					res.status(200);
-					res.json(task);				
+					return res.json(task);				
 				}
 			}
 
@@ -79,15 +80,17 @@ router.route('/tasks/:task_id')
 		Task.findById({ _id : req.params.task_id }, function(err,task){
 			
 			if(!task){
-				res.status(409);
-				res.json({success: false, msg: 'Task not found'});
+				res.status(404);
+				res.end();
 			}else{
-
 				task.remove(function(err) {
-				    if (err) return res.send(err);
+				    if (err){
+				    	res.status(400);
+				    	return res.send(err);	
+				    } 
 
-					res.status(200);
-					res.json({success: true, msg: 'Task succesfully deleted'});
+					res.status(204);
+					res.end();
 				});
 			}
 		});
@@ -96,16 +99,16 @@ router.route('/tasks/:task_id')
 		Task.findById({ _id : req.params.task_id }, function(err,task){
 			if(!task){
 				res.status(404);
-				res.json({success: false, msg: 'Task not found'});
+				res.end();
 			}else{
-
 				Task.update({ _id : req.params.task_id }, req.body, function(err){
 					if(err){
 						res.status(400);
 						return res.send(err);
 					}else{
-						res.status(200);
-						res.json({success: true, msg: 'Task updated!'});
+						res.status(201);
+						res.location("http://localhost:8080/api/tasks");
+						return res.json(task);
 					}
 				
 				});

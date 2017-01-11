@@ -15,7 +15,7 @@ router.route('/meetings')
 					return res.send(err);
 				}else{
 					res.status(200);
-					res.json(meetings);
+					return res.json(meetings);
 				}
 			});
 		}else{
@@ -25,7 +25,7 @@ router.route('/meetings')
 					return res.send(err);
 				}else{
 					res.status(200);
-					res.json(meetings);
+					return res.json(meetings);
 				}
 			});
 		}
@@ -46,7 +46,7 @@ router.route('/meetings')
 				return res.send(err);
 			} else{
 				res.status(201);
-				return res.json({success: true, msg: 'Meeting created'});				
+				return res.json({Meeting : meeting});	
 			}
 		});
 	});
@@ -56,14 +56,14 @@ router.route('/meetings/:meeting_id')
 	Meeting.findById(req.params.meeting_id,function(err,meeting){
 		if(!meeting){
 			res.status(404);
-			res.json({success: false, msg: 'Meeting not found'});
+			res.end();
 		}else{
 			if(err){
 				res.status(400);
-				res.send(err);
+				return res.send(err);
 			}else{
 				res.status(200);
-				res.json(meeting);				
+				return res.json(meeting);				
 			}
 		}
 
@@ -73,15 +73,17 @@ router.route('/meetings/:meeting_id')
 	Meeting.findById({ _id : req.params.meeting_id }, function(err,meeting){
 		
 		if(!meeting){
-			res.status(409);
-			res.json({success: false, msg: 'Meeting not found'});
+			res.status(404);
+			res.end();
 		}else{
-
 			meeting.remove(function(err) {
-			    if (err) return res.send(err);
+			    if (err){
+			    	res.status(400);
+				    return res.send(err);
+			    } 
 
-				res.status(200);
-				res.json({success: true, msg: 'Meeting succesfully deleted'});
+				res.status(204);
+				res.end();
 			});
 		}
 	});
@@ -90,18 +92,17 @@ router.route('/meetings/:meeting_id')
 		Meeting.findById({ _id : req.params.meeting_id }, function(err,meeting){
 			if(!meeting){
 				res.status(404);
-				res.json({success: false, msg: 'Meeting not found'});
+				res.end();
 			}else{
-
 				Meeting.update({ _id : req.params.meeting_id }, req.body, function(err){
 					if(err){
 						res.status(400);
 						return res.send(err);
 					}else{
-						res.status(200);
-						res.json({success: true, msg: 'Meeting updated!'});
+						res.status(201);
+						res.location("http://localhost:8080/api/meetings");
+						return res.json(meeting);
 					}
-				
 				});
 			}
 		});
