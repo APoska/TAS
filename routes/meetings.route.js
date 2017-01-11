@@ -46,6 +46,7 @@ router.route('/meetings')
 				return res.send(err);
 			} else{
 				res.status(201);
+				res.location("http://localhost:8080/api/meetings/"+meeting._id);
 				return res.json({Meeting : meeting});	
 			}
 		});
@@ -100,7 +101,7 @@ router.route('/meetings/:meeting_id')
 						return res.send(err);
 					}else{
 						res.status(201);
-						res.location("http://localhost:8080/api/meetings");
+						res.location("http://localhost:8080/api/meetings/"+meeting._id);
 						return res.json(meeting);
 					}
 				});

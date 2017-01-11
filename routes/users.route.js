@@ -46,7 +46,7 @@ router.route('/users')
 		        return res.send(err);
 		      }
 		      res.status(201);
-		      res.location('http://localhost:8080/api/users/');
+		      res.location('http://localhost:8080/api/users/'+newUser._id);
 		      return res.json({User:newUser});
 		    });
 		  }
@@ -101,7 +101,7 @@ router.route('/users/:user_id')
 						return res.send(err);
 					}else{
 						res.status(200);
-						res.location('http://localhost:8080/users/')
+						res.location('http://localhost:8080/users/' + user._id)
 						return res.json(user);
 					}
 				

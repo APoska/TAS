@@ -50,7 +50,7 @@ router.route('/tasks')
 				return res.send(err);
 			} else{
 				res.status(201);
-				res.location("http://localhost:8080/api/tasks");
+				res.location("http://localhost:8080/api/tasks/"+task._id);
 				return res.json({Task : task});
 			}
 
@@ -107,7 +107,7 @@ router.route('/tasks/:task_id')
 						return res.send(err);
 					}else{
 						res.status(201);
-						res.location("http://localhost:8080/api/tasks");
+						res.location("http://localhost:8080/api/tasks/"+task._id);
 						return res.json(task);
 					}
 				
