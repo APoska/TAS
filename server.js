@@ -23,6 +23,10 @@ var meetingsRoute = require('./routes/meetings.route.js');
 //BODY PARSER
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  res.status(500);
+})
 
 //MONGO CONNECT
 mongoose.Promise = global.Promise; 
