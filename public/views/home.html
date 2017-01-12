@@ -43,7 +43,7 @@
  							{{date.day | date:'d'}}
 
  						</div>
- 						<div class="monthCalendarDay" ng-class="{today: date.today}" ng-repeat="date in days" ng-click="tasks()">
+ 						<div class="monthCalendarDay" ng-class="date.today==true ? 'today' : ''" ng-class="{today: date.today}" ng-repeat="date in days" ng-click="tasks()">
  							{{ date.day | date:'d'}}
  							<br>
  						</div>

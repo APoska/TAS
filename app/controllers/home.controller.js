@@ -15,7 +15,7 @@ angular.module('app')
 	};
 
 	var date = new Date();
-	var yy = date.getFullYear(); var mm = date.getMonth(); var dd = date.getDate();
+	var yy = date.getFullYear(); var mm = date.getMonth(); var dd = date.getDate(); var currentMonth = mm; var currentYear = yy;
 
 	var months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec", "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
 
@@ -38,7 +38,14 @@ angular.module('app')
 		}
 		for(i=1; i<=daycount; i++){
 			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth(), i);	days.push({day: foo});
+			if(i==dd && mm == currentMonth && yy == currentYear){
+				days[days.length-1].today = true;
+			}
+			else{
+				days[days.length-1].today = false;
+			}
 		}
+		console.log(days);
 		$scope.prevMonthDays = prevMonthDays;
 		$scope.days=days;
 	};
