@@ -9,7 +9,6 @@
 				// Get my tasks list
 				TasksService.getTaskDetails(user).then(function(tasks){
 					$scope.Tasks = tasks;
-					$scope.Guests = tasks[0].guests;
 				});
 
 				// Add task
@@ -27,7 +26,7 @@
 					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);		
 					var people = $scope.guestsList.replace(/ /g,'').split(',');
 					var loginObj = {login : []}
-					for(var i=0; i<people.length; i++){
+					for(var i=0; i < people.length; i++){
 						loginObj.login.push(people[i]);
 					}
 
@@ -59,7 +58,6 @@
 
 						TasksService.getTaskDetails(user).then(function(tasks){
 							$scope.Tasks = tasks;
-							$scope.Guests = tasks[0].guests;
 						});
 
 					})

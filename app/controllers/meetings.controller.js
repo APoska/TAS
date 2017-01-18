@@ -8,7 +8,6 @@ angular.module('app')
 			UserService.getUserDetails(authToken).then(function(user) {
 				MeetingsService.getMeetingDetails(user).then(function(meetings){
 					$scope.Meetings = meetings;
-					$scope.Guests = meetings[0].guests;
 				});
 
 				$scope.clearInputMeeting = function() {
@@ -59,7 +58,6 @@ angular.module('app')
 				
 						MeetingsService.getMeetingDetails(user).then(function(meetings){
 							$scope.Meetings = meetings;
-							$scope.Guests = meetings[0].guests;
 						});
 					})
 				}

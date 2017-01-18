@@ -11,11 +11,10 @@
                         <span  class="taskTitle font500">{{$index+1}}.{{task.title}}</span> <span class="taskID font400">ID: {{task._id}}</span><span class="taskControls" ng-show="controls"><span class="singleTaskControl edit" data="{{task._id}}" ng-click="editTask($event);"></span><span class="singleTaskControl delete" data="{{task._id}}" ng-click="removeThis($event)"></span></span>
                     </div>
                 </div>
-         
                 <div class="singleTask__moreWrapper"  ng-show="showDetails">
                     <p><span class="font500">Start Date:</span> {{task.startDate}} </p>
                     <p><span class="font500">Start Time:</span> {{task.startTime}} </p>
-                    <p><span class="font500">Guests:</span><span ng-repeat="guest in Guests"> {{ guest.login }} ({{ guest.flag }}) </span></p>
+                    <p><span class="font500">Guests:</span><span ng-repeat="guest in task.guests"> {{guest.login}} ({{guest.flag}}) </span></p>
 
                     <p><span class="font500">Description:</span></p>
                     <p class="desc">{{task.description}}</p>
