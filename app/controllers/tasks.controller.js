@@ -1,14 +1,32 @@
 (function(){
   angular.module('app')
   .controller('TasksCtrl',
-    function($scope, $timeout, TasksService, UserService){
+    function($scope, $state, $stateParams, $timeout, TasksService, UserService){
     var authToken = window.localStorage.getItem("yourTokenKey");
 	var taskToAdd;
-
+	var tasksDate = $state.params.date;
+	var date=null;
+	if(tasksDate != null || tasksDate != undefined){
+		var dd = tasksDate.getDate(); var mm = tasksDate.getMonth()+1; var yy = tasksDate.getFullYear();
+		if(mm < 10) {mm = '0' + mm;}
+		if(dd < 10) {dd = '0' + dd;}
+		var date = yy + '-' + mm + '-' + dd;
+	}
+	var dailyTasks = [];
    	UserService.getUserDetails(authToken).then(function(user){				
 				// Get my tasks list
 				TasksService.getTaskDetails(user).then(function(tasks){
-						$scope.Tasks = tasks;
+							if(date==null){
+								$scope.Tasks = tasks;
+							}
+							else if(date!=null){
+								for(var i in tasks){
+									if(tasks[i].startDate == date){
+										dailyTasks.push(tasks[i]);
+									}
+								}
+								$scope.Tasks = dailyTasks;
+							}
 				});
 
 				UserService.getUsers().then(function(users){
@@ -17,6 +35,8 @@
 						$scope.Users[i].ticked = false;
 					}
 				});
+
+				
 
 				$scope.guestsList = [];
 				

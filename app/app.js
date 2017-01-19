@@ -19,6 +19,9 @@ angular.module('app', ['ui.router', 'isteven-multi-select'])
     .state('tasks', {
       url: "/tasks",
       templateUrl: "public/views/tasks.html",
+      params: {
+			  date: null
+		  },
       controller: 'TasksCtrl',
     })
     .state('meetings', {

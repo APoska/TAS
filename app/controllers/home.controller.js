@@ -1,13 +1,15 @@
 angular.module('app')
 .controller('HomeCtrl', function($scope, UserService, TasksService, MeetingsService, $state) {
 
+	
+
 	$scope.logout = function() {
 		UserService.logout();
 		$state.go('login');
 	};
 
-	$scope.tasks = function() {
-		$state.go('tasks');
+	$scope.tasks = function(calDate) {
+		$state.go('tasks', {date: calDate});
 	};
 
 	$scope.meetings = function() {
@@ -51,11 +53,11 @@ angular.module('app')
 		if(daynumb===0)
 			daynumb=7;
 		//array of days from other month to hide
-		for(i=1; i<daynumb; i++){
+		for(var i=1; i<daynumb; i++){
 			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth()-1, 8); prevMonthDays.push({day: foo});
 		}
 		//array of days from actual month
-		for(i=1; i<=daycount; i++){
+		for(var i=1; i<=daycount; i++){
 			var foo = new Date(firstDay.getFullYear(), firstDay.getMonth(), i);	days.push({day: foo});
 			var y=firstDay.getFullYear(); var m = firstDay.getMonth()+1;
 			if(m<10){
@@ -68,12 +70,12 @@ angular.module('app')
 			}
 			var actualDate = y + '-' + m + '-' + i;
 			//counting tasks in actual day
-			for(j=0; j<allTasks.length; j++){
+			for(var j=0; j<allTasks.length; j++){
 				if(allTasks[j].startDate == actualDate){
 					taskCount++;
 				}
 			}
-			for(j=0; j<allMeetings.length; j++){
+			for(var j=0; j<allMeetings.length; j++){
 				if(allMeetings[j].startDate == actualDate){
 					meetCount++;
 				}
