@@ -3,14 +3,14 @@
 		<div class="singleMenuGroup">
 			<span class="menuTitle">Tasks</span>
 			<ul class="menuList">
-				<li>Add new task</li>
+				<li ng-click="showModalTask = true; addButtonTask = true">Add new task</li>
 				<li ng-click="tasks()">Tasks list</li>
 			</ul>
 		</div>
 		<div class="singleMenuGroup">
 			<span class="menuTitle">Meetings</span>
 			<ul class="menuList">
-				<li>Add new meeting</li>
+				<li ng-click="showModalMeeting = true; addButtonMeeting = true">Add new meeting</li>
 				<li ng-click="meetings()">Meetings list</li>
 			</ul>
 		</div>
@@ -51,4 +51,67 @@
  				</div>
  			</div>
 	</div>	
-</section>	
+</section>
+<div ng-controller="TasksCtrl" class="modalBox" ng-model="modalBox" ng-show="showModalTask">
+    <div class="modalWrapper">
+        <div class="modalInner">
+            <div class="singleInput">
+                <label for="taskName">Task name</label>
+                <input id="taskName" ng-model="taskName" name="taskName"/>
+            </div>
+            <div class="singleInput">
+                <label for="startDate">Start date</label>
+                <input type="date" ng-model="date" id="date" name="date"/>
+            </div>
+            <div class="singleInput">
+                <label for="startDate">Start time</label>
+                <input type="time" ng-model="time" id="time" name="time"/>
+            </div>
+            <div class="singleInput">
+                <label for="guestsList">Guests</label>
+                <input ng-model="guestsList" id="guestsList" name="guestsList"/>
+
+            </div>
+            <div class="singleInput">
+                <label for="description">Description</label>
+                <textarea id="description" ng-model="description" name="description"></textarea>
+            </div>
+            <div class="singleInput">
+                <button ng-show="addButtonTask" ng-click=" saveTask(); showModalTask=false; addButtonTask = false; clearInputFromAddTask();">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-controller="MeetingCtrl" class="modalBox" ng-model="modalBox" ng-show="showModalMeeting">
+    <div class="modalWrapper">
+        <div class="modalInner">
+            <div class="singleInput">
+                <label for="meetingTitle">Meeting name</label>
+                <input id="meetingTitle" ng-model="meetingTitle" name="meetingTitle"/>
+            </div>
+            <div class="singleInput">
+                <label for="startDate">Start date</label>
+                <input type="date" ng-model="date" id="date" name="date"/>
+            </div>
+            <div class="singleInput">
+                <label for="startTime">Start date</label>
+                <input type="time" ng-model="time" id="time" name="time"/>
+            </div>
+            <div class="singleInput">
+                <label for="guestsList">Guests</label>
+                 <input ng-model="guestsList" id="guestsList" name="guestsList"/>
+            </div>
+            <div class="singleInput">
+                <label for="description">Description</label>
+                <textarea id="description" ng-model="description" name="description"></textarea>
+            </div>
+            <div class="singleInput">
+                <label for="place">Place</label>
+                <input id="place" ng-model="place" name="place"></input>
+            </div>
+            <div class="singleInput">
+                <button ng-show="addButtonMeeting" ng-click=" saveMeeting(); showModalMeeting=false; addButtonMeeting = false; clearInputMeeting();">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
