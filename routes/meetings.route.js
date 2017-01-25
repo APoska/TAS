@@ -9,8 +9,7 @@ router.route('/meetings')
 		var creator = req.query.user;
 		
 		if(typeof creator != "undefined"){
-			Meeting.find({user : creator}, function(err,meetings){
-				if(err){
+			Meeting.find({$or:[{user : creator},{$and:[{'guests.id':{$in:[creator]}},{'guests.flag':{$in:['pending','accepted']}}]}]}, function(err,meetings){				if(err){
 					res.status(400);
 					return res.send(err);
 				}else{
