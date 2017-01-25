@@ -1,7 +1,7 @@
 $black: #212121;
 $gray: #7D8193;
 $darkred: #8e352e;
-$yellow: #FFE570;
+$highlight: #A9A9A9;
 $coffe: #C0AB96;
 $white: #f1f1f1;
 
@@ -67,7 +67,6 @@ html, body {
 
   button{
     display: block;
-    width: 30px;
     height: 20px;
     background-color: $white;
     border: 1px solid $black;
@@ -297,6 +296,10 @@ html, body {
       border-left: 1px solid #bcf;
       border-top: 1px solid #bcf;
       text-align: right;
+    }
+
+    .today{
+      background-color: $highlight;
     }
 
     @media screen and (max-width: 768px) {

@@ -1,13 +1,13 @@
 (function(){
   angular.module('app')
   .controller('TasksCtrl',
-
-
-
+<<<<<<< HEAD
+    function($scope, $q, $timeout, TasksService, UserService){
+=======
     function($scope, $state, $stateParams, $timeout, TasksService, UserService){
-
+>>>>>>> 697bc92408578b678ceecd8242e4ffacf39bb934
     var authToken = window.localStorage.getItem("yourTokenKey");
-
+	var taskToAdd;
 	var tasksDate = $state.params.date;
 	var date=null;
 	if(tasksDate != null || tasksDate != undefined){
@@ -20,11 +20,11 @@
    	UserService.getUserDetails(authToken).then(function(user){				
 				// Get my tasks list
 				TasksService.getTaskDetails(user).then(function(tasks){
-
+<<<<<<< HEAD
 					$scope.Tasks = tasks;
 				});
 
-
+=======
 							if(date==null){
 								$scope.Tasks = tasks;
 							}
@@ -38,18 +38,18 @@
 							}
 				});
 
-
-
-
-
-
-
-
-				
-
+				UserService.getUsers().then(function(users){
+					$scope.Users = users;
+					for(var i = 0; i < $scope.Users.length; i++){
+						$scope.Users[i].ticked = false;
+					}
+				});
 
 				
 
+				$scope.guestsList = [];
+				
+>>>>>>> 697bc92408578b678ceecd8242e4ffacf39bb934
 				// Add task
 				$scope.clearInputFromAddTask = function() {
 					$scope.taskName = null;
