@@ -14,6 +14,12 @@
 				<li ng-click="meetings()">Meetings list</li>
 			</ul>
 		</div>
+        <div class="singleMenuGroup">
+            <span class="menuTitle">Meetings and Tasks</span>
+            <ul class="menuList">
+                <li ng-click="publicMeetTask()">Public Meets and Tasks</li>
+            </ul>
+        </div>
 		<div class="singleMenuGroup">
 			<span class="menuTitle">Account</span>
 			<ul class="menuList">
@@ -73,7 +79,10 @@
             <div class="singleInput">
                 <label for="guestsList">Guests</label>
                 <input ng-model="guestsList" id="guestsList" name="guestsList"/>
-
+            </div>
+            <div class="singleInput">
+                <select ng-model="statusFlag" ng-options="status as status.label for status in taskStatus">
+                </select>
             </div>
             <div class="singleInput">
                 <label for="description">Description</label>

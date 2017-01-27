@@ -1,13 +1,8 @@
 (function(){
   angular.module('app')
   .controller('TasksCtrl',
-
-
-
     function($scope, $state, $stateParams, $timeout, TasksService, UserService){
-
     var authToken = window.localStorage.getItem("yourTokenKey");
-
 	var tasksDate = $state.params.date;
 	var date=null;
 	if(tasksDate != null || tasksDate != undefined){
@@ -20,35 +15,25 @@
    	UserService.getUserDetails(authToken).then(function(user){				
 				// Get my tasks list
 				TasksService.getTaskDetails(user).then(function(tasks){
-
-					$scope.Tasks = tasks;
+					if(date==null){
+						$scope.Tasks = tasks;
+					}
+					else if(date!=null){
+						for(var i in tasks){
+							if(tasks[i].startDate == date){
+								dailyTasks.push(tasks[i]);
+							}
+						}
+						$scope.Tasks = dailyTasks;
+					}
 				});
 
+				$scope.taskStatus = [
+    				{ label: 'public'},
+    				{ label: 'private'}
+  				];
 
-							if(date==null){
-								$scope.Tasks = tasks;
-							}
-							else if(date!=null){
-								for(var i in tasks){
-									if(tasks[i].startDate == date){
-										dailyTasks.push(tasks[i]);
-									}
-								}
-								$scope.Tasks = dailyTasks;
-							}
-				});
-
-
-
-
-
-
-
-
-				
-
-
-				
+  				$scope.statusFlag = $scope.taskStatus[0];
 
 				// Add task
 				$scope.clearInputFromAddTask = function() {
@@ -56,6 +41,7 @@
 					$scope.date = null;
 					$scope.time = null;
 					$scope.description = null;
+					$scope.statusFlag = null;
 					$scope.guestsList = null;
 				}
 
@@ -74,9 +60,10 @@
 						startDate: date,
 						startTime: time,
 						description: $scope.description,
+						status: ($scope.statusFlag.label).toString(),
 						guestList: {}
 					}
-
+					
 					var promise = UserService.getUsersID(loginObj)		
 
 					promise.then(function(res){
@@ -112,6 +99,7 @@
 						startDate: date,
 						startTime: time,
 						description: $scope.description,
+						status: $scope.statusFlag.label,
 						guestList: $scope.guestsList
 					}
 					TasksService.editTask($scope.taskID, Task);
@@ -141,6 +129,7 @@
 						$scope.date = newDate;
 						$scope.time = newTime;
 						$scope.description = task.description;
+						$scope.status = task.status;
 						$scope.guestList = task.guests;
 
 					});
@@ -157,22 +146,6 @@
 
 					$timeout(f, 500);
 				}
-
-
-
 		});	
-		
-
-		
-		
-      
-     
-
-
-
-
-
   });
-
-
 })();

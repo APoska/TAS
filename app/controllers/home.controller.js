@@ -1,8 +1,5 @@
 angular.module('app')
 .controller('HomeCtrl', function($scope, UserService, TasksService, MeetingsService, $state) {
-
-	
-
 	$scope.logout = function() {
 		UserService.logout();
 		$state.go('login');
@@ -11,6 +8,10 @@ angular.module('app')
 	$scope.tasks = function(calDate) {
 		$state.go('tasks', {date: calDate});
 	};
+
+	$scope.publicMeetTask = function() {
+		$state.go('publicMeetTask');
+	}
 
 	$scope.meetings = function() {
 		$state.go('meetings');

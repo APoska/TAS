@@ -6,6 +6,7 @@ var TaskSchema = new Schema({
 	startDate :	String,
 	startTime : String,
 	description : String,
+	status : String,
 	user :  String,
 	guests : [{}]
     
