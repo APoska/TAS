@@ -2,12 +2,32 @@
 
 angular.module('app')
 	.controller('MeetingCtrl', 
-		function($scope, $timeout, MeetingsService, UserService){
+		function($scope, $state, $stateParams, $timeout, MeetingsService, UserService){
 			var authToken = window.localStorage.getItem("yourTokenKey");
-
+			var tasksDate = $state.params.date;
+			var date=null;
+			if(tasksDate != null || tasksDate != undefined){
+				var dd = tasksDate.getDate(); var mm = tasksDate.getMonth()+1; var yy = tasksDate.getFullYear();
+				if(mm < 10) {mm = '0' + mm;}
+				if(dd < 10) {dd = '0' + dd;}
+				var date = yy + '-' + mm + '-' + dd;
+			}
+			var dailyMeets = [];
 			UserService.getUserDetails(authToken).then(function(user) {
 				MeetingsService.getMeetingDetails(user).then(function(meetings){
-					$scope.Meetings = meetings;
+					if(date==null){
+						$scope.Meetings = meetings;
+						$scope.when = "All Meetings"
+					}
+					else if(date!=null){
+						for(var i in meetings){
+							if(meetings[i].startDate == date){
+								dailyMeets.push(meetings[i]);
+							}
+						}
+						$scope.when = "Meetings at " + date;
+						$scope.Meetings = dailyMeets;
+					}
 				});
 
 				$scope.clearInputMeeting = function() {

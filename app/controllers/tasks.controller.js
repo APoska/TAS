@@ -17,6 +17,7 @@
 				TasksService.getTaskDetails(user).then(function(tasks){
 					if(date==null){
 						$scope.Tasks = tasks;
+						$scope.when = "All tasks";
 					}
 					else if(date!=null){
 						for(var i in tasks){
@@ -25,6 +26,7 @@
 							}
 						}
 						$scope.Tasks = dailyTasks;
+						$scope.when = "Tasks at " + date;
 					}
 				});
 

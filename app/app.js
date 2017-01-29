@@ -27,6 +27,9 @@ angular.module('app', ['ui.router'])
     .state('meetings', {
       url: "/meetings",
       templateUrl: "public/views/meetings.html",
+      params: {
+			  date: null
+		  },
       controller: 'MeetingCtrl',
     })
     .state('publicMeetTask', {

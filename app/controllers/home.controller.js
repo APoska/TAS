@@ -13,8 +13,8 @@ angular.module('app')
 		$state.go('publicMeetTask');
 	}
 
-	$scope.meetings = function() {
-		$state.go('meetings');
+	$scope.meetings = function(calDate) {
+		$state.go('meetings', {date: calDate});
 	};
 
 	var authToken = window.localStorage.getItem("yourTokenKey");
@@ -93,7 +93,6 @@ angular.module('app')
 		}
 		$scope.prevMonthDays = prevMonthDays;
 		$scope.days=days;
-		console.log(days);
 	};
 	//next month
 	$scope.actualMonth = function() {
