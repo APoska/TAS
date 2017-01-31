@@ -30,6 +30,8 @@
 					}
 
 					$scope.Shared = tasksToAccept;
+					$scope.LoggedIn = user._id;
+
 
 					if(date==null){
 						$scope.Tasks = tasks;
@@ -53,6 +55,53 @@
 
   				$scope.statusFlag = $scope.taskStatus[0];
 
+  				$scope.makeAccepted = function(obj){
+					var taskID = obj.target.attributes.data.value
+					TasksService.getTask(taskID).then(function(task){
+						var guestsToEdit = [];
+						var Task = {};
+						for(var x=0; x<task.guests.length; x++){
+								guestsToEdit.push(task.guests[x]);
+						}
+
+						for(var z=0; z<guestsToEdit.length; z++){
+							if(guestsToEdit[z].id == user._id){
+								guestsToEdit[z].flag = "accepted";
+							}
+						}
+						
+						task.guests = guestsToEdit;
+
+						TasksService.editTask(taskID, task);
+
+
+  					});
+
+  				}
+  				$scope.makeRejected = function(obj){
+					var taskID = obj.target.attributes.data.value
+					TasksService.getTask(taskID).then(function(task){
+						var guestsToEdit = [];
+						var Task = {};
+						for(var x=0; x<task.guests.length; x++){
+								guestsToEdit.push(task.guests[x]);
+						}
+
+						for(var z=0; z<guestsToEdit.length; z++){
+							if(guestsToEdit[z].id == user._id){
+								guestsToEdit[z].flag = "rejected";
+							}
+						}
+						
+						task.guests = guestsToEdit;
+
+						TasksService.editTask(taskID, task);
+
+
+  					});
+
+  				}
+
 				// Add task
 				$scope.clearInputFromAddTask = function() {
 					$scope.taskName = null;
@@ -60,7 +109,7 @@
 					$scope.time = null;
 					$scope.description = null;
 					$scope.statusFlag = null;
-					$scope.guestsList = null;
+					$scope.guests = null;
 				}
 
 				$scope.saveTask = function(){
@@ -70,8 +119,8 @@
 					var people;
 					var loginObj = {login : []}
 					
-					if(typeof $scope.guestsList != "undefined"){
-						people = $scope.guestsList.replace(/ /g,'').split(',');
+					if(typeof $scope.guests != "undefined"){
+						people = $scope.guests.replace(/ /g,'').split(',');
 
 						for(var i=0; i < people.length; i++){
 							loginObj.login.push(people[i]);
@@ -127,7 +176,7 @@
 						startTime: time,
 						description: $scope.description,
 						status: $scope.statusFlag.label,
-						guestList: $scope.guestsList
+						guestList: $scope.guests
 					}
 					TasksService.editTask($scope.taskID, Task);
 					

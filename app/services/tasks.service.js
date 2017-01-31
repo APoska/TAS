@@ -72,7 +72,7 @@ angular.module('app')
 					startDate:  task.startDate,
 					startTime: task.startTime,
 					description: task.description,
-					guests: task.guestList })
+					guests: task.guests })
 				
 			}).then(function(res){
 				return res;

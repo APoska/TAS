@@ -18,12 +18,12 @@
                     <span class="font500">Guests:</span>
                     <ul class="guestsList">
                         <li class="guest" ng-repeat="guest in task.guests"> 
-                            <span ng-if="guest.flag == 'pending' && guest.id == task.user" style="font-weight: 700">{{guest.login}} ({{guest.flag}}) 
-                                <span style="color: green;">Accept</span> | <span style="color: #bc0000">Decline</span>
+                            <span ng-if="guest.flag == 'pending' && guest.id == LoggedIn" style="font-weight: 700">{{guest.login}} ({{guest.flag}}) 
+                                <span style="color: green;" data="{{task._id}}" ng-click="makeAccepted($event)">Accept</span> | <span data="{{task._id}}" ng-click="makeRejected($event)" style="color: #bc0000">Decline</span>
                             </span>
                             <span ng-if="guest.flag == 'rejected'" style="text-decoration: line-through;">{{guest.login}} ({{guest.flag}}) </span>                          
                             
-                            <span ng-if="guest.flag == 'accepted' || (guest.flag == 'pending' && guest.id != task.user)">{{guest.login}} ({{guest.flag}})</span>
+                            <span ng-if="guest.flag == 'accepted' || (guest.flag == 'pending' && guest.id != LoggedIn)">{{guest.login}} ({{guest.flag}})</span>
                         </li>
                     </ul>
                     </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="singleInput">
                 <label for="guestsList">Guests</label>
-                <input ng-model="guestsList" id="guestsList" name="guestsList"/>
+                <input ng-model="guests" id="guestsList" name="guestsList"/>
             </div>
             <div class="singleInput">
                 <select ng-model="statusFlag" ng-options="status as status.label for status in taskStatus">
