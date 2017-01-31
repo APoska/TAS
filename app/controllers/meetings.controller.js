@@ -15,9 +15,17 @@ angular.module('app')
 					$scope.date = null;
 					$scope.time = null;
 					$scope.place = null;
+					$scope.status = null;
 					$scope.description = null;
 					$scope.guestsList = null;
 				}
+
+				$scope.meetingStatus = [
+    				{ label: 'public'},
+    				{ label: 'private'}
+  				];
+
+  				$scope.statusFlag = $scope.meetingStatus[0];
 
 				$scope.saveMeeting = function(){
 					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
@@ -34,6 +42,7 @@ angular.module('app')
 						startDate: date,
 						startTime: time,
 						place: $scope.place,
+						status: ($scope.statusFlag.label).toString(),
 						description: $scope.description,
 						guestList: {}
 					}
@@ -72,6 +81,7 @@ angular.module('app')
 						startTime: time,
 						place: $scope.place,
 						description: $scope.description,
+						status: $scope.statusFlag.label,
 						guestList: $scope.guestsList
 					}
 					MeetingsService.editMeeting($scope.meetID, Meeting);
@@ -102,6 +112,7 @@ angular.module('app')
 						$scope.time = newTime;
 						$scope.place = meeting.place;
 						$scope.description = meeting.description;
+						$scope.status = meeting.status;
 						$scope.guestList = meeting.guests;
 
 					});

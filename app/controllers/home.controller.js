@@ -93,7 +93,6 @@ angular.module('app')
 		}
 		$scope.prevMonthDays = prevMonthDays;
 		$scope.days=days;
-		console.log(days);
 	};
 	//next month
 	$scope.actualMonth = function() {

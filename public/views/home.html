@@ -26,7 +26,6 @@
 				<li ng-click="logout()">Logout</li>
 			</ul>
 		</div>
-
 	</div>
 	<div id="mainContainer" class="mainContentWrapper">
  			<div class="calendarWrapper">
@@ -41,14 +40,10 @@
  						<div class="monthWeekShort" ng-repeat="days in weekdays">
  							{{days.shortName}}
  						</div>
- 						
  					</div>
- 					
-
  					<div class="monthCalendarRow">
  						<div class="monthCalendarDay otherMonth" ng-repeat="date in prevMonthDays">
  							{{date.day | date:'d'}}
-
  						</div>
  						<div class="monthCalendarDay" ng-class="date.today==true ? 'today' : ''" ng-class="{today: date.today}" ng-repeat="date in days">
 							 {{ date.day | date:'d'}}</br>
@@ -64,6 +59,9 @@
 <div ng-controller="TasksCtrl" class="modalBox" ng-model="modalBox" ng-show="showModalTask">
     <div class="modalWrapper">
         <div class="modalInner">
+            <div class="singleInput">
+                <span class="close" ng-click="showModalTask = false; addButtonTask = false;">&times;</span>
+            </div>
             <div class="singleInput">
                 <label for="taskName">Task name</label>
                 <input id="taskName" ng-model="taskName" name="taskName"/>
@@ -98,6 +96,9 @@
     <div class="modalWrapper">
         <div class="modalInner">
             <div class="singleInput">
+                <span class="close" ng-click="showModalMeeting = false; addButtonMeeting = false;">&times;</span>
+            </div>
+            <div class="singleInput">
                 <label for="meetingTitle">Meeting name</label>
                 <input id="meetingTitle" ng-model="meetingTitle" name="meetingTitle"/>
             </div>
@@ -112,6 +113,10 @@
             <div class="singleInput">
                 <label for="guestsList">Guests</label>
                  <input ng-model="guestsList" id="guestsList" name="guestsList"/>
+            </div>
+            <div class="singleInput">
+                <select ng-model="statusFlag" ng-options="status as status.label for status in meetingStatus">
+                </select>
             </div>
             <div class="singleInput">
                 <label for="description">Description</label>

@@ -2,7 +2,20 @@
 
 angular.module('app')
 	.service('MeetingsService', 
-		function($q, $http){		
+		function($q, $http){
+			this.getAllMeetings = function() {
+				return $http({
+					method: "GET",
+					url : "/api/meetings/",
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}  // set the headers so angular passing info as form data (not request payload)
+
+				}).then(function(response){
+					return response.data;
+				}, function(response){
+					return response.err;
+				});
+			}
+
 			this.getMeetingDetails = function(user) {
 				return $http({
 					method: "GET",
@@ -39,6 +52,7 @@ angular.module('app')
 						startDate:  meeting.startDate,
 						startTime: meeting.startTime,
 						place: meeting.place,
+						status: meeting.status,
 						description: meeting.description,
 						user: meetCreator._id,
 						guests: meeting.guestList
