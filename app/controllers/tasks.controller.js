@@ -104,7 +104,11 @@
 							}
 
 							Task.guestList = personObj;
+						}else{
+							Task.guestList = [];	
 						}
+
+						
 						TasksService.addTask(Task, user);
 
 						TasksService.getTaskDetails(user).then(function(tasks){
