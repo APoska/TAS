@@ -1,8 +1,5 @@
 angular.module('app')
 .controller('HomeCtrl', function($scope, UserService, TasksService, MeetingsService, $state) {
-
-	
-
 	$scope.logout = function() {
 		UserService.logout();
 		$state.go('login');
@@ -12,8 +9,12 @@ angular.module('app')
 		$state.go('tasks', {date: calDate});
 	};
 
-	$scope.meetings = function() {
-		$state.go('meetings');
+	$scope.publicMeetTask = function() {
+		$state.go('publicMeetTask');
+	}
+
+	$scope.meetings = function(calDate) {
+		$state.go('meetings', {date: calDate});
 	};
 
 	var authToken = window.localStorage.getItem("yourTokenKey");
@@ -92,7 +93,6 @@ angular.module('app')
 		}
 		$scope.prevMonthDays = prevMonthDays;
 		$scope.days=days;
-		console.log(days);
 	};
 	//next month
 	$scope.actualMonth = function() {

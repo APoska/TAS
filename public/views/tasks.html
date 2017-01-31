@@ -1,5 +1,5 @@
 <div class="tasksWrapper">
-    <h1>List of Tasks</h1>
+    <h1>{{when}}</h1>
     <ul class="tasksControls">
         <li class="singleControl" ng-click="showModal = true; addButton = true">Add task</li>
     </ul>
@@ -35,7 +35,6 @@
         </li>
     </ul>
 </div>
-
 <div class="modalBox" ng-model="modalBox" ng-show="showModal">
     <div class="modalWrapper">
         <div class="modalInner">
@@ -54,7 +53,10 @@
             <div class="singleInput">
                 <label for="guestsList">Guests</label>
                 <input ng-model="guestsList" id="guestsList" name="guestsList"/>
-
+            </div>
+            <div class="singleInput">
+                <select ng-model="statusFlag" ng-options="status as status.label for status in taskStatus">
+                </select>
             </div>
             <div class="singleInput">
                 <label for="description">Description</label>

@@ -3,7 +3,18 @@
 angular.module('app')
 	.service('TasksService', 
 		function($q, $http){
+		this.getAllTasks = function() {
+			return $http({
+				method: "GET",
+				url : "/api/tasks/",
+				headers: {'Content-Type': 'application/x-www-form-urlencoded'}  // set the headers so angular passing info as form data (not request payload)
 
+			}).then(function(response){
+				return response.data;
+			}, function(response){
+				return response.err;
+			});
+		}
 		this.getTaskDetails = function(user){
 			return $http({
 				method: "GET",
@@ -40,6 +51,7 @@ angular.module('app')
 					startDate:  task.startDate,
 					startTime: task.startTime,
 					description: task.description,
+					status: task.status,
 					user: taskCreator._id,
 					guests:	task.guestList
 				})

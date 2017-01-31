@@ -39,8 +39,9 @@ router.route('/tasks')
 			startDate: req.body.startDate,
 			startTime: req.body.startTime,
 			description: req.body.description,
+			status: req.body.status,
 			user: req.body.user,
-			guests: req.body.guests
+			guests: req.body.guests,
 		});
 
 		
