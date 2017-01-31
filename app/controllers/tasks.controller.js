@@ -74,7 +74,7 @@
 
 						TasksService.editTask(taskID, task);
 
-
+						location.reload();
   					});
 
   				}
@@ -97,7 +97,7 @@
 
 						TasksService.editTask(taskID, task);
 
-
+						location.reload();
   					});
 
   				}
