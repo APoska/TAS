@@ -5,7 +5,8 @@
             <div class="singleTask">    
                 <div class="singleTask__header" ng-click="showDetails = ! showDetails" ng-mouseover="controls = true" ng-mouseleave="controls = false" >
                     <div class="singleTask__headerInner">
-                        <span  class="taskTitle font500">{{$index+1}}.{{task.title}}</span> <span class="taskID font400">ID: {{task._id}}</span>
+                        <span  class="taskTitle font500">{{$index+1}}.{{task.title}}</span>
+                        <span class="taskID font400">ID: {{task._id}}</span>
                     </div>
                 </div>
                 <div class="singleTask__moreWrapper"  ng-show="showDetails">
@@ -14,6 +15,29 @@
                     <p><span class="font500">Guests:</span><span ng-repeat="guest in task.guests"> {{guest.login}} ({{guest.flag}}) </span></p>
                     <p><span class="font500">Description:</span></p>
                     <p class="desc">{{task.description}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="meetingsWrapper">
+    <h1>Public Meetings</h1>
+    <ul class="meetingsTitleList">
+        <li ng-repeat="meet in allMeetings | filter : {status: 'public'}">
+            <div class="singleMeeting">    
+                <div class="singleMeeting__header" ng-click="showDetails = ! showDetails" ng-mouseover="controls = true" ng-mouseleave="controls = false" >
+                    <div  class="singleMeeting__headerInner">
+                        <span  class="meetingTitle font500">{{$index+1}}.{{meet.title}}</span> 
+                        <span class="meetingID font400">ID: {{meet._id}}</span>
+                    </div>
+                </div>
+                <div class="singleMeeting__moreWrapper"  ng-show="showDetails">
+                    <p><span class="font500">Start Date:</span> {{meet.startDate}} </p>
+                    <p><span class="font500">Start Time:</span> {{meet.startTime}} </p>
+                    <p><span class="font500">Place:</span> {{meet.place}} </p>
+                    <p><span class="font500">Guests:</span><span ng-repeat="guest in meet.guests"> {{ guest.login }} ({{ guest.flag }}) </span></p>
+                    <p><span class="font500">Description:</span></p>
+                    <p class="desc">{{meet.description}}</p>
                 </div>
             </div>
         </li>

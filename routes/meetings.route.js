@@ -35,6 +35,7 @@ router.route('/meetings')
 			startDate: req.body.startDate,
 			startTime: req.body.startTime,
 			place: req.body.place,
+			status: req.body.status,
 			description: req.body.description,
 			user: req.body.user,
 			guests: req.body.guests

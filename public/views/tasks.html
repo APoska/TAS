@@ -39,6 +39,9 @@
     <div class="modalWrapper">
         <div class="modalInner">
             <div class="singleInput">
+                <span class="close" ng-click="showModal=false; addButton = false;">&times;</span>
+            </div>
+            <div class="singleInput">
                 <label for="taskName">Task name</label>
                 <input id="taskName" ng-model="taskName" name="taskName"/>
             </div>

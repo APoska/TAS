@@ -14,6 +14,9 @@ var MeetingSchema = new Schema({
 	place : {
 		type : String
 	},
+	status : {
+		type: String
+	},
 	description : {
 		type : String
 	},

@@ -555,7 +555,7 @@ html, body {
     
     .singleInput{
       display: block;;
-      padding: 15px 0;
+      padding: 10px 0;
       margin: 0 auto;
       max-width: 400px;
       width: 100%;
@@ -573,6 +573,11 @@ html, body {
       textarea{
         width: 400px;
         height: 70px;
+      }
+      .close {
+        cursor: pointer;
+        height: 20px;
+        width: 20px;
       }
     }
   }
