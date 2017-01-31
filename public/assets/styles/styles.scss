@@ -365,13 +365,29 @@ html, body {
 .tasksTitleList, .meetingsTitleList{
   display: table;
   width: 100%;
+  ul.guestsList{
+    list-style: circle;
+    padding-left: 15px;
+    padding-top: 15px;
+  }
+  .guestsBase{
+    display: block;
+    margin: 15px 0;
+  }
   li{
     display: inline-block;
     width: 100%;
     border: 1px solid #000;
     color: #fff;
     margin: 5px 0;
-    
+    &.guest{
+      list-style: square;
+      color: inherit;
+      width: auto;
+      border: 0px;
+      padding: 5px 0;
+      display: block;
+    }
   }
 
   @media screen and (max-width: 768px){
@@ -562,3 +578,4 @@ html, body {
   }
   
 }
+

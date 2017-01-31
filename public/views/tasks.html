@@ -14,7 +14,19 @@
                 <div class="singleTask__moreWrapper"  ng-show="showDetails">
                     <p><span class="font500">Start Date:</span> {{task.startDate}} </p>
                     <p><span class="font500">Start Time:</span> {{task.startTime}} </p>
-                    <p><span class="font500">Guests:</span><span ng-repeat="guest in task.guests"> {{guest.login}} ({{guest.flag}}) </span></p>
+                    <div class="guestsBase">
+                    <span class="font500">Guests:</span>
+                    <ul class="guestsList">
+                        <li class="guest" ng-repeat="guest in task.guests"> 
+                            <span ng-if="guest.flag == 'pending' && guest.id == task.user" style="font-weight: 700">{{guest.login}} ({{guest.flag}}) 
+                                <span style="color: green;">Accept</span> | <span style="color: #bc0000">Decline</span>
+                            </span>
+                            <span ng-if="guest.flag == 'rejected'" style="text-decoration: line-through;">{{guest.login}} ({{guest.flag}}) </span>                          
+                            
+                            <span ng-if="guest.flag == 'accepted' || (guest.flag == 'pending' && guest.id != task.user)">{{guest.login}} ({{guest.flag}})</span>
+                        </li>
+                    </ul>
+                    </div>
 
                     <p><span class="font500">Description:</span></p>
                     <p class="desc">{{task.description}}</p>
