@@ -21,7 +21,7 @@ router.route('/users')
 			if(users.length < 1)
 			{
 				res.status(404);
-				res.end();
+					return res.send();
 			}
 
 			res.status(200);
