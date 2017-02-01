@@ -20,7 +20,17 @@
                 <div class="singleMeeting__moreWrapper"  ng-show="showDetails">
                     <p><span class="font500">Start Date:</span> {{meet.startDate}} </p>
                     <p><span class="font500">Place:</span> {{meet.place}} </p>
-                    <p><span class="font500">Guests:</span><span ng-repeat="guest in meet.guests"> {{ guest.login }} ({{ guest.flag }}) </span></p>
+                    <p><span class="font500">Guests:</span></p>
+					<ul class="guestsList">
+                        <li class="guest" ng-repeat="guest in meet.guests"> 
+                            <span ng-if="guest.flag == 'pending' && guest.id == LoggedIn" style="font-weight: 700">{{guest.login}} ({{guest.flag}}) 
+                                <span style="color: green;" data="{{meet._id}}" ng-click="makeAccepted($event)">Accept</span> | <span data="{{meet._id}}" ng-click="makeRejected($event)" style="color: #bc0000">Decline</span>
+                            </span>
+                            <span ng-if="guest.flag == 'rejected'" style="text-decoration: line-through;">{{guest.login}} ({{guest.flag}}) </span>                          
+                            
+                            <span ng-if="guest.flag == 'accepted' || (guest.flag == 'pending' && guest.id != LoggedIn)">{{guest.login}} ({{guest.flag}})</span>
+                        </li>
+                    </ul>
                     <p><span class="font500">Description:</span></p>
                     <p class="desc">{{meet.description}}</p>
                 </div>
@@ -47,8 +57,8 @@
                 <input type="time" ng-model="time" id="time" name="time"/>
             </div>
             <div class="singleInput">
-                <label for="guestsList">Guests</label>
-                 <input ng-model="guestsList" id="guestsList" name="guestsList"/>
+                <label for="guests">Guests</label>
+                 <input ng-model="guests" id="guestsList" name="guestsList"/>
             </div>
             <div class="singleInput">
                 <select ng-model="statusFlag" ng-options="status as status.label for status in meetingStatus">

@@ -117,7 +117,7 @@
 					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
 					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);		
 					var people;
-					var loginObj = {login : []}
+					var loginObj = {login : []};
 					
 					if(typeof $scope.guests != "undefined"){
 						people = $scope.guests.replace(/ /g,'').split(',');
@@ -138,7 +138,8 @@
 						guestList: {}
 					}
 					
-					var promise = UserService.getUsersID(loginObj)		
+										
+					var promise = UserService.getUsersID(loginObj);		
 
 					promise.then(function(res){
 						var personObj = [];

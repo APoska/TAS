@@ -47,6 +47,8 @@
  						</div>
  						<div class="monthCalendarDay" ng-class="date.today==true ? 'today' : ''" ng-class="{today: date.today}" ng-repeat="date in days">
 							 {{ date.day | date:'d'}}</br>
+							 <br/>
+							 <br/>
 							 <span ng-style="{ visibility: date.taskCount > 0 ? '' : 'hidden'}"  ng-click="tasks(date.day)">TASKI: {{date.taskCount}}</span></br>
 							 <span ng-style="{ visibility: date.meetCount > 0 ? '' : 'hidden'}"  ng-click="meetings(date.day)">MEET: {{date.meetCount}}</span></br>
  							<br>

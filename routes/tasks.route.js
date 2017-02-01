@@ -10,7 +10,7 @@ router.route('/tasks')
 		var creator = req.query.user;
 		
 		if(typeof creator != "undefined"){
-			Task.find({$or:[{user : creator},{$and:[{'guests.id':{$in:[creator]}},{'guests.flag':{$in:['pending','accepted']}}]},{status:"public"}]}, function(err,tasks){
+			Task.find({$or:[{user : creator},{$and:[{'guests.id':{$in:[creator]}},{'guests.flag':{$in:['pending','accepted']}}]}]}, function(err,tasks){
 				if(err){
 					res.status(400);
 					return res.send(err);

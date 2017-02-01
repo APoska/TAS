@@ -13,8 +13,22 @@ angular.module('app')
 				var date = yy + '-' + mm + '-' + dd;
 			}
 			var dailyMeets = [];
+			var meetingsToAccept = [];
+
 			UserService.getUserDetails(authToken).then(function(user) {
 				MeetingsService.getMeetingDetails(user).then(function(meetings){
+					
+					for(var x in meetings){
+						for(var p in meetings[x].guests){
+							if(meetings[x].guests[p].login == user.login && (meetings[x].guests[p].flag == "pending")){
+								meetingsToAccept.push(meetings[x]);
+							}
+						}
+					}
+
+					$scope.Shared = meetingsToAccept;
+					$scope.LoggedIn = user._id;
+					
 					if(date==null){
 						$scope.Meetings = meetings;
 						$scope.when = "All Meetings"
@@ -47,6 +61,53 @@ angular.module('app')
 
   				$scope.statusFlag = $scope.meetingStatus[0];
 
+				$scope.makeAccepted = function(obj){
+					var meetingID = obj.target.attributes.data.value
+					MeetingsService.getMeeting(meetingID).then(function(meeting){
+						var guestsToEdit = [];
+						var Meeting = {};
+						for(var x=0; x<meeting.guests.length; x++){
+								guestsToEdit.push(meeting.guests[x]);
+						}
+
+						for(var z=0; z<guestsToEdit.length; z++){
+							if(guestsToEdit[z].id == user._id){
+								guestsToEdit[z].flag = "accepted";
+							}
+						}
+						
+						meeting.guests = guestsToEdit;
+
+						MeetingsService.editMeeting(meetingID, meeting);
+
+						location.reload();
+  					});
+
+  				}
+  				$scope.makeRejected = function(obj){
+					var meetingID = obj.target.attributes.data.value
+					MeetingsService.getMeeting(meetingID).then(function(meeting){
+						var guestsToEdit = [];
+						var Meeting = {};
+						for(var x=0; x<meeting.guests.length; x++){
+								guestsToEdit.push(meeting.guests[x]);
+						}
+
+						for(var z=0; z<guestsToEdit.length; z++){
+							if(guestsToEdit[z].id == user._id){
+								guestsToEdit[z].flag = "rejected";
+							}
+						}
+						
+						meeting.guests = guestsToEdit;
+
+						MeetingsService.editMeeting(meetingID, meeting);
+
+						location.reload();
+  					});
+
+  				}
+				
 				$scope.saveMeeting = function(){
 					var date = $scope.date.getFullYear().toString() + '-' + ('0' + ($scope.date.getMonth()+1).toString()).slice(-2) + '-' + ('0' + ($scope.date.getDate().toString())).slice(-2);
 					var time = ('0' + ($scope.time.getHours().toString())).slice(-2) + ':' + ('0' + ($scope.time.getMinutes().toString())).slice(-2);
@@ -67,7 +128,9 @@ angular.module('app')
 						guestList: {}
 					}
 
-					var promise = UserService.getUsersID(loginObj)		
+					var promise = UserService.getUsersID(loginObj)
+
+					console.log(promise);
 
 					promise.then(function(res){
 						var personObj = [];

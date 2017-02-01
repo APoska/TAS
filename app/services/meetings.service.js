@@ -76,7 +76,7 @@ angular.module('app')
 						startTime: meeting.startTime, 
 						place: meeting.place,
 						description: meeting.description,
-						guests: meeting.guestList
+						guests: meeting.guests
 					})
 				})
 				.then(function(response){
